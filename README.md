@@ -1,1 +1,1 @@
-# SOK-1003 Python-lab og SOK-1006 Mikroøkonomi arbeidskrav / oppgaver
+# SOK-1003 Python-lab og SOK-1006 Mikroøkonomi
