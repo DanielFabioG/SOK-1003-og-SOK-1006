@@ -1,11 +1,10 @@
 ---
 title: "Utredning av tiltak for å innføre besøksbidrag for turisme"
 author: "Kandidatnummer 17"
-output:
-  pdf_document:
-    toc: true
-    toc-depth: 2
+format: pdf
 echo: false
+toc: true
+toc-title: "Innholdsliste"
 ---
 ```{python}
 # Importing all packages needed for the project
@@ -393,8 +392,8 @@ apiQuery = {
       "selection": {
         "filter": "item",
         "values": [
-          "00000",
-          "ccc"
+          "ccc",
+          "000"
         ]
       }
     },
@@ -557,10 +556,10 @@ plt.style.use('seaborn-v0_8-dark')
 fig, ax = plt.subplots( figsize=(8.5,6))
 
 # Plotting first bar
-ax.bar(nord_norge_df['year'].astype('string'),nord_norge_df['value'], label='Nord-Norge kapasitet', color='#1f77b4') # have to put width=width to make sure the bars are next to each other
+ax.bar(nord_norge_df['year'].astype('string'),nord_norge_df['value'], label='Nord-Norge kapasitet', color='#1f77b4')
 
-# Set the title and labels
-ax.set_title('Figur 1. Antall hotellsenger og hotellkapasitetsutnyttelse.\n Nord-Norge. 2016-2022', fontsize=10, fontweight='bold')
+# Set the title
+ax.set_title('Figur 1. Antall hotellsenger og hotellkapasitet.\n Nord-Norge. 2016-2022', fontsize=12, fontweight='bold')
 
 # Fixing the grid
 ax.grid(axis='y')
@@ -577,7 +576,7 @@ ax.set_ylim(0, 10630)
 ax2 = ax.twinx()
 
 # Plotting the data for the second y-axis, using astype to make sure the x-axis is a string for not having decimals
-ax2.plot(nord_norge_df1['year'].astype('string'),nord_norge_df1['value'],color="olive", label = "Nord-Norge kapasitetutnyttelse", lw=2)
+ax2.plot(nord_norge_df1['year'].astype('string'),nord_norge_df1['value'],color="midnightblue", label = "Nord-Norge kapasitetutnyttelse", lw=2)
 
 # Setting the y-axis limit for percentage
 ax2.set_ylim(0, 100)
@@ -601,9 +600,6 @@ fig, ax1 = plt.subplots( figsize=(8.5,6))
 ax1.plot(total['year'].astype("string"), total['value'], color='#1f77b4', linewidth=0.01)
 ax1.plot(norge['year'].astype("string"), norge['value'], color='midnightblue', linewidth=0.01)
 
-#Setting the title
-ax1.set_title('Figur 2. Overnattinger på hotell, innenlands og utenlandsk.\n Nord-Norge. 2016-2022', fontsize=10, fontweight='bold')
-
 # Source
 ax1.text(x=4.5, y=-500000, s='Kilde: Statistics Norway.', fontsize=10)
 
@@ -612,6 +608,9 @@ ax1.ticklabel_format(axis='y', style='plain')
 
 #Fixing so it goes from 0 to 5 million
 ax1.set_ylim(0, 5000000)
+
+# Set the title
+ax1.set_title('Figur 2. Overnattinger på hotell, innenlands og utenlandsk.\n Nord-Norge. 2016-2022', fontsize=12, fontweight='bold')
 
 # Setting grid
 ax1.grid(axis='y', alpha=0.7)
@@ -865,8 +864,8 @@ ax1.set_xticks(x2)
 # Set the x-tick labels to the year
 ax1.set_xticklabels(pivot['år'].astype("string"))
 
-#Setting the title
-ax1.set_title('Figur 3. Sysselsetting i reiselivnæringene, etter region.\n Nordland og Troms og Finnmark. 2013-2019', fontsize=10, fontweight='bold')
+# Set the title
+ax1.set_title('Figur 3. Sysselsetting i reiselivnæringene etter region.\n Nordland og Troms og Finnmark. 2013-2019', fontsize=12, fontweight='bold')
 
 # Source
 ax1.text(x=4.8, y=-1, s='Kilde: Statistics Norway.', fontsize=10)
@@ -893,11 +892,11 @@ fig, ax = plt.subplots(figsize=(8.5, 6))
 
 ax.bar(nord_norge_df2['year'].astype('string'),nord_norge_df2['value'], label='Nord-Norge', color='#1f77b4')
 
-# Set the title and labels
-ax.set_title('Figur 4. Priser per rom, årlig gjennomsnitt.\n Nord-Norge. 2016-2022', fontsize=10, fontweight='bold')
-
 # Fixing the grid
 ax.grid(axis='y')
+
+# Set the title
+ax.set_title('Figur 4. Priser per rom, årlig gjennomsnitt.\n Nord-Norge. 2016-2022', fontsize=12, fontweight='bold')
 
 # caption and y-axis label
 ax.text(4.8, -100, 'Kilde: Statistics Norway.', fontsize=10)
@@ -1078,6 +1077,18 @@ first_year = first_year.groupby(['måned']).sum(numeric_only=True)
 
 # Grouping the last year by month and summing the values
 last_year = last_year.groupby(['måned']).sum(numeric_only=True)
+
+# Adding the first value to the end of the dataset to make the plot a circle with a dictionary
+first_value = first_year.iloc[0]
+
+# Adding the last value to the end of the dataset to make the plot a circle with a dictionary
+last_value = last_year.iloc[0]
+
+# Concatenating the first value to the first year
+first_year = pd.concat([first_year, pd.DataFrame(first_value).T], axis=0)
+
+# Concatenating the last value to the last year
+last_year = pd.concat([last_year, pd.DataFrame(last_value).T], axis=0)
 ```
 
 
@@ -1090,26 +1101,22 @@ ax = fig.add_subplot(111, polar=True)
 ax.plot((first_year.index.month - 1) / 12 * 2 * np.pi, first_year['value'], label='2016', color = '#1f77b4')
 
 # Plot the data for the last year
-ax.plot((last_year.index.month - 1) / 12 * 2 * np.pi, last_year['value'], label='2022', color = 'olive')
+ax.plot((last_year.index.month - 1) / 12 * 2 * np.pi, last_year['value'], label='2022', color = 'midnightblue')
 
 # Set the xticks to the number of months.
 ax.set_xticks(np.linspace(0, 2 * np.pi, 12, endpoint=False))
 
+# Set the title
+ax.set_title('Figur 5. Ankomne turister til Nord-Norge.\n Månedlig fremvisning. 2016 og 2022', fontsize=12, fontweight='bold')
+
 # Setting the monthly ticks
 ax.set_xticklabels(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
-
-# Setting the title
-ax.set_title('Figur 5. Ankomne turister til Nord-Norge.\n Månedlig fremvisning. 2016 og 2022', fontsize=10, fontweight='bold')
 
 # Setting the location of the zero
 ax.set_theta_zero_location('N')
 
 #  Setting the direction of the plot
 ax.set_theta_direction(-1)
-
-#Fixing the y-axis
-ax.set_yticklabels
-
 # Source
 ax.text(x=2.8, y=160000, s='Kilde: Statistics Norway.', fontsize=10)
 
@@ -1123,11 +1130,11 @@ figur5 = imread('figur5.png')
 plt.close()
 ```
 
-**Kapittel 1 - Innledning**
+# **1. Innledning**
 
-*Kandidatnummer 17* har fått i oppdrag av næringsminister Jan Christian Vestre å gjøre en samfunnsøkonomisk utredning av tiltak som kan gjøres for å innføre besøksbidrag for turisme i Nord-Norge. Det vi skal se videre på her er besøksbidrag i form av en turistskatt. Nord-Norge har i de siste tiårene opplevd en stor vekst i turisme, og regjeringen har gitt grønt lys for at norske kommuner kan innføre en turistskatt. Dette er en skatt som eksempelvis betales av overnattingsgjester i hoteller, leiligheter og lignende eller som betales i flybilletten til destinasjonen.
+Kandidatnummer 17 har fått i oppdrag av næringsminister Jan Christian Vestre å gjøre en samfunnsøkonomisk utredning av tiltak som kan gjøres for å innføre besøksbidrag for turisme i Nord-Norge. Det vi skal se videre på her er besøksbidrag i form av en turistskatt. Nord-Norge har i de siste tiårene opplevd en stor vekst i turisme, og regjeringen har gitt grønt lys for at norske kommuner kan innføre en turistskatt. Dette er en skatt som eksempelvis betales av overnattingsgjester i hoteller, leiligheter og lignende eller som betales i flybilletten til destinasjonen.
 
-Grunnen til å innføre en slik skatt er for å kunne verne miljøet i kommunene som får ekstra stor belastning og bruk på grunn av mye turisme. Turistskatt er en form for skatt som har vært innført allerede i flere andre land, og som allerede har vært i bruk i over ti år på Svalbard hvor det blir lagt på en avgift på 150 kroner på alle flybilleter, cruisebåtbilletter eller andre befordringsmidler inn til øya. Med innføring av en turistskatt er det meningen at etterspørselen skal bli lavere til populære reisedestinasjoner. Dette vil føre til at det blir mindre bruk og miljøbelastning.
+Grunnen til å innføre en slik skatt er for å kunne verne miljøet og få inn en inntekt på fellesgoder som turister benytter seg av. Fellesgoder er goder som er tilgjengelig for alle, og eksempler på slike goder kan være toaletter, gangstier, informasjon, sikkerhet og beredskap. Turistskatt er en form for skatt som har vært innført allerede i andre land, og som allerede har vært i bruk i lang tid på Svalbard. Der blir det lagt på en avgift på 150 kroner for alle flybilleter, cruisebåtbilletter eller liknende befordringsmidler inn til øya. Med innføring av en turistskatt er det meningen at etterspørselen skal bli lavere til reisedestinasjonen. Dette vil føre til at det blir mindre bruk og miljøbelastning.
 
 I kapittel 2 skal vi se nærmere på turistnæringen i Nord-Norge. I figurer skal vi nærmere se på hvordan hotellovernattinger har utviklet seg over tid, hvilken kapasitetsutnyttelse hotellene har og hvor mange overnattinger som er av turister. Vi skal videre se på hvor mange som sysselsettes i turistnæringen og hvor mye et hotellrom i Nord-Norge koster i gjennomsnitt. Til slutt skal vi se når på året det kommer mest turister. 
 
@@ -1135,7 +1142,7 @@ I kapittel 3 skal vi se nærmere på hvordan en turistskatt kan påvirke turistn
 
 Kapittel 4 blir en sammenfatning av det vi har sett på i kapittel 2 og 3. Her skal vi konkludere med hvilke konsekvenser en turistskatt kommer til å ha for Nord-Norge.
 
-**Kapittel 2 - Turistnæringen i Norge**
+# **2. Turistnæringen i Norge**
 
 I denne utredningen skal vi fokusere på turistnæringen i Nord-Norge. Nord-Norge består av fylkene Nordland og Troms og Finnmark. For å forstå viktigheten av dette markedet skal vi se på hvordan hotellovernattinger har utviklet seg over tid, dette for å se om det er økning eller nedgang i antall turister som besøker Nord-Norge. 
 
@@ -1147,7 +1154,7 @@ plt.axis('off')
 plt.imshow(figur1);
 ```
 
-Turister sto for 722000 hotellovernattinger i Nord-Norge i 2016 og hadde en topp på over 884000 overnattinger i 2019. På grunn av pandemien med covid-restriksjoner overnattet det kun 253000 turister i 2021. Etter pandemien har tallene tatt seg opp igjen og i 2022 sto turister for 40 prosent av overnattingene i Nord-Norge. 
+Turister sto for 722000 hotellovernattinger i Nord-Norge i 2016 og hadde en topp på over 884000 overnattinger i 2019. På grunn av pandemien og covid-restriksjoner overnattet det kun 253000 turister i 2021. Etter pandemien har tallene tatt seg opp igjen og i 2022 sto turister for 40 prosent av overnattingene i Nord-Norge. 
 
 ```{python}
 plt.figure(figsize=(10, 7))
@@ -1155,7 +1162,7 @@ plt.axis('off')
 plt.imshow(figur2);
 ```
 
-Turisme sysselsetter mange mennesker i Nord-Norge (Se figur 3.). I 2013 var det 6900 personer som var sysselsatt innenfor turisme i Troms fylke, mens i 2019 var det 9000 personer. Dette er en økning på 2100 personer fra 2013. I 2019 var det totalt 21 900 personer som var sysselsatt innenfor turisme i Nord-Norge.
+Turisme sysselsetter mange mennesker i Nord-Norge (se figur 3). I 2013 var det 6900 personer som var sysselsatt innenfor turisme i Troms fylke, og i 2019 har det økt til 9000 personer. Dette er en økning på 2100 personer fra 2013. I 2019 var det totalt 21 900 personer som var sysselsatt innenfor turisme i Nord-Norge.
 
 ```{python}
 plt.figure(figsize=(10, 7))
@@ -1163,7 +1170,7 @@ plt.axis('off')
 plt.imshow(figur3);
 ```
 
-Ser man på hotelløkonomien i Nord-Norge så har den vært relativt stabil de siste årene. Den gjennomsnittlige hotellromsprisen var 858 kroner i 2016 og i 2022 har den økt til 1054 kroner. Prosentvis har det over denne perioden blitt en økning på 22.8 prosent i gjennomsnittlig hotellromspris.
+Ser man på hotelløkonomien i Nord-Norge så har den hatt en liten økning de siste årene. Den gjennomsnittlige hotellromsprisen var 858 kroner i 2016 og i 2022 var prisen økt til 1054 kroner. Over denne perioden har det blitt en økning på 22.8 prosent i hotellromsprisen.
 
 ```{python}
 plt.figure(figsize=(10, 7))
@@ -1171,7 +1178,7 @@ plt.axis('off')
 plt.imshow(figur4);
 ```
 
-I figur 5 kan man se hvilke tider på året turister ankommer Nord-Norge. Vi kan se at det er sommermånedene som er mest populære, i 2016 ankom det ca. 126 000 turister i juli måned mens i 2022 har det vært en liten nedgang til 111 000 ankomne turister.
+I figur 5 kan man se hvilke tider på året turister ankommer Nord-Norge. Vi kan se at det er sommermånedene som er mest populære, i 2016 ankom det ca. 126 000 turister i juli måned mens i 2022 har det vært en liten nedgang til 111 000 ankomne turister i samme måned.
 
 ```{python}
 plt.figure(figsize=(10, 7))
@@ -1179,10 +1186,27 @@ plt.axis('off')
 plt.imshow(figur5);
 ```
 
-**Kapittel 3 - Samfunnsøkonomiske effekter av en turistskatt**
+# **3. Samfunnsøkonomiske effekter av en turistskatt**
 
 
 
-**Kapittel 4 - Konklusjon**
+# **4. Konklusjon**
 
-Besøksbidrag i Nord-Norge og Svalbard
+Besøksbidrag i Nord-Norge
+
+# **Referanser**
+
+fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [Link](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
+
+Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: [Link](https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1) (Accessed: March 20, 2023).
+
+[Figur 1, fra SSB tabell 13153](https://www.ssb.no/statbank/table/13153/)
+
+[Figur 2, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13156/)
+
+[Figur 3, fra SSB tabell 09266](https://www.ssb.no/statbank/table/09266/)
+
+[Figur 4, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13156/)
+
+[Figur 5, fra SSB tabell 13154](https://www.ssb.no/statbank/table/13154/)
+
