@@ -1194,9 +1194,9 @@ plt.imshow(figur5);
 
 Besøksbidrag i Nord-Norge
 
-# **Referanser**
+# **5. Referanser**
 
-fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [Link](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
+Fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [Link](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
 
 Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: [Link](https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1) (Accessed: March 20, 2023).
 
