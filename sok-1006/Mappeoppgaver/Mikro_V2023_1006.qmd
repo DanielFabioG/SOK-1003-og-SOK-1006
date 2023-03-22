@@ -1528,7 +1528,7 @@ plt.imshow(figur7);
 
 ## Hvordan fungerer markedet uten turistskatt?
 
-Vi tar for oss et eksempel
+Vi går videre i 
 
 ## Forventede endringer i markedet etter turistskatt
 
@@ -1544,7 +1544,7 @@ I masteroppgaven skriver også Engebretsen (2007) at dersom den norske kronen de
 
 Som følge av en inntektselastisitet på over én opplevde vi at Norge ble ansett som et luksusgode, og at utenlandsk etterspørsel var svært prissensitiv overfor endringer i pris og valuta. (Engebretsen, 2017)
 
-Videre opplevde vi en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Dette er estimater som er gjort i en Masteroppgave, og som er basert på data fra 1995 til 2015. Vi har valgt å bruke disse estimatene fordi de er basert på data fra en lengre periode og er gjort i nyere tid.
+Videre opplevde vi en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Dette er estimater som er gjort i en Masteroppgave, og som er basert på data fra 1995 til 2015. Vi har valgt å bruke disse estimatene fordi de er basert på data fra en lengre periode og er gjort i nyere tid. Det vil si at en 1% økning i pris vil gi en nedgang på 2,79% i etterspørselen etter overnattinger i Nord-Norge. Dette er en relativt stor reduksjon i etterspørselen.
 
 ## Vurdering
 
