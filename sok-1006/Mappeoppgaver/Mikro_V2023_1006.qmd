@@ -1302,15 +1302,13 @@ plt.close()
 ```{python}
 # Setting the style for the plots
 plt.style.use('default')
-# Setting the size of the plots in a list of random generated numbers from 1 to 100
-x_num= np.linspace(0, 100, 100)
 
 # Defining a linear supply function for example
-def tilbud(p):
-    return -20 + 1.5*p
+def demand(p,t):
+    return (p+20)/1.5+t
 # Defining a linear demand function for example
-def etters(p):
-    return 100 - 1.25*p
+def supply(p):
+    return ((100-p)/1.25)
 
 # Defining a function that creates a plot
 def create_ax():
@@ -1325,52 +1323,49 @@ def create_ax():
 
 ```{python}
 # Defining symbols in sympy
-p, x = sp.symbols('p, x', real=True, positive=True)
+p,x,t = sp.symbols('p,x, t', real=True, positive=True)
 
-# Defining the equations
-eq_s = sp.Eq(-20+1.5*p, x)
-eq_d = sp.Eq(100-1.25*p, x)
 
 # Solving the equations for market equilibrium and storing it in a dictionary
-sol_dict = sp.solve ((eq_s, eq_d), (p,x))
+equ = sp.Eq (demand(x,0),supply(x))
+
 ```
 ```{python}
-# Fixing the solutions to two decimals
-sol_x = round(sol_dict[x], 2)
-sol_p = round(sol_dict[p], 2)
+x_eq=sp.solve(equ,x)
+x_eq=float(x_eq[0])
+p_eq =demand(x_eq,0)
 ```
 ```{python}
+# I know doing it like this is not the best way, but time is running short
+
+x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
 fig, ax = create_ax()
 
 # Plotting the supply and demand functions
-ax.plot(tilbud(x_num), x_num ,label='Tilbud')
-ax.plot(etters(x_num), x_num ,label='Etterspørsel', color='midnightblue')
-#ax.plot ([0,tilbud(60)], [60,60], linestyle='dashed', color='darkslategray')
-#ax.text (30, 70, "Tilbudsoverskudd")
+ax.plot(x_num,supply(x_num) ,label='Tilbud')
+ax.plot(x_num,demand(x_num,0) ,label='Etterspørsel', color='midnightblue')
 
-#ax.plot ([0,etters(30)], [30,30], linestyle='dashed', color='olive')
-#ax.text (25, 20, "Etterspørselsoverskudd")
+# make line for equilibrium
+ax.vlines(x_eq, 0, p_eq, linestyles='dashed', color='black')
+ax.hlines(p_eq, 0, x_eq, linestyles='dashed', color='black')
 
-# Plotting the market equilibrium
-ax.plot ([0,sol_dict[x]], [sol_dict[p], sol_dict[p]], linestyle='dashed', color='black')
-ax.plot ([sol_dict[x], sol_dict[x]], [0, sol_dict[p]], linestyle='dashed', color='black')
-
-# Title
+# Setting title
 ax.set_title('Figur 7. Markedsmekanismen')
+
 # remove the x and y ticks
 ax.set_xticks([])
 ax.set_yticks([])
 # x-axis label
-ax.text(99, -4.5, 'X', fontsize=10)
+ax.text(70, -4.5, 'Kvantum omsatt i markedet(X)', fontsize=10)
 # y-axis label
-ax.text(-3, 99, 'P', fontsize=10)
+ax.text(-4, 99, 'Pris', fontsize=10)
 # markedslikevekt
-ax.text(sol_dict[x]+1, sol_dict[p]-1, 'Markedslikevekt', fontsize=10)
+ax.text(x_eq+3, p_eq-1, 'Markedslikevekt', fontsize=10)
 # X1
-ax.text(sol_dict[x], -2.5, 'X1', fontsize=10)
+ax.text(x_eq-1, -2.5, 'X1', fontsize=10)
 # P1
-ax.text(-2.5, sol_dict[p], 'P1', fontsize=10)
+ax.text(-2.5, p_eq-1, 'P1', fontsize=10)
 ax.legend(loc='best', frameon=False);
 
 plt.savefig('figur7.png', dpi=600,  bbox_inches='tight')
@@ -1380,6 +1375,223 @@ figur7 = imread('figur7.png')
 plt.close()
 ```
 
+```{python}
+# I know doing it like this is not the best way, but time is running short
+
+x_num=np.linspace(0.1,500,100)
+# Creating a plot from the function
+fig, ax = create_ax()
+
+# Plotting the supply and demand functions
+ax.plot(x_num,supply(x_num) ,label='Tilbud')
+ax.plot(x_num,demand(x_num,0) ,label='Etterspørsel', color='midnightblue')
+
+# make line for equilibrium
+ax.vlines(x_eq, 0, p_eq, linestyles='dashed', color='black')
+ax.hlines(p_eq, 0, x_eq, linestyles='dashed', color='black')
+
+# Setting title
+ax.set_title('Figur 8. Markedsmekanismen med samfunnsøkonomisk overskudd')
+
+# remove the x and y ticks
+ax.set_xticks([])
+ax.set_yticks([])
+# x-axis label
+ax.text(70, -4.5, 'Kvantum omsatt i markedet (X)', fontsize=10)
+# y-axis label
+ax.text(-4, 99, 'Pris', fontsize=10)
+# markedslikevekt
+ax.text(x_eq+3, p_eq-1, 'Markedslikevekt', fontsize=10)
+# X1
+ax.text(x_eq-1, -2.5, 'X1', fontsize=10)
+# P1
+ax.text(-2.5, p_eq-1, 'P1', fontsize=10)
+# Defining q as a numpy array
+q= np.linspace(0.1,x_eq,100)
+# filling the area for consumer surplus
+ax.fill_between(q,p_eq,demand(q,0), color = 'red',alpha = 0.5)
+# filling the area for producer surplus
+ax.fill_between(q,supply(q),p_eq, color = 'green',alpha = 0.5)
+# text for consumer surplus
+ax.text(5, 55, "Konsumentoverskudd", fontsize=10)
+# text for producer surplus
+ax.text(5, 35, "Produsentoverskudd", fontsize=10)
+
+ax.legend(loc='best', frameon=False);
+
+plt.savefig('figur8.png', dpi=600,  bbox_inches='tight')
+
+figur8 = imread('figur8.png')
+
+plt.close()
+```
+
+```{python}
+equ_t5 = sp.Eq(demand(x,5),supply(x))
+# løser likningen for x
+x_eq_t5 = sp.solve(equ_t5,x)
+# konverterer til float
+x_eq_t5 = float(x_eq_t5[0])
+# finner likevektsprisen
+p_eq_t5=supply(x_eq_t5)
+# finner dødvektstapet
+q2 = np.linspace(0,x_eq_t5,100)
+# finner avgiftsproveny
+q3 = np.linspace(x_eq,x_eq_t5,100)
+```
+
+```{python}
+# I know doing it like this is not the best way, but time is running short
+x_num=np.linspace(0.1,500,100)
+# Creating a plot from the function
+fig, ax = create_ax()
+
+# Plotting the supply and demand functions
+ax.plot(x_num,supply(x_num) ,label='Tilbud')
+ax.plot(x_num,demand(x_num,0) ,label='Etterspørsel', color='midnightblue')
+ax.plot(x_num,demand(x_num,5) ,label='Etterspørsel med turistskatt', color='darkslategray')
+
+
+# make line for equilibrium
+ax.vlines(x_eq, 0, p_eq, linestyles='dashed', color='black')
+ax.hlines(p_eq, 0, x_eq, linestyles='dashed', color='black')
+
+
+# make new line for equilibrium with tax
+ax.vlines(x_eq_t5, 0, p_eq_t5, linestyles='dashed', color='black')
+ax.hlines(p_eq_t5, 0, x_eq_t5, linestyles='dashed', color='black')
+
+# make a new text for equilibrium with tax
+ax.text(x_eq_t5-8, p_eq_t5+15, 'Markedslikevekt med skatt', fontsize=10)
+
+# make an arrow pointing to the new equilibrium
+ax.annotate("", xy=(42, 47), xytext=(42, 60),
+            arrowprops=dict(arrowstyle='->', color='black',linewidth=3),
+            annotation_clip=False)
+
+
+
+# Setting title
+ax.set_title('Figur 9. Markedsmekanismen med og uten skatt')
+
+# remove the x and y ticks
+ax.set_xticks([])
+ax.set_yticks([])
+# x-axis label
+ax.text(70, -4.5, 'Kvantum omsatt i markedet (X)', fontsize=10)
+# y-axis label
+ax.text(-4, 99, 'Pris', fontsize=10)
+# markedslikevekt
+ax.text(x_eq+3, p_eq-1, 'Markedslikevekt', fontsize=10)
+# X1
+ax.text(x_eq-1, -2.5, 'X1', fontsize=10)
+# P1
+ax.text(-2.5, p_eq-1, 'P1', fontsize=10)
+# X2
+ax.text(x_eq_t5-1, -2.5, 'X2', fontsize=10)
+# P2
+ax.text(-2.5, p_eq_t5-1, 'P2', fontsize=10)
+# Defining q as a numpy array
+q= np.linspace(0.1,x_eq,100)
+# filling the area for consumer surplus
+ax.fill_between(q,p_eq,demand(q,0), color = 'red',alpha = 0.5)
+# filling the area for producer surplus
+ax.fill_between(q,supply(q),p_eq, color = 'green',alpha = 0.5)
+# text for consumer surplus
+ax.text(5, 55, "Konsumentoverskudd", fontsize=10)
+# text for producer surplus
+ax.text(5, 35, "Produsentoverskudd", fontsize=10)
+
+ax.legend(loc='best', frameon=False);
+
+plt.savefig('figur9.png', dpi=600,  bbox_inches='tight')
+
+figur9 = imread('figur9.png')
+
+plt.close()
+```
+
+```{python}
+# I know doing it like this is not the best way, but time is running short
+x_num=np.linspace(0.1,500,100)
+# Creating a plot from the function
+fig, ax = create_ax()
+
+# Plotting the supply and demand functions
+ax.plot(x_num,supply(x_num) ,label='Tilbud')
+ax.plot(x_num,demand(x_num,0) ,label='Etterspørsel', color='midnightblue')
+ax.plot(x_num,demand(x_num,5) ,label='Etterspørsel med turistskatt', color='darkslategray')
+
+
+# make line for equilibrium
+ax.vlines(x_eq, 0, p_eq, linestyles='dashed', color='black')
+ax.hlines(p_eq, 0, x_eq, linestyles='dashed', color='black')
+
+
+# make new line for equilibrium with tax
+ax.vlines(x_eq_t5, 0, p_eq_t5, linestyles='dashed', color='black')
+ax.hlines(p_eq_t5, 0, x_eq_t5, linestyles='dashed', color='black')
+
+# make a new text for equilibrium with tax
+ax.text(x_eq_t5-8, p_eq_t5+15, 'Markedslikevekt med skatt', fontsize=10)
+
+# make an arrow pointing to the new equilibrium
+ax.annotate("", xy=(42, 47), xytext=(42, 60),
+            arrowprops=dict(arrowstyle='->', color='black',linewidth=3),
+            annotation_clip=False)
+
+
+
+# Setting title
+ax.set_title('Figur 10. Markedsmekanismen, dødvektstap og skatteproveny')
+
+# remove the x and y ticks
+ax.set_xticks([])
+ax.set_yticks([])
+# x-axis label
+ax.text(70, -4.5, 'Kvantum omsatt i markedet (X)', fontsize=10)
+# y-axis label
+ax.text(-4, 99, 'Pris', fontsize=10)
+# markedslikevekt
+ax.text(x_eq+3, p_eq-1, 'Markedslikevekt', fontsize=10)
+# X1
+ax.text(x_eq-1, -2.5, 'X1', fontsize=10)
+# P1
+ax.text(-2.5, p_eq-1, 'P1', fontsize=10)
+# X2
+ax.text(x_eq_t5-1, -2.5, 'X2', fontsize=10)
+# P2
+ax.text(-2.5, p_eq_t5-1, 'P2', fontsize=10)
+# Pp
+ax.text(-2.5, p_eq_t5-7, 'PP', fontsize=10)
+# Defining q as a numpy array
+q= np.linspace(0.1,x_eq,100)
+# filling the area for consumer surplus
+ax.fill_between(q,p_eq,demand(q,0), color = 'red',alpha = 0.5)
+# filling the area for producer surplus
+ax.fill_between(q,supply(q),p_eq, color = 'green',alpha = 0.5)
+# text for consumer surplus
+ax.text(5, 55, "Konsumentoverskudd", fontsize=10)
+# text for producer surplus
+ax.text(5, 35, "Produsentoverskudd", fontsize=10)
+
+# filling the deadweight loss
+ax.fill_between(q3,supply(q3),demand(q3,0), color = 'grey', label='Dødsvektstap')
+
+# dashed line for the tax proveny
+ax.hlines(p_eq_t5-5, 0, p_eq+2, linestyles='dashed', color='black')
+
+# filling the area for tax proveny
+ax.fill_between(q2,p_eq_t5,p_eq_t5-5, color = '#1f77b4',alpha = 0.9, label='Skatteinntekt')
+
+ax.legend(loc='upper left', frameon=False);
+
+plt.savefig('figur10.png', dpi=600,  bbox_inches='tight')
+
+figur10 = imread('figur10.png')
+
+plt.close()
+```
 # 1. Sammendrag
 
 ## Bakgrunn
@@ -1511,6 +1723,8 @@ Noen sentrale forutsetninger før vi begynner å se på analysen:
 
 I et marked er det normalt tilbud og etterspørsel som bestemmer prisen på et gode. Den økonomiske atferden som kan leses ut av en fallende etterspørselskurve, er at konsumentene er villige til å kjøpe mer av et gode dersom prisen de må betale reduseres. Mens på den andre siden av en stigende tilbudskurve er at produsenten er villig til å produsere mer dersom prisen på godet økes.
 
+## Hvordan fungerer markedet uten turistskatt?
+
 La oss starte med å ta for oss et eksempel der vi har markedslikevekt. Ved å sette sammen tilbud og etterspørsel får vi en beskrivelse av begge sidene.
 
 Vi finner likevekten med å sette prisen lik etterspørsel i en likning. Vi får da:
@@ -1526,13 +1740,36 @@ plt.imshow(figur7);
 ```
 
 
-## Hvordan fungerer markedet uten turistskatt?
+Vi går videre i eksempelet og ser på konsument og produsentoverskudd, dette tilsammen kalles for den samfunnsøkonomiske effekten av et marked.
 
-Vi går videre i 
+```{python}
+plt.figure(figsize=(10, 7),dpi=600)
+plt.axis('off')
+plt.imshow(figur8);
+```
+
+Skrive noe mer
 
 ## Forventede endringer i markedet etter turistskatt
+Når vi går videre i analysen og ser på hvordan markedet vil endre seg etter en turistskatt, så vil det bli en endring i etterspørselen. Vi ser på dette i figur 9, hvor vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten vil bli P2 og X2.
+
+```{python}
+plt.figure(figsize=(10, 7),dpi=600)
+plt.axis('off')
+plt.imshow(figur9);
+```
+
+PP blir nye produsentpris etter skatt og P2 blir nye konsumentpris etter skatt. Elastisiteten til etterspørselen blir å fortelle noe om hvor mye prisen blir å endre seg for både konsumenten og produsenten.
 
 ## Samfunnsøkonomiske effekter
+
+```{python}
+plt.figure(figsize=(10, 7),dpi=600)
+plt.axis('off')
+plt.imshow(figur10);
+```
+
+Det grå område er dødvektstapet etter avgiften, dette vil bli et samfunnsøkonomisk tap etter innføringen. Det blå område vil bli avgiftsprovenyen, dette vil bli hva samfunnet tjener på avgiften.
 
 ## Estimat av sentrale parameter
 
@@ -1584,6 +1821,3 @@ Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [L
 [Figur 5, fra SSB tabell 13154](https://www.ssb.no/statbank/table/13156/)
 
 [Figur 6, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13154/)
-
-
-[Tabell som brukes for etterspørsel i markedet](https://www.ssb.no/statbank/table/08403/)
