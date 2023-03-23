@@ -1,6 +1,6 @@
 ---
 title: "Mappeoppgave 1 - Samfunnsøkonomisk analyse av en turistskatt"
-subtitle: "Fakultete for biovitenskap, fiskeri og økonomi."
+subtitle: "Fakultet for biovitenskap, fiskeri og økonomi."
 author: "Kandidatnummer 17, SOK-1006, Høst 2023"
 format: pdf
 echo: false
@@ -1600,13 +1600,13 @@ Kandidatnummer 17 har fått i oppdrag av næringsminister Jan Christian Vestre �
 
 ## Begrunnelse
 
-Grunnen til å innføre en slik skatt er for å kunne verne miljøet og få inn en inntekt på fellesgoder som turister benytter seg av. Fellesgoder er goder som er tilgjengelig for alle, og eksempler på slike goder kan være:
+Grunnen til å innføre en slik skatt er for å kunne verne miljøet og få inn en inntekt for bruk av fellesgoder som turister benytter seg av. Fellesgoder er goder som er tilgjengelig for alle, og eksempler på slike goder kan være:
 
 * Offentlige toaletter
 * Gangstier
 * Turistinformasjon
 * Sikkerhet og beredskap
-* Generelt vedlikehold av turistattraksjoner
+* Generelt vedlikehold av attraksjoner og turiststeder
 
 ## Utbredelse
 
@@ -1614,40 +1614,42 @@ Turistskatt er en form for skatt som har vært innført allerede i mange land og
 
 I europa så har turistskatt vært innført allerede flere steder:
 
-1. I Italia så er det innført en turistskatt i Venezia. Skatten er på 1-5 euro per person per natt og varierer i forhold til når på året man er der.
+1. I Italia så er det innført turistskatt. Skatten er på 0.3-7 euro per person per natt og varierer i forhold til hvilken kommune og overnattingsmetode man bruker.
 
-2. I Frankrike så er det innført en turistskatt i Paris. Skatten er på  0.25-5 euro per person per natt.
+2. I Frankrike har det vært tatt i bruk turistskatt i en lang periode. Skatten er på  0.2-4 euro per person per natt og varierer fra hvilken kommune man drar til.
 
-3. I Spania så er det innført en turistskatt i Barcelona. Skatten er på mellom 2.5-5 euro per person per natt.
+3. I Spania så er det innført turistskatt. Skatten er på mellom 0.25-2.25 euro per person per natt og varierer fra hvilken plass man drar til.
 
 ## Erfaringer
 
-Med innføring av en turistskatt er det meningen at etterspørselen skal bli lavere til reisedestinasjonen. Dette vil føre til at det blir mindre bruk og miljøbelastning.
+Med innføring av en turistskatt har det i tidligere land vært gjort for å kunne vedlikeholde infrastruktur og attraksjoner som turister benytter seg av. I noen av tilfellene kan turistskatt utgjøre en stor del av bruttonasjonalproduktet til landet, som har gjort skatten svært viktig. 
 
 På svalbard har de samlet inn miljøavgift siden 1. april 2007. Med pengene har de opprettet et miljøvernfond og hvert år tildeler fondet 10-25 millioner kroner til miljøvern- og kulturminneprosjekter.
 
-# 2. Struktur
+# 2. Struktur av redgjørelsen
 
 ## Kapittel 2 - Turistnæringen i Nord-Norge
 
-I kapittel 2 skal vi se nærmere på turistnæringene i Nord-Norge. I figurer skal vi nærmere se på hvordan hotellovernattinger har utviklet seg over tid, hvilken kapasitetsutnyttelse hotellene har og hvor mange overnattinger som er av turister. Vi skal videre se på hvor mange som sysselsettes i turistnæringen og hvor mye et hotellrom i Nord-Norge koster i gjennomsnitt. Til slutt skal vi se når på året det kommer mest turister. 
+I kapittel 2 skal vi se nærmere på hvordan det har gått med turistnæringene i Nord-Norge de siste 7-10 årene. Vi skal se på hvordan hotellovernattinger har utviklet seg over tid, hvilken kapasitetsutnyttelse hotellene har og hvor mange overnattinger som er av turister. Vi skal deretter se på tall om hvor mange som sysselsettes i turistnæringen, og hvor mye et hotellrom i Nord-Norge koster i gjennomsnitt både årlig og basert på sesong/måned. Avslutningsvis skal vi se på året det kommer mest turister til Nord-Norge.
 
 ## Kapittel 3 - Samfunnsøkonomiske effekter av en turistskatt
 
-I kapittel 3 skal vi se nærmere på hvordan en turistskatt kan påvirke turistnæringen i Nord-Norge. Vi skal se på hvordan en turistskatt kan pårvirke tilbud og etterspørsel etter hotellrom og flybilletter. Vi skal se på hvor stor effekt vi kan forvente av en turistskatt, og vi skal se på hvilke samfunnsøkonomiske konsekvenser turistskatten vil medbringe.
+I kapittel 3 skal vi se nærmere på hvordan en generisk turistskatt kan påvirke turistnæringen i Nord-Norge. Vi skal se på hvordan en turistskatt påvirker tilbud og etterspørsel og vi skal se på hvor stor effekt vi kan forvente i endret etterspørsel. Til slutt skal se på hvilke samfunnsøkonomiske konsekvenser turistskatten vil medbringe.
 
 ## Kapittel 4 - Konklusjon
 
-Kapittel 4 blir en sammenfatning av det vi har sett på i kapittel 2 og 3. Her oppsummerer vi funnene fra utredningen og gir råd til Nærings- og fiskeridepartementet.
+Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen og vi vil gi råd til Nærings- og fiskeridepartementet.
 
 
 # 3. Turistnæringen i Nord-Norge
 
-## Hotellkapasitet
+I denne utredningen skal vi fokusere på turistnæringen i Nord-Norge. Nord-Norge består av fylkene Nordland og Troms og Finnmark. For å forstå viktigheten av dette markedet skal vi gå gjennom noen sentrale tall og figurer for å se hvordan de Nord-Norske turistnæringene har hatt det de siste årene.
 
-I denne utredningen skal vi fokusere på turistnæringen i Nord-Norge. Nord-Norge består av fylkene Nordland og Troms og Finnmark. For å forstå viktigheten av dette markedet må vi se på hvordan hotellovernattinger har utviklet seg over tid, hvordan hotellkapasiteten er og hvor stor del av overnattinger som er av turister.
+## Hotellkapasiteten
 
-Fra 2016 til 2022 har Nord-Norge hatt en oppgang i hotellkapasitet på litt over 10 prosent. Kapasitetsutnyttelsen i Nord-Norge har vært stabilt litt over 40 prosent av alle hotellsenger til 2019 hvor det skjedde en nedgang i kapasitetsutnyttelsen på grunn av pandemi og reiserestriksjoner. I 2022 har kapasitetsutnyttelsen til hotellene begynt å stige igjen og ligger rett under 40 prosent igjen.
+Alle figurene viser tall som omfatter overnattingar på hotell, campingplasser, hyttegrender og vandrerhjem. Tallene og figurene vi ser på inneholder ingen overnattinger som er formidlet gjennom utenlandske selskap som AirBNB og lignende. Dette kan være en svakhet ved figurene.
+
+Fra 2016 til 2022 økte hotellkapasiteten i Nord-Norge med litt over 10 prosent. Kapasitetsutnyttelsen av hotellsenger har vært stabil frem til 2019. Imidlertid førte pandemien og reiserestriksjonene til en nedgang i kapasitetsutnyttelsen i disse årene. I 2022 har kapasitetsutnyttelsen begynt å øke igjen og ligger nå rett under 40 prosent.
 
 ```{python}
 plt.figure(figsize=(10, 7), dpi=600)
@@ -1657,7 +1659,9 @@ plt.imshow(figur1);
 
 ## Hotellovernattinger
 
-Turister sto for 722000 hotellovernattinger i Nord-Norge i 2016 og hadde en topp på over 884000 overnattinger i 2019. På grunn av pandemien og covid-restriksjoner overnattet det kun 253000 turister i 2021. Etter pandemien har tallene tatt seg opp igjen og i 2022 sto turister for 40 prosent av overnattingene i Nord-Norge. 
+Når vi ser på hotellovernattinger kan en svakhet med figuren være at vi ikke klarer å skille mellom hvilket formål utlendingene har med reisen. For utredningens skyld kommer vi til å omtale utlendinger som turister videre i teksten.
+
+For å forstå hvor viktig Nord-Norge er for turistindustrien kan vi se på antall hotellovernattinger som er gjort av turister. I 2016 sto turister for 722 000 hotellovernattinger i Nord-Norge, og dette økte til en topp på over 884 000 overnattinger i 2019. Imidlertid førte pandemien og covid-restriksjoner til at antall turister som overnattet i 2021, falt dramatisk til 253 000. Men etter pandemien har antallet turister som overnatter i Nord-Norge igjen tatt seg opp, og i 2022 sto de for 40 prosent av overnattingene.
 
 ```{python}
 plt.figure(figsize=(10, 7), dpi=600)
@@ -1667,7 +1671,7 @@ plt.imshow(figur2);
 
 ## Sysselsetting
 
-Turisme sysselsetter mange mennesker i Nord-Norge (se figur 3). I 2013 var det 6900 personer som var sysselsatt innenfor turisme i Troms fylke, og i 2019 har det økt til 9000 personer. Dette er en økning på 2100 personer fra 2013. I 2019 var det totalt 21 900 personer som var sysselsatt innenfor turisme i Nord-Norge.
+Turisme er en viktig næring for arbeidsplasser i Nord-Norge. I Troms fylke alene var 6900 personer sysselsatt innen turisme i 2013, mens dette antallet økte til 9000 personer i 2019 - en økning på 2100 personer over disse seks årene. I hele Nord-Norge var det totalt 21 900 personer som var sysselsatt innenfor turisme i 2019.
 
 ```{python}
 plt.figure(figsize=(10, 7), dpi=600)
@@ -1785,6 +1789,7 @@ Videre opplevde vi en valutakurselastisitet på 1.24 og en priselastisitet for r
 
 ## Vurdering
 
+Med innføring av turistskatt i Nord-Norge er det hovedsakelig ment for at etterspørselen skal bli lavere til reisedestinasjonen. Hovedformålet  for dette er at det vil føre til at det blir mindre bruk og miljøbelastning og at en del av skatten kan brukes til å vedlikeholde viktig infrastruktur.
 
 # 5. Konklusjon
 
@@ -1810,6 +1815,8 @@ Andreassen, V., Bredesen, I. and Thøgersen, J. (2016) Innføring I mikroøkonom
 
 Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [Link](https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf.) (Accessed: March 21, 2023).
 
+Goktas, L.S. and Polat, S. (2019) “Tourist tax practices in European Union member countries and its applicability in Turkey,” Journal of Tourismology [Preprint]. Available at: https://doi.org/10.26650/jot.2019.5.2.0026. 
+
 [Figur 1, fra SSB tabell 13153](https://www.ssb.no/statbank/table/13153/)
 
 [Figur 2, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13156/)
@@ -1821,3 +1828,4 @@ Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [L
 [Figur 5, fra SSB tabell 13154](https://www.ssb.no/statbank/table/13156/)
 
 [Figur 6, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13154/)
+
