@@ -6,6 +6,8 @@ format: pdf
 echo: false
 toc: true
 toc-title: "Innholdsliste"
+date: last-modified
+date-format: "DD-MM-YYYY"
 ---
 ```{python}
 # Importing all packages needed for the project
@@ -1122,6 +1124,8 @@ ax.set_theta_direction(-1)
 # Source
 ax.text(x=2.8, y=160000, s='Kilde: Statistics Norway.', fontsize=10)
 
+ax.set_rlabel_position(80.5)
+
 #  Setting the legend
 ax.legend(loc='upper right', bbox_to_anchor=(1.05, 1.1), fontsize=10);
 
@@ -1681,7 +1685,7 @@ plt.imshow(figur3);
 
 ## Hotelløkonomien
 
-Ser man på hotelløkonomien i Nord-Norge så har den hatt en liten økning de siste årene. Den gjennomsnittlige hotellromsprisen årlig var 858 kroner i 2016 og i 2022 var prisen økt til 1054 kroner. Over denne perioden har det blitt en økning på 22.8 prosent i årlig gjennomsnitt for hotellromsprisen.
+Når vi ser på økonomien til hotellene i Nord-Norge, har det vært en liten økning de siste årene. I 2016 lå gjennomsnittsprisen på hotellrom på 858 kroner, mens i 2022 har prisen økt til 1054 kroner. Dette betyr en økning på 22,8 prosent i gjennomsnittlig årlig hotellromspris over denne perioden.
 
 ```{python}
 plt.figure(figsize=(10, 7), dpi=600)
@@ -1689,7 +1693,7 @@ plt.axis('off')
 plt.imshow(figur4);
 ```
 
-Ser man på prisene månedlig så varierer prisene fra hvilket år det er, man skulle tro at sommermånedene var dyrest da man ser i figur 6 at det er mest turisme, men det er ikke tilfellet. Den dyreste måneden var desember 2022 hvor gjennomsnittsprisen for et hotellrom lå på litt over 1400 kroner. Skriv dette bedre.
+Ser man på prisene månedlig så varierer prisene veldig til hvilken måned det er og man klarer ikke se noen årsakssammenheng som at overnattinger blir dyrere i høysesongen. Dette kan være en svakhet med å se på gjennomsnittshotellprisene for fylker, ettersom hvis vi ser på turistplasser som Lofoten kan det avvike noe fra denne fremstillingen. Den dyreste måneden vi klarer å finne her var desember 2022 hvor gjennomsnittsprisen for et hotellrom lå på litt over 1400 kroner per natt i troms og finnmark.
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1709,11 +1713,11 @@ plt.imshow(figur6);
 
 ## Hvorfor dette er viktig
 
-Vi ser på disse dataene når vi skal prøve å analysere et marked, og for å kunne se videre på hvilken effekt en turistskatt vil medbringe. Skriv mer her....
+Disse dataene er viktig fordi det fra før ikke finnes mye forskning eller utredninger for å se hvilke sammfunnsøkonomiske effekter en turistskatt vil innebære. For å forstå hvordan markedet fungerer uten en skatt, kan vi nå beregne estimater for hvor mye en turistskatt vil påvirke markedet.
 
 # 4. Samfunnsøkonomiske effekter av en turistskatt
 
-## Innledning
+## Noen sentrale forutsetninger
 
 Det Nord-Norske markedet er som vi har sett på tidligere et viktig marked for turistnæringen i Norge, og før vi ser på virkningene av en turistskatt skal vi se på hvordan et avgrenset marked fungerer uten en skatt.
 
@@ -1743,8 +1747,7 @@ plt.axis('off')
 plt.imshow(figur7);
 ```
 
-
-Vi går videre i eksempelet og ser på konsument og produsentoverskudd, dette tilsammen kalles for den samfunnsøkonomiske effekten av et marked.
+Vi går videre i eksempelet og ser på konsument og produsentoverskudd. Konsumentoverskudd er den verdien eller nytten en konsument får for å kjøpe en tjeneste eller vare til en pris som er lavere enn de er villige til å betale. Produsentoverskudd er hva produsenten får når de selger en tjeneste til en høyere pris en produksjonskostnad. Disse to sammen kalles for den samfunnsøkonomiske effekten av et marked. Når vi introduserer en skatt vil dette påvirke denne markedslikevekten.
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1752,10 +1755,9 @@ plt.axis('off')
 plt.imshow(figur8);
 ```
 
-Skrive noe mer
-
 ## Forventede endringer i markedet etter turistskatt
-Når vi går videre i analysen og ser på hvordan markedet vil endre seg etter en turistskatt, så vil det bli en endring i etterspørselen. Vi ser på dette i figur 9, hvor vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten vil bli P2 og X2.
+
+Når vi går videre i analysen skal vi se på hvordan markedet vil endre seg når en turistskatt innføres på etterspørselsiden. Dette vil føre til en endring i etterspørselen, og hvor stor endringen blir kommer an på elastisiteten til etterspørselen, siden dette er et generisk eksempel vil vi ikke gå mer inn på dette. I figur 9 kan vi se at etterspørselen flytter seg når vi introduserer skatten, vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten blir P2 og X2 og med dette vil det bli et nytt konsumentoverskudd og produsentoverskudd. 
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1763,8 +1765,11 @@ plt.axis('off')
 plt.imshow(figur9);
 ```
 
-PP blir nye produsentpris etter skatt og P2 blir nye konsumentpris etter skatt. Elastisiteten til etterspørselen blir å fortelle noe om hvor mye prisen blir å endre seg for både konsumenten og produsenten.
+Her ser vi PP blir nye produsentpris etter skatt og P2 blir nye konsumentpris etter skatt. Med dette skjer to ting.
 
+Det første er at vi i det stiplede området mellom PP som betyr produsentpris og P2 blir skatteprovenyen. Altså inntektene som genereres av den innførte skatten. Dette området er markert i blått.
+
+Det andre som blir å skje er at det blir en kile mellom konsumentpris og produsentpris. Dette er dødvektstapet som produsenten og konsumenten mister når skatten blir innført. Dette er det samfunnsøkonomiske tapet som skjer når skatten blir innført og er markert i grått.
 ## Samfunnsøkonomiske effekter
 
 ```{python}
@@ -1773,23 +1778,19 @@ plt.axis('off')
 plt.imshow(figur10);
 ```
 
-Det grå område er dødvektstapet etter avgiften, dette vil bli et samfunnsøkonomisk tap etter innføringen. Det blå område vil bli avgiftsprovenyen, dette vil bli hva samfunnet tjener på avgiften.
-
 ## Estimat av sentrale parameter
 
-Ja, det finnes estimater på priselastisiteten på etterspørselen etter overnattinger i Nord-Norge. Generelt sett viser disse estimatene at etterspørselen etter overnattinger er elastisk, det vil si at en økning i prisen på overnattinger vil føre til en relativt stor reduksjon i etterspørselen.
+For å finne ut hvor stor etterspørselen er må vi summere over alle  konsumentene i markedet, for å konkretisere dette så setter vi alle konsumenter som summen av alle hotellovernattinger med formål å besøke Nord-Norge for å dra på ferie. I denne oppgaven blir det for omfattende å gjøre denne analysen, men det finnes en tidligere masteroppgave som har funnet noen tall på priselastisiteten for å reise til Norge.
 
-For å finne ut hvor stor etterspørselen er må vi summere over alle  konsumentene i markedet, for å konkretisere dette så setter vi alle konsumenter som summen av alle hotellovernattinger med formål å besøke Nord-Norge for å dra på ferie. I denne oppgaven blir det for omfattende å gjøre denne analysen, men det finnes tidligere studier som sier at priselastisiteten for å reise til Norge.
+I masteroppgaven sin skriver Engebretsen(2017) at hun fant en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Disse estimatene betyr at etterspørselen etter overnattinger er elastisk, det vil si at en 1% økning i pris vil gi en nedgang på 2,79% i etterspørselen etter overnattinger i Norge.
 
-I masteroppgaven skriver også Engebretsen (2007) at dersom den norske kronen depresierer vil etterspørselen øke, og dersom det blir relativt dyrere i Norge vil etterspørselen falle. Dette er fordi det blir relativt billigere å reise til Norge dersom den norske kronen depresierer, og dersom den norske kronen appresierer vil det bli relativt dyrere å reise til Norge.
+I masteroppgaven sin skriver også Engebretsen (2017) at dersom den norske kronen depresierer, så vil etterspørselen øke, og dersom det blir relativt dyrere i Norge vil etterspørselen falle. 
 
 Som følge av en inntektselastisitet på over én opplevde vi at Norge ble ansett som et luksusgode, og at utenlandsk etterspørsel var svært prissensitiv overfor endringer i pris og valuta. (Engebretsen, 2017)
 
-Videre opplevde vi en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Dette er estimater som er gjort i en Masteroppgave, og som er basert på data fra 1995 til 2015. Vi har valgt å bruke disse estimatene fordi de er basert på data fra en lengre periode og er gjort i nyere tid. Det vil si at en 1% økning i pris vil gi en nedgang på 2,79% i etterspørselen etter overnattinger i Nord-Norge. Dette er en relativt stor reduksjon i etterspørselen.
-
 ## Vurdering
 
-Med innføring av turistskatt i Nord-Norge er det hovedsakelig ment for at etterspørselen skal bli lavere til reisedestinasjonen. Hovedformålet  for dette er at det vil føre til at det blir mindre bruk og miljøbelastning og at en del av skatten kan brukes til å vedlikeholde viktig infrastruktur.
+Med innføring av turistskatt i Nord-Norge er det hovedsakelig ment for at etterspørselen skal bli lavere til utsatte områder i landsdelen preget av overturisme. Hovedformålet  for dette er at det vil føre til at det blir mindre bruk og miljøbelastning og at en del av skatten kan brukes til å vedlikeholde viktig infrastruktur.
 
 # 5. Konklusjon
 
