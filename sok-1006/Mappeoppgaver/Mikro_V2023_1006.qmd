@@ -1137,7 +1137,7 @@ plt.close()
 ```
 
 ```{python}
-# Etterspørselen i markedet
+# Creating a dataframe with the data for the first year
 postUrl = "https://data.ssb.no/api/v0/no/table/08403/"
 
 # Spørringen og endepunktet til API-et hentes fra Statistikkbanken eller API-konsoll. 
@@ -1314,7 +1314,7 @@ def demand(p,t):
 def supply(p):
     return ((100-p)/1.25)
 
-# Defining a function that creates a plot
+    # Defining a function that creates a plot
 def create_ax():
                 fig, ax = plt.subplots( figsize=(10, 7))
                 ax.set(xlim=(0,100))
@@ -1340,8 +1340,6 @@ x_eq=float(x_eq[0])
 p_eq =demand(x_eq,0)
 ```
 ```{python}
-# I know doing it like this is not the best way, but time is running short
-
 x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
 fig, ax = create_ax()
@@ -1380,8 +1378,6 @@ plt.close()
 ```
 
 ```{python}
-# I know doing it like this is not the best way, but time is running short
-
 x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
 fig, ax = create_ax()
@@ -1445,8 +1441,6 @@ q3 = np.linspace(x_eq,x_eq_t5,100)
 ```
 
 ```{python}
-# I know doing it like this is not the best way, but time is running short
-x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
 fig, ax = create_ax()
 
@@ -1472,8 +1466,6 @@ ax.text(x_eq_t5-8, p_eq_t5+15, 'Markedslikevekt med skatt', fontsize=10)
 ax.annotate("", xy=(42, 47), xytext=(42, 60),
             arrowprops=dict(arrowstyle='->', color='black',linewidth=3),
             annotation_clip=False)
-
-
 
 # Setting title
 ax.set_title('Figur 9. Markedsmekanismen med og uten skatt')
@@ -1516,8 +1508,6 @@ plt.close()
 ```
 
 ```{python}
-# I know doing it like this is not the best way, but time is running short
-x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
 fig, ax = create_ax()
 
@@ -1543,8 +1533,6 @@ ax.text(x_eq_t5-8, p_eq_t5+15, 'Markedslikevekt med skatt', fontsize=10)
 ax.annotate("", xy=(42, 47), xytext=(42, 60),
             arrowprops=dict(arrowstyle='->', color='black',linewidth=3),
             annotation_clip=False)
-
-
 
 # Setting title
 ax.set_title('Figur 10. Markedsmekanismen, dødvektstap og skatteproveny')
@@ -1600,7 +1588,11 @@ plt.close()
 
 ## Bakgrunn
 
-Kandidatnummer 17 har fått i oppdrag av næringsminister Jan Christian Vestre å gjøre en samfunnsøkonomisk utredning av tiltak som kan gjøres for å innføre besøksbidrag for turisme i Nord-Norge. Det vi skal se videre på her er besøksbidrag i form av en turistskatt. Nord-Norge har i de siste tiårene opplevd en stor vekst i turisme, og regjeringen har gitt grønt lys for at norske kommuner kan innføre en turistskatt. Dette er en skatt som eksempelvis betales av overnattingsgjester i hoteller, leiligheter og lignende eller som betales i flybilletten til destinasjonen.
+Kandidatnummer 17 har gjennomført en samfunnsøkonomisk utredning på oppdrag av næringsminister Jan Christian Vestre om tiltak for å innføre besøksbidrag i form av en turistskatt for turisme i Nord-Norge. Bakgrunnen for oppdraget er den betydelige økningen i turisme i regionen de siste tiårene, som har ført til at norske kommuner nå kan innføre en turistskatt for å regulere etterspørselen i turismen. 
+
+Utredningen viser at reiser til Nord-Norge kan betraktes som et luksusprodukt for utenlandske turister, og dermed er markedet svært prisfølsomt. Videre kan valutasvingninger påvirke etterspørselen, spesielt nå som den norske kronen har vært svak og det er flere utenlandske turister som besøker regionen.
+
+En sesongbasert turistskatt kommer til å bli anbefalt som det beste tiltaket for å opprettholde bærekraften samtidig som man ikke reduserer etterspørselen for mye, gitt at turistene er svært følsomme for pris. 
 
 ## Begrunnelse
 
@@ -1634,11 +1626,11 @@ På svalbard har de samlet inn miljøavgift siden 1. april 2007. Med pengene har
 
 ## Kapittel 2 - Turistnæringen i Nord-Norge
 
-I kapittel 2 skal vi se nærmere på hvordan det har gått med turistnæringene i Nord-Norge de siste 7-10 årene. Vi skal se på hvordan hotellovernattinger har utviklet seg over tid, hvilken kapasitetsutnyttelse hotellene har og hvor mange overnattinger som er av turister. Vi skal deretter se på tall om hvor mange som sysselsettes i turistnæringen, og hvor mye et hotellrom i Nord-Norge koster i gjennomsnitt både årlig og basert på sesong/måned. Avslutningsvis skal vi se på året det kommer mest turister til Nord-Norge.
+I kapittel 2 skal vi se nærmere på hvordan det har gått med turistnæringene i Nord-Norge de siste 7-10 årene. Vi skal se på hvordan hotellovernattinger har utviklet seg over tid, hvilken kapasitetsutnyttelse hotellene har og hvor mange overnattinger som er av turister. Vi skal deretter se på tall om hvor mange som sysselsettes i turistnæringen, og hvor mye et hotellrom i Nord-Norge koster i gjennomsnitt både årlig og basert på sesong/måned. Avslutningsvis skal vi finne ut når på året det kommer mest turister til Nord-Norge.
 
 ## Kapittel 3 - Samfunnsøkonomiske effekter av en turistskatt
 
-I kapittel 3 skal vi se nærmere på hvordan en generisk turistskatt kan påvirke turistnæringen i Nord-Norge. Vi skal se på hvordan en turistskatt påvirker tilbud og etterspørsel og vi skal se på hvor stor effekt vi kan forvente i endret etterspørsel. Til slutt skal se på hvilke samfunnsøkonomiske konsekvenser turistskatten vil medbringe.
+I kapittel 3 skal vi se nærmere på hvordan en generisk turistskatt kan påvirke turistnæringen i Nord-Norge. Vi skal se på hvordan en turistskatt påvirker tilbud og etterspørsel og vi skal se på hvor stor effekt at etterspørselen blir endret. Til slutt skal se på hvilke samfunnsøkonomiske konsekvenser turistskatten vil medbringe.
 
 ## Kapittel 4 - Konklusjon
 
@@ -1647,7 +1639,7 @@ Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene
 
 # 3. Turistnæringen i Nord-Norge
 
-I denne utredningen skal vi fokusere på turistnæringen i Nord-Norge. Nord-Norge består av fylkene Nordland og Troms og Finnmark. For å forstå viktigheten av dette markedet skal vi gå gjennom noen sentrale tall og figurer for å se hvordan de Nord-Norske turistnæringene har hatt det de siste årene.
+I denne utredningen skal vi fokusere på turistnæringen i Nord-Norge. Nord-Norge består av fylkene Nordland og Troms og Finnmark. For å forstå viktigheten av dette markedet skal vi gå gjennom noen sentrale tall og figurer for å se hvordan de Nord-Norske turistnæringene har opplevd de siste årene.
 
 ## Hotellkapasiteten
 
@@ -1685,7 +1677,7 @@ plt.imshow(figur3);
 
 ## Hotelløkonomien
 
-Når vi ser på økonomien til hotellene i Nord-Norge, har det vært en liten økning de siste årene. I 2016 lå gjennomsnittsprisen på hotellrom på 858 kroner, mens i 2022 har prisen økt til 1054 kroner. Dette betyr en økning på 22,8 prosent i gjennomsnittlig årlig hotellromspris over denne perioden.
+Når vi ser på økonomien til hotellene i Nord-Norge, har det vært en liten økning de siste årene. I 2016 lå gjennomsnittsprisen på et hotellrom på 858 kroner, mens i 2022 var prisen økt til 1054 kroner. Dette betyr en økning på 22,8 prosent i gjennomsnittlig årlig hotellromspris over denne perioden.
 
 ```{python}
 plt.figure(figsize=(10, 7), dpi=600)
@@ -1693,7 +1685,7 @@ plt.axis('off')
 plt.imshow(figur4);
 ```
 
-Ser man på prisene månedlig så varierer prisene veldig til hvilken måned det er og man klarer ikke se noen årsakssammenheng som at overnattinger blir dyrere i høysesongen. Dette kan være en svakhet med å se på gjennomsnittshotellprisene for fylker, ettersom hvis vi ser på turistplasser som Lofoten kan det avvike noe fra denne fremstillingen. Den dyreste måneden vi klarer å finne her var desember 2022 hvor gjennomsnittsprisen for et hotellrom lå på litt over 1400 kroner per natt i troms og finnmark.
+Når man ser på hotellprisene i Nord-Norge, varierer prisene betydelig avhengig av måneden, og det er vanskelig å se noen klar sammenheng mellom pris og sesong. Dette kan være en svakhet ved å bruke gjennomsnittlige hotellpriser for fylker, siden dette ikke tar hensyn til at turistområder som Lofoten kan avvike fra gjennomsnittet. Et eksempel på dette er at den dyreste måneden som ble funnet var desember 2022, hvor gjennomsnittsprisen på et hotellrom i Troms og Finnmark var litt over 1400 kroner per natt.
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1719,7 +1711,7 @@ Disse dataene er viktig fordi det fra før ikke finnes mye forskning eller utred
 
 ## Noen sentrale forutsetninger
 
-Det Nord-Norske markedet er som vi har sett på tidligere et viktig marked for turistnæringen i Norge, og før vi ser på virkningene av en turistskatt skal vi se på hvordan et avgrenset marked fungerer uten en skatt.
+Det Nord-Norske markedet er som vi har sett på tidligere et viktig marked for turistnæringen i Norge, og før vi ser på virkningene av en turistskatt skal vi se på hvordan et generisk marked fungerer uten en skatt.
 
 Noen sentrale forutsetninger før vi begynner å se på analysen:
 
@@ -1757,7 +1749,7 @@ plt.imshow(figur8);
 
 ## Forventede endringer i markedet etter turistskatt
 
-Når vi går videre i analysen skal vi se på hvordan markedet vil endre seg når en turistskatt innføres på etterspørselsiden. Dette vil føre til en endring i etterspørselen, og hvor stor endringen blir kommer an på elastisiteten til etterspørselen, siden dette er et generisk eksempel vil vi ikke gå mer inn på dette. I figur 9 kan vi se at etterspørselen flytter seg når vi introduserer skatten, vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten blir P2 og X2 og med dette vil det bli et nytt konsumentoverskudd og produsentoverskudd. 
+Når vi går videre i analysen skal vi se på hvordan markedet vil endre seg når en turistskatt innføres på etterspørselsiden. Dette vil føre til en endring i etterspørselen, og hvor stor endringen blir kommer an på elastisiteten til etterspørselen. I figur 9 kan vi se at etterspørselen flytter seg når vi introduserer skatten, vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten blir P2 og X2 og med dette vil det bli et nytt konsumentoverskudd og produsentoverskudd. 
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1765,11 +1757,12 @@ plt.axis('off')
 plt.imshow(figur9);
 ```
 
-Her ser vi PP blir nye produsentpris etter skatt og P2 blir nye konsumentpris etter skatt. Med dette skjer to ting.
+I figur 10 ser vi PP blir nye produsentpris etter skatt og P2 blir nye konsumentpris etter skatt. Med dette skjer to ting.
 
-Det første er at vi i det stiplede området mellom PP som betyr produsentpris og P2 blir skatteprovenyen. Altså inntektene som genereres av den innførte skatten. Dette området er markert i blått.
+Det første er at vi i det stiplede området mellom produsentprisen (PP) og P2 blir skatteprovenyen. Altså inntektene som genereres av den innførte skatten. Dette området er markert i blått.
 
-Det andre som blir å skje er at det blir en kile mellom konsumentpris og produsentpris. Dette er dødvektstapet som produsenten og konsumenten mister når skatten blir innført. Dette er det samfunnsøkonomiske tapet som skjer når skatten blir innført og er markert i grått.
+Det andre som skjer er at det blir en kile mellom konsumentpris og produsentpris. Dette er dødvektstapet som produsenten og konsumenten mister når skatten blir innført. Dette er det samfunnsøkonomiske tapet som skjer når skatten blir innført og er markert i grått.
+
 ## Samfunnsøkonomiske effekter
 
 ```{python}
@@ -1780,43 +1773,41 @@ plt.imshow(figur10);
 
 ## Estimat av sentrale parameter
 
-For å finne ut hvor stor etterspørselen er må vi summere over alle  konsumentene i markedet, for å konkretisere dette så setter vi alle konsumenter som summen av alle hotellovernattinger med formål å besøke Nord-Norge for å dra på ferie. I denne oppgaven blir det for omfattende å gjøre denne analysen, men det finnes en tidligere masteroppgave som har funnet noen tall på priselastisiteten for å reise til Norge.
+For å finne ut hvor stor etterspørselen er må vi summere over alle konsumentene i markedet, for å konkretisere dette så setter vi alle konsumenter som summen av alle hotellovernattinger med formål å besøke Nord-Norge for å dra på ferie. I denne utredningen blir det for omfattende å gjøre denne analysen, men det finnes tidligere analyser som har beregnet tall på priselastisiteten for å reise til Norge.
 
-I masteroppgaven sin skriver Engebretsen(2017) at hun fant en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Disse estimatene betyr at etterspørselen etter overnattinger er elastisk, det vil si at en 1% økning i pris vil gi en nedgang på 2,79% i etterspørselen etter overnattinger i Norge.
-
-I masteroppgaven sin skriver også Engebretsen (2017) at dersom den norske kronen depresierer, så vil etterspørselen øke, og dersom det blir relativt dyrere i Norge vil etterspørselen falle. 
+I masteroppgaven sin skriver Engebretsen (2017) at hun fant en valutakurselastisitet på 1.24 og en priselastisitet for relativt prisnivå på -2.79. Disse estimatene betyr at etterspørselen etter overnattinger er elastisk, og vil si at en 1% økning i pris vil gi en nedgang på 2,79% i etterspørselen på overnattinger i Norge. Valutakurselastisiteten betyr at en 1% endring i valutakursen vil gi en endring på 1,24% i etterspørselen på overnattinger i Norge.
 
 Som følge av en inntektselastisitet på over én opplevde vi at Norge ble ansett som et luksusgode, og at utenlandsk etterspørsel var svært prissensitiv overfor endringer i pris og valuta. (Engebretsen, 2017)
 
 ## Vurdering
 
-Med innføring av turistskatt i Nord-Norge er det hovedsakelig ment for at etterspørselen skal bli lavere til utsatte områder i landsdelen preget av overturisme. Hovedformålet  for dette er at det vil føre til at det blir mindre bruk og miljøbelastning og at en del av skatten kan brukes til å vedlikeholde viktig infrastruktur.
+Med innføring av turistskatt i Nord-Norge er det hovedsakelig tiltenkt at etterspørselen skal bli mindre til områder i landsdelen preget av overturisme. Med en priselastisitet på -2.79% vil formålet til dette tiltaket oppfylles. Det som må tas hensyn til videre er størrelsen på turistskatten ettersom konsumentene er veldig prisfølsomme. En mulighet for å ikke redusere etterspørselen for mye er å innføre en turistskatt som er dynamisk og varierer på hvilken tid på året det er, noe som allerede er innført i andre land. Dette vil føre til at det blir en lavere etterspørsel på sommeren når vi har mest besøkende og en høyere etterspørsel på vinteren, slik at det blir en mer jevn fordeling av turister gjennom året.
 
 # 5. Konklusjon
 
-Besøksbidrag i Nord-Norge
+Konklusjonen er at Nord-Norges turistnæringer er i en sårbar vekstfase og det er avgjørende å ikke innføre en avgift som fjerner etterspørselen for mye dersom kronekursen ikke svekkes ytterligere. En sesongbasert turistskatt er anbefalt som det beste tiltaket for å opprettholde bærekraften samtidig som man ikke reduserer etterspørselen for mye, gitt at turistene er svært følsomme for pris. Det er viktig å ta hensyn til at en stor andel av turistene kommer for å oppleve naturen, og tiltak bør derfor også ta hensyn til bevaring og ivaretakelse av naturen. Et tiltak som er mulig der kan være å opprette et fond, slik som det er gjort i Svalbard hvor en del av skatteprovenyen går til å bevare og beskytte naturmiljøet og kulturminner.
 
 # 6. Referanser
 
-Fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [Link](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
+Fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
 
-Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: [Link](https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1) (Accessed: March 20, 2023).
+Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: [https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1](https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1) (Accessed: March 20, 2023).
 
-Sede Electrónica, tourist tax. (ingen dato) Cuota tributaria y tarifas. Agencia Tributaria de Cataluña. Tilgjengelig på: [Link](https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/) (Accessed: March 21, 2023). 
+Sede Electrónica, tourist tax. (ingen dato) Cuota tributaria y tarifas. Agencia Tributaria de Cataluña. Tilgjengelig på: [https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/](https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/) (Accessed: March 21, 2023). 
 
-venis_admin (2023) Practical information, VeneziaUnica City Pass. Tourist tax. Tilgjengelig på: [Link](https://www.veneziaunica.it/en/content/practical-information#Touristtax) (Accessed: March 21, 2023). 
+venis_admin (2023) Practical information, VeneziaUnica City Pass. Tourist tax. Tilgjengelig på: [https://www.veneziaunica.it/en/content/practical-information#Touristtax](https://www.veneziaunica.it/en/content/practical-information#Touristtax) (Accessed: March 21, 2023). 
 
-Bureau, P.C.and V. (ingen dato) Tourist tax – paris tourist office - paris tourist office, en.parisinfo.com. Tilgjengelig på: [Link](https://en.parisinfo.com/practical-paris/money/tourist-tax) (Accessed: March 21, 2023). 
+Bureau, P.C.and V. (ingen dato) Tourist tax – paris tourist office - paris tourist office, en.parisinfo.com. Tilgjengelig på: [https://en.parisinfo.com/practical-paris/money/tourist-tax](https://en.parisinfo.com/practical-paris/money/tourist-tax) (Accessed: March 21, 2023). 
 
-Miljøavgift, Svalbard (ingen dato) Lovdata.no. Tilgjengelig på: [Link](https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532) (Accessed: March 21, 2023).
+Miljøavgift, Svalbard. Lovdata.no. Tilgjengelig på: [https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532](https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532) (Accessed: March 21, 2023).
 
-Forside (ingen dato) Svalbards miljøvernfond. Tilgjengelig på: [Link](https://www.miljovernfondet.no/) (Accessed: March 21, 2023). 
+Forside. Svalbards miljøvernfond. Tilgjengelig på: [https://www.miljovernfondet.no/](https://www.miljovernfondet.no/) (Accessed: March 21, 2023). 
 
 Andreassen, V., Bredesen, I. and Thøgersen, J. (2016) Innføring I mikroøkonomi: For økonomisk-administrative studier. Oslo: Cappelen Damm. 
 
-Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [Link](https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf.) (Accessed: March 21, 2023).
+Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf](https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf) (Accessed: March 21, 2023).
 
-Goktas, L.S. and Polat, S. (2019) “Tourist tax practices in European Union member countries and its applicability in Turkey,” Journal of Tourismology [Preprint]. Available at: https://doi.org/10.26650/jot.2019.5.2.0026. 
+Goktas, L.S. and Polat, S. (2019) “Tourist tax practices in European Union member countries and its applicability in Turkey,” Journal of Tourismology [Preprint]. Available at: [https://doi.org/10.26650/jot.2019.5.2.0026](https://doi.org/10.26650/jot.2019.5.2.0026) 
 
 [Figur 1, fra SSB tabell 13153](https://www.ssb.no/statbank/table/13153/)
 
@@ -1829,4 +1820,3 @@ Goktas, L.S. and Polat, S. (2019) “Tourist tax practices in European Union mem
 [Figur 5, fra SSB tabell 13154](https://www.ssb.no/statbank/table/13156/)
 
 [Figur 6, fra SSB tabell 13156](https://www.ssb.no/statbank/table/13154/)
-
