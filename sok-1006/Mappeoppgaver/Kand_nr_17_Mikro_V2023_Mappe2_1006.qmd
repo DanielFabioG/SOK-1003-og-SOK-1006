@@ -1,0 +1,124 @@
+---
+title: "Mappeoppgave 2 - Innføring av bompenger i  Tromsø: Effekt på bilisters atferd og velferd"
+subtitle: "Fakultet for biovitenskap, fiskeri og økonomi."
+date: last-modified
+date-format: "DD-MM-YYYY"
+author: "Kandidatnummer 17, SOK-1006, Høst 2023"
+echo: false
+format:
+  pdf: 
+    df-print: kable
+editor: visual
+warning: false
+toc: true
+toc-title: "Innholdsliste."
+tof: true
+---
+
+```{python}
+# Importing all packages needed for the project
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sp
+import json
+```
+
+# 1. Sammendrag
+
+## Bakgrunn
+
+## Begrunnelse
+
+## Utbredelse
+
+## Erfaringer
+
+# 2. Struktur av redgjørelsen
+
+## Kapittel 2 - Turistnæringen i Nord-Norge
+
+## Kapittel 3 - Samfunnsøkonomiske effekter av en turistskatt
+
+## Kapittel 4 - Konklusjon
+
+# 3. Turistnæringen i Nord-Norge
+
+## Hotellkapasiteten
+
+```{python}
+
+```
+
+## Hotellovernattinger
+
+```{python}
+
+```
+
+## Sysselsetting
+
+```{python}
+
+```
+
+## Hotelløkonomien
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+## Ankomsttider
+
+```{python}
+
+```
+
+## Hvorfor dette er viktig
+
+# 4. Samfunnsøkonomiske effekter av en turistskatt
+
+## Noen sentrale forutsetninger
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+## Forventede endringer i markedet etter turistskatt
+
+```{python}
+
+```
+
+## Samfunnsøkonomiske effekter
+
+```{python}
+
+```
+
+## Estimat av sentrale parameter
+
+## Vurdering
+
+# 5. Konklusjon
+
+# 6. Referanser
+
+## \# 7. Appendiks for CHATGPT
+
+-   
+
+-   
+
+-   
+
+-   
+
+-

@@ -9,6 +9,7 @@ toc-title: "Innholdsliste"
 date: last-modified
 date-format: "DD-MM-YYYY"
 ---
+
 ```{python}
 # Importing all packages needed for the project
 import json
@@ -21,7 +22,6 @@ import matplotlib.ticker as ticker
 from matplotlib.image import imread
 import sympy as sp
 ```
-
 
 ```{python}
 # Lim in PostUrl som spørringen skal postes mot
@@ -160,7 +160,6 @@ apiQuery = {
 }
 ```
 
-
 ```{python}
 def apiToDataframe(postUrl, query):
 
@@ -180,7 +179,6 @@ def apiToDataframe(postUrl, query):
 
 df, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
-
 
 ```{python}
 # Fixing the dataset so M is replaced with -
@@ -205,7 +203,6 @@ nord_norge_df = nord_norge_df.groupby(nord_norge_df['year'].dt.year).agg({
 # Fixing so the first column is not the index
 nord_norge_df=nord_norge_df.reset_index()
 ```
-
 
 ```{python}
 # Lim in PostUrl som spørringen skal postes mot
@@ -337,7 +334,6 @@ apiQuery = {
 df1, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
 
-
 ```{python}
 # Fixing the dataset so M is replaced with -
 df1['year'] =df1['måned'].str.replace('M', '-')
@@ -361,7 +357,6 @@ nord_norge_df1 = nord_norge_df1.groupby(nord_norge_df1['year'].dt.year).agg({
 # Fixing so the first column is not the index
 nord_norge_df1=nord_norge_df1.reset_index()
 ```
-
 
 ```{python}
 # Lim in PostUrl som spørringen skal postes mot
@@ -502,7 +497,6 @@ apiQuery = {
 df_1, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
 
-
 ```{python}
 # Fixing the dataset so M is replaced with -
 df_1['måned'] =df_1['måned'].str.replace('M', '-')
@@ -550,7 +544,6 @@ total = total.groupby('year').agg({'value': 'sum'})
 # Fixing so the first column is not the index
 total=total.reset_index()
 ```
-
 
 ```{python}
 # Setting the style for the plots
@@ -673,7 +666,6 @@ apiQuery = {
 df, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
 
-
 ```{python}
 # Pivoting the dataframe
 pivot = pd.pivot_table(df, index='år', columns='region', values='value')
@@ -687,7 +679,6 @@ pivot = pivot.reset_index()
 #Deleting the first row to start the timeseries from 2013 since 2012 is missing
 pivot = pivot.iloc[1:]
 ```
-
 
 ```{python}
 # Lim in PostUrl som spørringen skal postes mot
@@ -820,7 +811,6 @@ apiQuery = {
 df, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
 
-
 ```{python}
 # Fixing the dataset so M is replaced with -
 df['year'] =df['måned'].str.replace('M', '-')
@@ -844,7 +834,6 @@ nord_norge_df3 = nord_norge_df2.groupby(nord_norge_df2['year'].dt.year).agg({
 # Fixing so the first column is not the index
 nord_norge_df3=nord_norge_df3.reset_index()
 ```
-
 
 ```{python}
 fig, ax1 = plt.subplots(figsize=(10, 7))
@@ -888,7 +877,6 @@ figur3 = imread('figur3.png')
 plt.close()
 ```
 
-
 ```{python}
 fig, ax = plt.subplots(figsize=(10, 7))
 
@@ -915,7 +903,6 @@ figur4 = imread('figur4.png')
 
 plt.close()
 ```
-
 
 ```{python}
 # Lim in PostUrl som spørringen skal postes mot
@@ -1056,7 +1043,6 @@ apiQuery = {
 df, df_id, ds = apiToDataframe(postUrl, apiQuery)
 ```
 
-
 ```{python}
 # Fixing the dataset so M is replaced with -
 df['måned'] =df['måned'].str.replace('M', '-')
@@ -1094,7 +1080,6 @@ first_year = pd.concat([first_year, pd.DataFrame(first_value).T], axis=0)
 # Concatenating the last value to the last year
 last_year = pd.concat([last_year, pd.DataFrame(last_value).T], axis=0)
 ```
-
 
 ```{python}
 # Starting the polar plot
@@ -1334,11 +1319,13 @@ p,x,t = sp.symbols('p,x, t', real=True, positive=True)
 equ = sp.Eq (demand(x,0),supply(x))
 
 ```
+
 ```{python}
 x_eq=sp.solve(equ,x)
 x_eq=float(x_eq[0])
 p_eq =demand(x_eq,0)
 ```
+
 ```{python}
 x_num=np.linspace(0.1,500,100)
 # Creating a plot from the function
@@ -1584,41 +1571,42 @@ figur10 = imread('figur10.png')
 
 plt.close()
 ```
+
 # 1. Sammendrag
 
 ## Bakgrunn
 
-Kandidatnummer 17 har gjennomført en samfunnsøkonomisk utredning på oppdrag av næringsminister Jan Christian Vestre om tiltak for å innføre besøksbidrag i form av en turistskatt for turisme i Nord-Norge. Bakgrunnen for oppdraget er den betydelige økningen i turisme i regionen de siste tiårene, som har ført til at norske kommuner nå kan innføre en turistskatt for å regulere etterspørselen i turismen. 
+Kandidatnummer 17 har gjennomført en samfunnsøkonomisk utredning på oppdrag av næringsminister Jan Christian Vestre om tiltak for å innføre besøksbidrag i form av en turistskatt for turisme i Nord-Norge. Bakgrunnen for oppdraget er den betydelige økningen i turisme i regionen de siste tiårene, som har ført til at norske kommuner nå kan innføre en turistskatt for å regulere etterspørselen i turismen.
 
 Utredningen viser at reiser til Nord-Norge kan betraktes som et luksusprodukt for utenlandske turister, og dermed er markedet svært prisfølsomt. Videre kan valutasvingninger påvirke etterspørselen, spesielt nå som den norske kronen har vært svak og det er flere utenlandske turister som besøker regionen.
 
-En sesongbasert turistskatt kommer til å bli anbefalt som det beste tiltaket for å opprettholde bærekraften samtidig som man ikke reduserer etterspørselen for mye, gitt at turistene er svært følsomme for pris. 
+En sesongbasert turistskatt kommer til å bli anbefalt som det beste tiltaket for å opprettholde bærekraften samtidig som man ikke reduserer etterspørselen for mye, gitt at turistene er svært følsomme for pris.
 
 ## Begrunnelse
 
 Grunnen til å innføre en slik skatt er for å kunne verne miljøet og få inn en inntekt for bruk av fellesgoder som turister benytter seg av. Fellesgoder er goder som er tilgjengelig for alle, og eksempler på slike goder kan være:
 
-* Offentlige toaletter
-* Gangstier
-* Turistinformasjon
-* Sikkerhet og beredskap
-* Generelt vedlikehold av attraksjoner og turiststeder
+-   Offentlige toaletter
+-   Gangstier
+-   Turistinformasjon
+-   Sikkerhet og beredskap
+-   Generelt vedlikehold av attraksjoner og turiststeder
 
 ## Utbredelse
 
-Turistskatt er en form for skatt som har vært innført allerede i mange land og byer, og som allerede har vært i bruk i lang tid på Svalbard. Der blir det lagt på en miljøavgift på 150 kroner for alle flybilleter, cruisebåtbilletter eller liknende befordringsmidler inn til øya. 
+Turistskatt er en form for skatt som har vært innført allerede i mange land og byer, og som allerede har vært i bruk i lang tid på Svalbard. Der blir det lagt på en miljøavgift på 150 kroner for alle flybilleter, cruisebåtbilletter eller liknende befordringsmidler inn til øya.
 
 I europa så har turistskatt vært innført allerede flere steder:
 
-1. I Italia så er det innført turistskatt. Skatten er på 0.3-7 euro per person per natt og varierer i forhold til hvilken kommune og overnattingsmetode man bruker.
+1.  I Italia så er det innført turistskatt. Skatten er på 0.3-7 euro per person per natt og varierer i forhold til hvilken kommune og overnattingsmetode man bruker.
 
-2. I Frankrike har det vært tatt i bruk turistskatt i en lang periode. Skatten er på  0.2-4 euro per person per natt og varierer fra hvilken kommune man drar til.
+2.  I Frankrike har det vært tatt i bruk turistskatt i en lang periode. Skatten er på 0.2-4 euro per person per natt og varierer fra hvilken kommune man drar til.
 
-3. I Spania så er det innført turistskatt. Skatten er på mellom 0.25-2.25 euro per person per natt og varierer fra hvilken plass man drar til.
+3.  I Spania så er det innført turistskatt. Skatten er på mellom 0.25-2.25 euro per person per natt og varierer fra hvilken plass man drar til.
 
 ## Erfaringer
 
-Med innføring av en turistskatt har det i tidligere land vært gjort for å kunne vedlikeholde infrastruktur og attraksjoner som turister benytter seg av. I noen av tilfellene kan turistskatt utgjøre en stor del av bruttonasjonalproduktet til landet, som har gjort skatten svært viktig. 
+Med innføring av en turistskatt har det i tidligere land vært gjort for å kunne vedlikeholde infrastruktur og attraksjoner som turister benytter seg av. I noen av tilfellene kan turistskatt utgjøre en stor del av bruttonasjonalproduktet til landet, som har gjort skatten svært viktig.
 
 På svalbard har de samlet inn miljøavgift siden 1. april 2007. Med pengene har de opprettet et miljøvernfond og hvert år tildeler fondet 10-25 millioner kroner til miljøvern- og kulturminneprosjekter.
 
@@ -1635,7 +1623,6 @@ I kapittel 3 skal vi se nærmere på hvordan en generisk turistskatt kan påvirk
 ## Kapittel 4 - Konklusjon
 
 Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen og vi vil gi råd til Nærings- og fiskeridepartementet.
-
 
 # 3. Turistnæringen i Nord-Norge
 
@@ -1715,11 +1702,11 @@ Det Nord-Norske markedet er som vi har sett på tidligere et viktig marked for t
 
 Noen sentrale forutsetninger før vi begynner å se på analysen:
 
-* Vi antar at verken tilbydere eller etterspørrere kan påvirke prisen på godet, vi tar prisen for gitt.
+-   Vi antar at verken tilbydere eller etterspørrere kan påvirke prisen på godet, vi tar prisen for gitt.
 
-* For det andre så antar vi at tilbydere og etterspørrere kan fritt gå inn og ut av markedet uten noen kostnad.
+-   For det andre så antar vi at tilbydere og etterspørrere kan fritt gå inn og ut av markedet uten noen kostnad.
 
-* For det tredje så antar vi at godene som tilbys er homogene, det vil si at de er like for alle konsumenter.
+-   For det tredje så antar vi at godene som tilbys er homogene, det vil si at de er like for alle konsumenter.
 
 I et marked er det normalt tilbud og etterspørsel som bestemmer prisen på et gode. Den økonomiske atferden som kan leses ut av en fallende etterspørselskurve, er at konsumentene er villige til å kjøpe mer av et gode dersom prisen de må betale reduseres. Mens på den andre siden av en stigende tilbudskurve er at produsenten er villig til å produsere mer dersom prisen på godet økes.
 
@@ -1749,11 +1736,11 @@ plt.imshow(figur8);
 
 ## Forventede endringer i markedet etter turistskatt
 
-Når vi går videre i analysen skal vi se på hvordan markedet vil endre seg når en turistskatt innføres på etterspørselsiden. Når den introduseres på etterspørselsiden også kalt forbruksavgift vil det føre til at turisten betaler skatten når han kjøper godet, det kan eksempelvis være flybilletten, hotelloppholdet eller cruiseskipet. Dette vil føre til en endring i etterspørselen, og hvor stor endringen blir kommer an på elastisiteten til etterspørselen. 
+Når vi går videre i analysen skal vi se på hvordan markedet vil endre seg når en turistskatt innføres på etterspørselsiden. Når den introduseres på etterspørselsiden også kalt forbruksavgift vil det føre til at turisten betaler skatten når han kjøper godet, det kan eksempelvis være flybilletten, hotelloppholdet eller cruiseskipet. Dette vil føre til en endring i etterspørselen, og hvor stor endringen blir kommer an på elastisiteten til etterspørselen.
 
 I denne utredningen så er begrepet "elastisitet" et nøkkelbegrep som kommer til å brukes en del videre. Elastisitet er et økonomisk nøkkelbegrep som beskriver hvordan en variabel reagerer på en endring i en annen variabel. I dette tilfellet så er det etterspørselen som reagerer på en endring i prisen.
 
-I figur 9 kan vi se at etterspørselen flytter seg når vi introduserer skatten, vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten blir P2 og X2 og med dette vil det bli et nytt konsumentoverskudd og produsentoverskudd. 
+I figur 9 kan vi se at etterspørselen flytter seg når vi introduserer skatten, vi ser at med den nye etterspørselen vil det bli en ny likevekt i markedet. Den nye likevekten blir P2 og X2 og med dette vil det bli et nytt konsumentoverskudd og produsentoverskudd.
 
 ```{python}
 plt.figure(figsize=(10, 7),dpi=600)
@@ -1793,25 +1780,25 @@ Konklusjonen er at Nord-Norges turistnæringer er i en sårbar vekstfase og det 
 
 # 6. Referanser
 
-Fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: [https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954](https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954) (Accessed: March 20, 2023).
+Fiskeridepartementet, N.- og (ingen dato) Vurderer destinasjoner for besøksbidrag, Regjeringen.no. Tilgjengelig på: <https://www.regjeringen.no/no/aktuelt/vurderer-destinasjoner-for-besoksbidrag/id2959885/?expand=factbox2959954> (Accessed: March 20, 2023).
 
-Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: [https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1](https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1) (Accessed: March 20, 2023).
+Dvorak, Z., 2019. Bærekraftig turisme i Arktis? En studie av utviklingen på Svalbard (Master's thesis, Nord universitet). Tilgjengelig på: <https://nordopen.nord.no/nord-xmlui/bitstream/handle/11250/2648239/Dvorak.pdf?sequence=1> (Accessed: March 20, 2023).
 
-Sede Electrónica, tourist tax. (ingen dato) Cuota tributaria y tarifas. Agencia Tributaria de Cataluña. Tilgjengelig på: [https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/](https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/) (Accessed: March 21, 2023). 
+Sede Electrónica, tourist tax. (ingen dato) Cuota tributaria y tarifas. Agencia Tributaria de Cataluña. Tilgjengelig på: <https://atc.gencat.cat/es/tributs/ieet/quota-tributaria/> (Accessed: March 21, 2023).
 
-venis_admin (2023) Practical information, VeneziaUnica City Pass. Tourist tax. Tilgjengelig på: [https://www.veneziaunica.it/en/content/practical-information#Touristtax](https://www.veneziaunica.it/en/content/practical-information#Touristtax) (Accessed: March 21, 2023). 
+venis_admin (2023) Practical information, VeneziaUnica City Pass. Tourist tax. Tilgjengelig på: <https://www.veneziaunica.it/en/content/practical-information#Touristtax> (Accessed: March 21, 2023).
 
-Bureau, P.C.and V. (ingen dato) Tourist tax – paris tourist office - paris tourist office, en.parisinfo.com. Tilgjengelig på: [https://en.parisinfo.com/practical-paris/money/tourist-tax](https://en.parisinfo.com/practical-paris/money/tourist-tax) (Accessed: March 21, 2023). 
+Bureau, P.C.and V. (ingen dato) Tourist tax -- paris tourist office - paris tourist office, en.parisinfo.com. Tilgjengelig på: <https://en.parisinfo.com/practical-paris/money/tourist-tax> (Accessed: March 21, 2023).
 
-Miljøavgift, Svalbard. Lovdata.no. Tilgjengelig på: [https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532](https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532) (Accessed: March 21, 2023).
+Miljøavgift, Svalbard. Lovdata.no. Tilgjengelig på: <https://lovdata.no/dokument/SF/forskrift/2006-12-22-1532> (Accessed: March 21, 2023).
 
-Forside. Svalbards miljøvernfond. Tilgjengelig på: [https://www.miljovernfondet.no/](https://www.miljovernfondet.no/) (Accessed: March 21, 2023). 
+Forside. Svalbards miljøvernfond. Tilgjengelig på: <https://www.miljovernfondet.no/> (Accessed: March 21, 2023).
 
-Andreassen, V., Bredesen, I. and Thøgersen, J. (2016) Innføring I mikroøkonomi: For økonomisk-administrative studier. Oslo: Cappelen Damm. 
+Andreassen, V., Bredesen, I. and Thøgersen, J. (2016) Innføring I mikroøkonomi: For økonomisk-administrative studier. Oslo: Cappelen Damm.
 
-Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: [https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf](https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf) (Accessed: March 21, 2023).
+Engebretsen, I.C. (2017) Masteroppgave: Samfunnsøkonomi, NTNU. Available at: <https://ntnuopen.ntnu.no/ntnu-xmlui/bitstream/handle/11250/2486498/Masteroppgave%20Ida%20Charlotte%20Engebretsen.pdf> (Accessed: March 21, 2023).
 
-Goktas, L.S. and Polat, S. (2019) “Tourist tax practices in European Union member countries and its applicability in Turkey,” Journal of Tourismology [Preprint]. Available at: [https://doi.org/10.26650/jot.2019.5.2.0026](https://doi.org/10.26650/jot.2019.5.2.0026) 
+Goktas, L.S. and Polat, S. (2019) "Tourist tax practices in European Union member countries and its applicability in Turkey," Journal of Tourismology \[Preprint\]. Available at: <https://doi.org/10.26650/jot.2019.5.2.0026>
 
 [Figur 1, fra SSB tabell 13153](https://www.ssb.no/statbank/table/13153/)
 
