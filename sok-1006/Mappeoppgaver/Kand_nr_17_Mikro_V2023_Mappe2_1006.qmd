@@ -3,16 +3,26 @@ title: "Mappeoppgave 2 - Innføring av bompenger i  Tromsø: Effekt på bilister
 subtitle: "Fakultet for biovitenskap, fiskeri og økonomi."
 date: last-modified
 date-format: "DD-MM-YYYY"
-author: "Kandidatnummer 17, SOK-1006, Høst 2023"
+author: "Kandidatnummer 17, SOK-1006, Vår 2023"
+format: 
+  pdf:
+    geometry:
+      - top=20mm
+      - left=20mm
+      - right=20mm
+      - heightrounded
+    lof: true
+    fontsize: 12pt
+    documentclass: scrartcl
+    papersize: a4
 echo: false
-format:
-  pdf: 
-    df-print: kable
-editor: visual
-warning: false
-toc: true
-toc-title: "Innholdsliste."
-tof: true
+crossref: 
+  lof-title: "Figurliste"
+  fig-title: "Figur"
+bibliography: references.bib
+csl: norsk-apa-manual.csl
+header-includes:
+  - \usepackage{wrapfig}  
 ---
 
 ```{python}
