@@ -16,13 +16,18 @@ format:
     documentclass: scrartcl
     papersize: a4
 echo: false
+toc: true
+toc-title: "Innholdsliste"
 crossref: 
   lof-title: "Figurliste"
   fig-title: "Figur"
-bibliography: references.bib
-csl: norsk-apa-manual.csl
 header-includes:
-  - \usepackage{wrapfig}  
+  - \usepackage{wrapfig}
+  - \usepackage{colortbl}
+  - \usepackage{xcolor}
+  - \usepackage{array}
+  - \definecolor{cyan}{RGB}{100,149,237}
+  - \definecolor{yellow}{RGB}{255,255,0}
 ---
 
 ```{python}
@@ -30,78 +35,440 @@ header-includes:
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
-import json
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
 ```
 
 # 1. Sammendrag
 
 ## Bakgrunn
 
+En bompengeavgift ble innført på Tromsøya 5. januar 2023 som en del av byutviklingsprosjektet [Tenk Tromsø](https://tenktromso.no/). Formålet med bompengeavgiften er å redusere biltrafikken i sentrum av Tromsø, og dermed redusere utslipp av klimagasser og lokal luftforurensning. I tillegg skal inntektene fra bompengeavgiften brukes til å finansiere kollektivtilbudet i Tromsø.
+
+Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal de nå gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
+
 ## Begrunnelse
+
+Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige bussterminaler, bedre holdeplasser og knutepunkt for bussen, og gjøre tiltak som sørger for bedre traffikflyt. I tillegg skal de bedre fremkommeligheten for næringstransporten i Tromsø.
 
 ## Utbredelse
 
+Bompenger er en avgift som har vært i Norge allerede flere plasser, og i Nord-Norge.
+
+1.  I Narvik er det innført bompenger over Haalogalandsbrua der det koster 90 kr for liten bil og 225 kr for stol bil.
+
+2.  I Harstad er det innført bompenger i sentrum der det koster 16 kr for liten bil og 40 kr for stor bil.
+
+3.  I Tromsø fra før har det vært innført bompenger ved Ryaforbindelsen der det koster 85 kr for liten bil og 75 kr for stor bil.
+
+## Prosjekter som skal finansieres
+
+Tabell 1: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+\rowcolor{cyan}
+\textbf{Prosjektnavn} & \textbf{Kostnad} \\
+\hline
+Reduserte billettpriser & 185 \\
+Tryggere skoleveg & 315 \\
+Økt driftstilskudd kollektiv & 340 \\
+Dramsvegen & 40 \\
+Stakkevollvegen - Skattørvegen & 200 \\
+Ny sentrumsterminal & 315 \\
+Nytt bussknutepunkt i Kroken & 35 \\
+Redusere flaskehalser for bussen & 70 \\
+Strandvegen & 120 \\
+Strandvegen & 115 \\
+Ladeinfrastruktur elbuss & 35 \\
+Bedre holdeplasser & 135 \\
+Tilgjengelighet for gående - holdeplasser, snarveier & 45 \\
+Utvidelse bybussområdet & 20 \\
+Fortau & 50 \\
+Bussløsning Kvaløya & 135 \\
+Innfartsparkering Skjelnan & 10 \\
+Klokkargårdsbakken & 15 \\
+Sykehusvegen & 45 \\
+Ny bussterminal i Giæverbukta & 140 \\
+E8 Flyplasstunnelen i Tromsø & 1800 \\
+Tiltakspakke Langnes & 525 \\
+Utbedring gang og sykkelvei Kvaløyvegen & 15 \\
+Ny bru til Kvaløya & 1800 \\
+Etablering av bomstasjoner & 35 \\
+\hline
+\textbf{Sum} & 6 540 \\
+\hline
+\end{tabular}
+\end{table}
+
 ## Erfaringer
+
+Konkluder her med hva du finner ut av i mappeoppgaven.
 
 # 2. Struktur av redgjørelsen
 
-## Kapittel 2 - Turistnæringen i Nord-Norge
+## Kapittel 2 - Trafikkbildet i Tromsø før og etter innføringen av bompenger
 
-## Kapittel 3 - Samfunnsøkonomiske effekter av en turistskatt
+I kapitell 2 skal vi se på endringen i biltrafikken i Tromsø etter innføringen av bompenger. Vi skal også se på hvordan dette har påvirket sykkelpasseringer og bruk av kollektivtransport.
+
+## Kapittel 3 - Bilisters tilpasning til bompenger
+
+I dette kapitlet skal vi se på hvordan bilistene tilpasser seg bompenger. Vi skal se på hvordan bilistene endrer reisevaner, og hvordan dette påvirker bilistenes velferd. Vi skal se på en bilist som en konsument som har to valg: antall kilometer kjørt i bil eller konsumere andre goder. 
 
 ## Kapittel 4 - Konklusjon
 
-# 3. Turistnæringen i Nord-Norge
+Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen.
 
-## Hotellkapasiteten
+# 3. Trafikkbildet i Tromsø før og etter innføringen av bompenger
+
+## Bilister
+
+```{python}
+# Importing the data, and making it into a dataframe
+# Code taken from: https://stackoverflow.com/questions/56611698/pandas-how-to-read-csv-file-from-google-drive-public
+url = ('https://drive.google.com/file/d/1dlJTxcX1QU2riu2iuCc1G2175ESzjEXl/view?usp=share_link')
+url = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+df = pd.read_csv(url, sep=';')
+
+# Removing the unnecessary columns
+df = df.drop(columns=['Trafikkregistreringspunkt', 'Vegreferanse', 'Fra', 'Til', '>= 24,0m', '16,0m - 24,0m',
+                      '>= 16,0m', '12,5m - 16,0m', '7,6m - 12,5m','5,6m - 7,6m', 'Lengdekvalitetsgrad (%)', 'Ikke gyldig lengde',
+                      'Antall timer ugyldig', 'Antall timer inkludert', 'Antall timer total','Trafikkmengde'])
+
+# Setting the index to be the date
+df = df.set_index('Dato')
+
+# Separating the Navn column into two columns, one for the cycles and one for the cars
+sykkel_df = df[df['Navn'].str.contains('sykkel|Sykkel')]
+
+bil_df = df[~df['Navn'].str.contains('sykkel|Sykkel')]
+
+# Filter the DataFrame to only include rows where 'Felt' is 'Totalt'
+bil_df = bil_df[bil_df['Felt'] == 'Totalt']
+
+# Filter the DataFrame to only include rows where 'Felt' is 'Totalt'
+sykkel_df = sykkel_df[sykkel_df['Felt'] == 'Totalt']
+
+bil_df.index = pd.to_datetime(bil_df.index, format='%Y-%m-%d')
+
+bil_df = bil_df.pivot_table(index='Dato', columns='Navn', values='< 5,6m', aggfunc='sum')
+
+bil_df = bil_df.reset_index()
+
+# Convert non-numeric values to NaN
+bil_df = bil_df.apply(pd.to_numeric, errors='coerce')
+
+# Create a new column 'Total' by summing all the numeric columns for each row
+bil_df['Total'] = bil_df.iloc[:, 2:].sum(axis=1)
+
+# Select only the 'Dato' and 'Total' columns
+df_summary = bil_df[['Dato', 'Total']].copy()
+
+df_summary['Dato'] = pd.to_datetime(df_summary['Dato'])
+```
+
+```{python}
+```
+
+```{python}
+```
 
 ```{python}
 
 ```
 
-## Hotellovernattinger
+```{python}
+
+```
+
+## Syklister
 
 ```{python}
 
 ```
 
-## Sysselsetting
+## Kollektivreisende
 
 ```{python}
 
 ```
 
-## Hotelløkonomien
+## Regresjonsanalyse
 
 ```{python}
+# creating a dummy variable called bompenger that is a value between 0 and 1 after the date 2023-01-05
+df_summary['bompenger'] = np.where(df_summary['Dato'] > '2023-01-05', 1, 0)
 
+# Making dato into observations starting from 1 and going to the end of the dataframe
+df_summary['Dummy_date'] = np.arange(1, len(df_summary) + 1)
+
+# Doing the regression with total as the dependent variable and dato and bompenger as the independent variables
+model = ols('Total ~ Dummy_date + bompenger', data=df_summary).fit()
+
+print(model.summary())
+print(model.params)
 ```
 
 ```{python}
+date_threshold = '2023-01-05'
+data_before_threshold = df_summary[df_summary['Dato'] < date_threshold]
+data_after_threshold = df_summary[df_summary['Dato'] >= date_threshold]
 
-```
+#plotting the data
+fig, ax = plt.subplots(figsize=(10, 7))
+ax.set_title('Antall små biler registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
 
-## Ankomsttider
+# Plot the data before the threshold date with one color
+ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
 
-```{python}
-
+# Plot the data after the threshold date with another color
+ax.scatter(data_after_threshold['Dato'], data_after_threshold['Total'], s=10, color='green', label='Etter bompenger')
+# plotting the regression
+ax.plot(df_summary['Dato'], model.params[0] + model.params[1] * df_summary['Dummy_date'] + model.params[2] * df_summary['bompenger'], color='palevioletred', label='Regresjonslinje')
+ax.legend();
 ```
 
 ## Hvorfor dette er viktig
 
-# 4. Samfunnsøkonomiske effekter av en turistskatt
+Disse dataene er viktig fordi det fra før ikke finnes mye forskning eller utredninger for å se hvilke sammfunnsøkonomiske effekter bompenger vil innebære for Tromsø. For å forstå hvordan markedet vil reagere på bompenger i fremtiden, så trenger vi også å se på hvordan markedet har oppførst seg før innføringen.
+
+# 4. Bilisters tilpasning til bompenger
+
+Tabell 2: Distanseavhengige kostnader per kilometer for elbiler (2022-kr).
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\rowcolor{cyan}
+\textbf{Elbil kostnader} & \textbf{Ekskl. avgifter} & \textbf{Inkl. avgifter ekskl. mva} & \textbf{Inkl. alle avgifter} \\
+\hline
+Drivstoff & 0,19 & 0,23 & 0,27 \\
+\hline
+Dekk og Olje & 0,21 & 0,21 & 0,25 \\
+\hline
+Reparasjoner & 0,30 & 0,30 & 0,37 \\
+\hline
+Kapital & 1,10 & 1,10 & 1,10 \\
+\hline
+Totalt & 1,80 & 1,84 & 1,98 \\
+\hline
+\end{tabular}
+\end{table}
+
+Tabell 3: Distanseavhengige kostnader for biler med forbrenningsmotor.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\rowcolor{cyan}
+\textbf{Forb. kostnader} & \textbf{Ekskl. avgifter} & \textbf{Inkl. avgifter ekskl. mva} & \textbf{Inkl. alle avgifter} \\
+\hline
+Drivstoff & 0,41 & 0,97 & 1,19 \\
+\hline
+Dekk og Olje & 0,27 & 0,27 & 0,33 \\
+\hline
+Reparasjoner & 0,46 & 0,46 & 0,55 \\
+\hline
+Kapital & 0,62 & 0,83 & 0,96 \\
+\hline
+Totalt & 1,76 & 2,53 & 3,03 \\
+\hline
+\end{tabular}
+\end{table}
+
+I denne analysen vil jeg ikke gå inn på biler uten AUTOpass brikke da Tromsø er en av byene med høyest antall registrerte biler som har AUTOpass, jeg vil heller ikke fokusere på tyngre kjøretøy.
+
+Tabell 4: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
+
+\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
+  \hline
+  \rowcolor{cyan}
+  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
+  \cline{2-5}
+  \rowcolor{cyan}
+  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
+  \hline
+  Alle bomstasjoner (15) & 12,00 & 9,60 & 9,60 & 4,80 \\
+  \hline
+\end{tabular}
+
+Tabell 5: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
+
+\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
+  \hline
+  \rowcolor{yellow}
+  \multicolumn{5}{|c|}{\textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00}} \\
+  \hline
+  \rowcolor{cyan}
+  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
+  \cline{2-5}
+  \rowcolor{cyan}
+  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
+  \hline
+  Alle bomstasjoner (15) & 36,00 & 28,80 & 36,00 & 14,40 \\
+  \hline
+\end{tabular}
+
 
 ## Noen sentrale forutsetninger
 
-```{python}
+Vi forutsetter at konsumenten (bilistens) inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
 
+## Konsumentens budsjettbetingelse
+
+Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller $p_1$ og $p_2$ er gitt sammen med konsumentens egen inntekt $m$. Videre vil jeg referere til konsumenten som bilisten.
+
+$$m = p_1x_1 + p_2x_2 \tag{1}$$
+
+Hvor $x_1$ er antall enheter av gode 1 og $x_2$ er antall enheter av gode 2.
+
+Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på pr kilometer kjørt som vi kaller for $p_1$ = 1,98 og $m$ = 1156. [Inntekt regnes ut ved å ta gjennomsnittlig årlig inntekt fra SSB i Tromsø og dele på 365](https://www.ssb.no/97014/median-inntekt-etter-skatt-etter-fylke-og-husholdningstype.kroner) Da blir budsjettbetingelsen 1156 = 1 $x_1$ + 1,98 $x_2$.
+
+Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis $x_2$ og da kan vi omformulere ligningen slik:
+
+$$x_2 = \frac{m}{p_2} - \frac{p_1}{p_2}x_1 \tag{7}$$
+
+Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{m}{p_2}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{p_1}{p_2}$ enheter av gode 2. Da er $\frac{p_1}{p_2}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{p_1}{p_2}$.        
+
+Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for El-bilisten og for bensin/diesel bilisten.
+
+```{python}
+# Definerer hvor lang x-aksen skal være
+x=np.linspace(0.001,585, 100)
+
+# Definerer budsjettfunksjonen som beskrevet tidligere
+def budsjett(M, p1, p2, x1):
+    return M/p2 - p1*x1/p2
+
+# Starter på første figur for kapittel 3
+fig, ax = plt.subplots(1,2, sharey=True, figsize=(20,7))
+
+# Setter inn verdier for M, p1 og p2 for elbilisten
+ax[0].plot(x, budsjett(1156, 1.98, 1, x), color="cornflowerblue", label = 'Elbilistens budsjett')
+
+# Setter x-aksen til å gå fra 0 til 585
+ax[0].set(xlim=(0,585))
+
+# Fyller inn mulighetsområdet
+ax[0].fill_between(x, 0, budsjett(1156, 1.98, 1, x), color = "palevioletred",alpha = 0.3,label='Mulighetsområdet')
+
+# Setter inn verdier for M, p1 og p2 for forbrenningsmotoren
+ax[1].plot(x, budsjett(1156, 3.03, 1, x), color="cornflowerblue", label = 'Forbrenningsmotorens budsjett')
+
+# Fyller inn mulighetsområdet
+ax[1].fill_between(x, 0, budsjett(1156, 3.03, 1, x), color = "palevioletred",alpha = 0.3,label='Mulighetsområdet')
+
+# Setter x-aksen til å gå fra 0 til 385
+ax[1].set(xlim=(0,385))
+
+# Løkke for å definere akser, y-limit og at det ikke skal være ramme, samt at det skal være ticks på høyre figur også
+for j in range(2):
+    ax[j].set_ylabel('$x_2$', loc='top', rotation=0, size=15)
+    ax[j].set_xlabel('$x_1$', loc='right', size=15)
+    ax[j].spines['top'].set_color('none')
+    ax[j].spines['right'].set_color('none')
+    ax[j].set_ylim(0, 1156)
+    # change size of x and y ticks
+    ax[j].tick_params(axis='both', which='major', labelsize=15,labelleft=True)
+    
+# Titler
+fig.suptitle('Bilistens budsjettlinje og mulighetsområde', size=20)
+ax[0].set_title('Elbil', size=18)
+ax[1].set_title('Forbrenningsmotor', size=18)
+
+# Legender
+ax[0].legend(loc='best', fontsize=15)
+ax[1].legend(loc='best', fontsize=15);
 ```
 
-```{python}
+## Endringer i budsjettbetingelsen etter innføring av bompenger
 
+Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner og for en forbrenningsmotorbilist 3,03 kroner. Men vi skal også se på hva som skjer etter innføringen av bompenger. 
+
+
+La oss se på noen forskjellige bompengescenarioer:
+
+Bilist type 1: Kjører 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke og utenom rushtid betaler bilisten 9,6 kr per passering.
+
+5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 9,6 kroner i bompenger * 2 antall bompasseringer = 4608 kr ekstra i året til bompenger utenom rushtid.
+
+Bilist type 2: Kjører 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke i rushtid betaler bilisten 28,80 kr per passering.
+
+5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 28,80 kroner i bompenger * 2 antall bompasseringer = 13824 kr ekstra i året til bompenger i rushtid.
+
+Bilist type 3: Kjører Elbil 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke og utenom rushtid betaler bilisten 4,80 kr per passering.
+
+5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 4,80 kroner i bompenger * 2 antall bompasseringer = 2304 kr ekstra i året til bompenger utenom rushtid.
+
+Bilist type 4: Kjører Elbil 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke i rushtid betaler bilisten 28,80 kr per passering.
+
+5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 14,40 kroner i bompenger * 2 antall bompasseringer = 6912 kr ekstra i året til bompenger i rushtid.
+
+
+Videre ser vi på hvordan dette vil påvirke påslaget i pris per kilometer for to scenario, et for scenario 1 og et for scenario 3 med forbrenningsmotor og elbil.
+
+La oss anta at både elbil og personbil kjører gjenomsnittlig 11 097 km i året i følge tall fra [SSB](https://www.ssb.no/statbank/table/12575/tableViewLayout1/).
+
+Vi deler årlig pris på årlig antall gjennomsnittlig kjørelengde og får $4608/ 11097 = 0,415$ kr per km i påslag for scenario 1.
+
+Vi deler årlig pris på årlig antall gjennomsnittlig kjørelengde og får $2304/ 11097 = 0,207$ kr per km i påslag for scenario 3.
+
+Ifølge tall fra tabell 3 og 4 hentet fra [TØI](https://www.toi.no/getfile.php?mmfileid=74283) blir den totale ekstra prisen per kilometer kjørt for forbrenningsmotor $3,03 + 0,415 = 3,445$ kr per km kjørt og for elbil $1,98 + 0,207 = 2,187$ kr per km kjørt.
+
+I figuren under kan man se hvordan budsjettlinjen til en elbilist og en forbrenningsmotorbilist reduseres etter innføringen av bompenger.
+
+```{python}
+fig, axs = plt.subplots(1,2, sharey=True, figsize=(20,7))
+
+# plott av oppr. linje
+
+axs[0].plot(x, budsjett(1156, 1.98, 1, x), label = 'Opprinnelig budsjett', color="cornflowerblue")
+axs[1].plot(x, budsjett(1156, 3.03, 1, x), label = 'Opprinnelig budsjett', color="cornflowerblue")
+
+# linje med økt inntekt
+
+axs[0].plot(x, budsjett(1156, 2.187, 1, x), label = 'Budsjett med økt $p_1$', color="green")
+
+# økt pris
+
+axs[1].plot(x, budsjett(1156, 3.445, 1, x), label = 'Budsjett med økt $p_1$', color="green")
+
+# fyll mellom ny og gammel linje
+
+axs[0].fill_between(x, budsjett(1156, 1.98, 1, x), budsjett(1156, 2.187, 1, x), color = "palevioletred",alpha = 0.3,label='Redusert mulighetsområde')
+axs[1].fill_between(x, budsjett(1156, 3.03, 1, x), budsjett(1156, 3.445, 1, x), color = "palevioletred",alpha = 0.3,label='Redusert mulighetsområde')
+
+# bruk løkke for å tegne aksene
+
+for j in range(2):
+    axs[j].set_ylabel('$x_2$', loc='top', rotation=0, size=15)
+    axs[j].set_xlabel('$x_1$', loc='right', size=15)
+    axs[j].set(xlim=(0,600))
+    axs[j].set(ylim=(0,1200))
+    axs[j].spines['top'].set_color('none')
+    axs[j].spines['right'].set_color('none')
+    axs[j].tick_params(axis='both', which='major', labelsize=15,labelleft=True)
+    
+
+
+
+# gi en passende tittel
+
+fig.suptitle('Endring etter innføring av bompenger', size=20)
+axs[0].set_title('Økning i $p_1$ for elbilisten', size=18)
+axs[1].set_title('Økning i $p_1$ for forbrenningsmotoren', size=18)
+
+# Legender
+ax[0].legend(loc='best', fontsize=15)
+ax[1].legend(loc='best', fontsize=15);
 ```
 
-## Forventede endringer i markedet etter turistskatt
+
 
 ```{python}
 
@@ -121,14 +488,84 @@ import json
 
 # 6. Referanser
 
-## \# 7. Appendiks for CHATGPT
+# 7. Appendiks for CHATGPT
 
--   
+-   Can you make this a latex table for me:
 
--   
+Prosjektnavn	Kostnad
+Reduserte billettpriser	185
+Tryggere skoleveg	315
+Økt driftstilskudd kollektiv	340
+Dramsvegen	40
+Stakkevollvegen - Skattørvegen	200
+Ny sentrumsterminal	315
+Nytt bussknutepunkt i Kroken	35
+Redusere flaskehalser for bussen	70
+Strandvegen	120
+Strandvegen	115
+Ladeinfrastruktur elbuss	35
+Bedre holdeplasser	135
+Tilgjengelighet for gående - holdeplasser, snarveier	45
+Utvidelse bybussområdet	20
+Fortau	50
+Bussløsning Kvaløya	135
+Innfartsparkering Skjelnan	10
+Klokkargårdsbakken	15
+Sykehusvegen	45
+Ny bussterminal i Giæverbukta	140
+E8 Flyplasstunnelen i Tromsø	1800
+Tiltakspakke Langnes	525
+Utbedring gang og sykkelvei Kvaløyvegen	15
+Ny bru til Kvaløya	1800
+Etablering av bomstasjoner	35
+Sum	6 540
 
--   
+-   Navn	Felt	Trafikkmengde	Dekningsgrad (%)	< 5,6m
+Dato					
+2021-08-26	UIT/Planetariet Sykkel	1	55	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	2	110	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	Totalt i retning Planetariet/UIT	110	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	Totalt i retning UNN	55	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	Totalt	165	50,0	-
 
--   
+I want to separate "sykkel and Sykkel" observations and only take them out from the df into a new one
 
--
+-   I then want to instead of keep them make a bil_df that removes the sykkel and Sykkel observations
+
+-   bil_df = df[df['Felt'].str.contains('Totalt')] this code returns:
+
+Navn	Felt	Trafikkmengde	Dekningsgrad (%)	< 5,6m
+Dato					
+2021-08-26	UIT/Planetariet Sykkel	Totalt i retning Planetariet/UIT	110	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	Totalt i retning UNN	55	50,0	-
+2021-08-26	UIT/Planetariet Sykkel	Totalt	165	50,0	-
+
+I want it to only have the 'Totalt' not the other ones only 'Totalt'
+
+- ax.scatter(df_summary['Dato'], df_summary['Total'], s=10, label='Biler')
+
+How can I plot this to the date 05.01.2023 with one color and then go with another color after that date
+
+- is it possible to have color in my latex table
+
+- can you make this in latex table:
+
+Kostnader
+Elbiler
+Ekskl. avgifter Inkl. avgifter ekskl. mva Inkl. alle avgifter
+Drivstoff 0,19 0,23 0,27
+Dekk og Olje 0,21 0,21 0,25
+Reparasjoner 0,30 0,30 0,37
+Kapital 1,10 1,10 1,10
+Totalt 1,80 1,84 1,98
+
+- Bensin, diesel, ladbar hybrid
+
+Nullutslippskjøretøy
+
+Fullpris	Gyldig avtale og brikke 	Fullpris 	Gyldig avtale og brikke 
+Alle bomstasjoner (15)	12,00	9,60	12,00	4,80
+
+make this a latex table for me
+
+- 
