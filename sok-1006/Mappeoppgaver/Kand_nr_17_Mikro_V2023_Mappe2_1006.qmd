@@ -124,110 +124,226 @@ Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene
 
 # 3. Trafikkbildet i Tromsø før og etter innføringen av bompenger
 
-## Bilister
-
 ```{python}
-# Importing the data, and making it into a dataframe
-# Code taken from: https://stackoverflow.com/questions/56611698/pandas-how-to-read-csv-file-from-google-drive-public
+# Importerer data fra google drive
+# Kode tatt fra: https://stackoverflow.com/questions/56611698/pandas-how-to-read-csv-file-from-google-drive-public
 url = ('https://drive.google.com/file/d/1dlJTxcX1QU2riu2iuCc1G2175ESzjEXl/view?usp=share_link')
 url = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 df = pd.read_csv(url, sep=';')
 
-# Removing the unnecessary columns
+# Fjerner unødvendige kolonner
 df = df.drop(columns=['Trafikkregistreringspunkt', 'Vegreferanse', 'Fra', 'Til', '>= 24,0m', '16,0m - 24,0m',
                       '>= 16,0m', '12,5m - 16,0m', '7,6m - 12,5m','5,6m - 7,6m', 'Lengdekvalitetsgrad (%)', 'Ikke gyldig lengde',
-                      'Antall timer ugyldig', 'Antall timer inkludert', 'Antall timer total','Trafikkmengde'])
+                      'Antall timer ugyldig', 'Antall timer inkludert', 'Antall timer total'])
 
-# Setting the index to be the date
+# Her er kun data wrangling for plotteformål
+
+# Setter indeksen til å være dato
 df = df.set_index('Dato')
 
-# Separating the Navn column into two columns, one for the cycles and one for the cars
+# Separerer sykkel i nytt datasett
 sykkel_df = df[df['Navn'].str.contains('sykkel|Sykkel')]
 
+# Separerer bil i nytt datasett
 bil_df = df[~df['Navn'].str.contains('sykkel|Sykkel')]
 
-# Filter the DataFrame to only include rows where 'Felt' is 'Totalt'
+# Filer kun for totalt antall kjøretøy
 bil_df = bil_df[bil_df['Felt'] == 'Totalt']
 
-# Filter the DataFrame to only include rows where 'Felt' is 'Totalt'
+# Filer kun for totalt antall sykler
 sykkel_df = sykkel_df[sykkel_df['Felt'] == 'Totalt']
 
+# Fikser datetime format
 bil_df.index = pd.to_datetime(bil_df.index, format='%Y-%m-%d')
 
+# Pivoter kolonnen Navn til å få data ut til nye kolonner med verdier fra kun små biler
 bil_df = bil_df.pivot_table(index='Dato', columns='Navn', values='< 5,6m', aggfunc='sum')
 
+# Fjerner indeks
 bil_df = bil_df.reset_index()
 
-# Convert non-numeric values to NaN
+# Konverterer ikke numeriske verdier til NaN
 bil_df = bil_df.apply(pd.to_numeric, errors='coerce')
 
-# Create a new column 'Total' by summing all the numeric columns for each row
+# Lager ny kolonne 'Total' ved å summere alle numeriske kolonner for hver rad
 bil_df['Total'] = bil_df.iloc[:, 2:].sum(axis=1)
 
-# Select only the 'Dato' and 'Total' columns
+# For regresjon trenger vi kun Dato og Total kolonnene
 df_summary = bil_df[['Dato', 'Total']].copy()
 
+# Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
 df_summary['Dato'] = pd.to_datetime(df_summary['Dato'])
+
+# Fikser datetime format
+sykkel_df.index = pd.to_datetime(sykkel_df.index, format='%Y-%m-%d')
+
+# Pivoter kolonnen Navn til å få data ut til nye kolonner med verdier fra kun sykkel
+sykkel_df = sykkel_df.pivot_table(index='Dato', columns='Navn', values='Trafikkmengde', aggfunc='sum')
+
+# Fjerner indeks
+sykkel_df = sykkel_df.reset_index()
+
+# Konverterer ikke numeriske verdier til NaN
+sykkel_df = sykkel_df.apply(pd.to_numeric, errors='coerce')
+
+# Lager ny kolonne 'Total' ved å summere alle numeriske kolonner for hver rad
+sykkel_df['Total'] = sykkel_df.iloc[:, 2:].sum(axis=1)
+
+# Velger kun Dato og Total kolonnene i nytt datasett for regresjon
+sykkel_df = sykkel_df[['Dato', 'Total']].copy()
+
+# Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
+sykkel_df['Dato'] = pd.to_datetime(sykkel_df['Dato'])
+
+# Importerer data på busspassasjerer
+df_buss = pd.read_csv("https://raw.githubusercontent.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/main/data/antall%20p%C3%A5stigende.csv",
+                      parse_dates=['date'], dayfirst=True)
+
+# Pivoter kolonnen Linje til å få data ut til nye kolonner med verdier fra bussrutene
+df_buss = df_buss.pivot_table(index='date', columns='Linje', values='Påstigende', aggfunc='sum')
+
+# Fjerner indeks
+df_buss = df_buss.reset_index()
+
+# Konverterer ikke numeriske verdier til NaN
+df_buss = df_buss.apply(pd.to_numeric, errors='coerce')
+
+# Lager ny kolonne 'Total' ved å summere alle numeriske kolonner for hver rad
+df_buss['Total'] = df_buss.iloc[:, 1:].sum(axis=1)
+
+# Velger kun Dato og Total kolonnene i nytt datasett for regresjon
+df_buss = df_buss[['date', 'Total']].copy()
+
+# Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
+df_buss['date'] = pd.to_datetime(df_buss['date'])
+```
+
+## Bilister
+
+Her kan man se atferden til bilister før innføringen av bompenger og etter, det er innført en dummyvariabel for bompenger med startdato 5. januar 2023. Det er også lagt til en variabel for antall observasjoner for å kunne se på trenden før og etter bompenger. I figuren kan man se at det er en nedgående trend av bilister etter innføringen av bompenger.
+
+```{python}
+# Lager en dummyvariabel for bompenger med startdato 5. januar 2023
+df_summary['Bompenger'] = np.where(df_summary['Dato'] > '2023-01-05', 1, 0)
+
+# Lager en variabel for antall observasjoner
+df_summary['Observasjoner'] = np.arange(1, len(df_summary) + 1)
+
+# Gjør regresjon for hele datasettet for biler
+model = ols('Total ~ Observasjoner + Bompenger', data=df_summary).fit()
 ```
 
 ```{python}
-```
+# Setter threshold for å dele datasettet til før og etter bompenger
+date_threshold = '2023-01-05'
+# Lager datasett for før bompenger
+data_before_threshold = df_summary[df_summary['Dato'] < date_threshold]
+# Lager datasett for etter bompenger
+data_after_threshold = df_summary[df_summary['Dato'] >= date_threshold]
 
-```{python}
-```
+# Starter plottingen og setter figuren til å være 10x5
+fig, ax = plt.subplots(figsize=(10, 5))
 
-```{python}
+# Setter tittel på figuren
+ax.set_title('Antall små biler registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
 
-```
+# Plott dataen før bompenger med en farge
+ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
 
-```{python}
+# Plotter dataen etter bompenger med  ny farge
+ax.scatter(data_after_threshold['Dato'], data_after_threshold['Total'], s=10, color='green', label='Etter bompenger')
 
+# Plotter regresjonen
+ax.plot(df_summary['Dato'], model.params[0] + model.params[1] * df_summary['Observasjoner'] + model.params[2] * df_summary['Bompenger'], color='palevioletred', label='Regresjonslinje')
+ax.legend();
 ```
 
 ## Syklister
 
 ```{python}
+# Lager en dummyvariabel for bompenger med startdato 5. januar 2023
+sykkel_df['Bompenger'] = np.where(sykkel_df['Dato'] > '2023-01-05', 1, 0)
 
+# Lager en variabel for antall observasjoner
+sykkel_df['Observasjoner'] = np.arange(1, len(sykkel_df) + 1)
+
+# Lager en threshold for å dele datasettet til før og etter bompenger
+date_threshold = '2023-01-05'
+# Lager datasett for før bompenger
+data_before_threshold = sykkel_df[sykkel_df['Dato'] < date_threshold]
+# Lager datasett for etter bompenger
+data_after_threshold = sykkel_df[sykkel_df['Dato'] >= date_threshold]
+```
+
+```{python}
+# Gjør regresjon for før bompenger for sykkel før bompenger
+model1 = ols('Total ~ Observasjoner + Bompenger', data=data_before_threshold).fit()
+
+# Gjør regresjon for etter bompenger for sykkel etter bompenger
+model2 = ols('Total ~ Observasjoner + Bompenger', data=data_after_threshold).fit()
+
+```
+Her kan man se at antall syklister har en større stigende helning etter innføringen av bompenger, dette selv om Tromsø ikke har kommet ordentlig i gang med sykkelsesongen.
+
+```{python}
+# Starter plottingen og setter figuren til å være 10x5
+fig, ax = plt.subplots(figsize=(10, 5))
+
+# Setter tittel på figuren
+ax.set_title('Antall syklister registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
+
+# Plotter dataen før bompenger med en farge
+ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
+
+# Plotter dataen etter bompenger med  ny farge
+ax.scatter(data_after_threshold['Dato'], data_after_threshold['Total'], s=10, color='green', label='Etter bompenger')
+
+# Plotter regresjonslinjen for før bompenger
+ax.plot(data_before_threshold['Dato'], model1.params[0] + model1.params[1] * data_before_threshold['Observasjoner'],
+        color='palevioletred', label='Regresjonslinje før bompenger')
+# Plotter regresjonslinjen for etter bompenger
+ax.plot(data_after_threshold['Dato'], model2.params[0] + model2.params[1] * data_after_threshold['Observasjoner'], 
+        color='red', label = "Regresjonslinje etter bompenger")
+
+# Legende
+ax.legend();
 ```
 
 ## Kollektivreisende
 
 ```{python}
+# Lager en dummyvariabel for bompenger med startdato 5. januar 2023
+df_buss['Bompenger'] = np.where(df_buss['date'] > '2023-01-05', 1, 0)
 
+# Lager en variabel for antall observasjoner
+df_buss['Observasjoner'] = np.arange(1, len(df_buss) + 1)
+
+# Gjør regresjon for hele datasettet for buss
+model3 = ols('Total ~ Observasjoner + Bompenger', data=df_buss).fit()
 ```
 
-## Regresjonsanalyse
+Vi ser i figuren at det er en økende trend i antall passasjerer sm tar kollektivtransport.
 
 ```{python}
-# creating a dummy variable called bompenger that is a value between 0 and 1 after the date 2023-01-05
-df_summary['bompenger'] = np.where(df_summary['Dato'] > '2023-01-05', 1, 0)
-
-# Making dato into observations starting from 1 and going to the end of the dataframe
-df_summary['Dummy_date'] = np.arange(1, len(df_summary) + 1)
-
-# Doing the regression with total as the dependent variable and dato and bompenger as the independent variables
-model = ols('Total ~ Dummy_date + bompenger', data=df_summary).fit()
-
-print(model.summary())
-print(model.params)
-```
-
-```{python}
+# Setter threshold for å dele datasettet til før og etter bompenger
 date_threshold = '2023-01-05'
-data_before_threshold = df_summary[df_summary['Dato'] < date_threshold]
-data_after_threshold = df_summary[df_summary['Dato'] >= date_threshold]
+# Lager datasett for før bompenger
+data_before_threshold = df_buss[df_buss['date'] < date_threshold]
+# Lager datasett for etter bompenger
+data_after_threshold = df_buss[df_buss['date'] >= date_threshold]
 
-#plotting the data
-fig, ax = plt.subplots(figsize=(10, 7))
-ax.set_title('Antall små biler registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
+# Starter plottingen og setter figuren til å være 10x5
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.set_title('Antall busspassasjerer registrert i og utenfor Tromsø daglig siden 1. Januar 2022')
 
-# Plot the data before the threshold date with one color
-ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
+# Plotter dataen før threshold med en farge
+ax.scatter(data_before_threshold['date'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
 
-# Plot the data after the threshold date with another color
-ax.scatter(data_after_threshold['Dato'], data_after_threshold['Total'], s=10, color='green', label='Etter bompenger')
-# plotting the regression
-ax.plot(df_summary['Dato'], model.params[0] + model.params[1] * df_summary['Dummy_date'] + model.params[2] * df_summary['bompenger'], color='palevioletred', label='Regresjonslinje')
+# Plotter dataen etter threshold med  ny farge
+ax.scatter(data_after_threshold['date'], data_after_threshold['Total'], s=10, color='green', label='Etter bompenger')
+# Plotter regresjonen
+ax.plot(df_buss['date'], model3.params[0] + model3.params[1] * df_buss['Observasjoner'] + model3.params[2] * df_buss['Bompenger'], color='palevioletred', label='Regresjonslinje')
+# Legende
 ax.legend();
 ```
 
