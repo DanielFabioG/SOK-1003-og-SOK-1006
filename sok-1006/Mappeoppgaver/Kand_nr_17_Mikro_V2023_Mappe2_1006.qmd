@@ -38,6 +38,9 @@ import sympy as sp
 import pandas as pd
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
+import folium
+from folium.plugins import MarkerCluster
+from geopy.geocoders import GoogleV3
 ```
 
 # 1. Sammendrag
@@ -136,8 +139,6 @@ df = df.drop(columns=['Trafikkregistreringspunkt', 'Vegreferanse', 'Fra', 'Til',
                       '>= 16,0m', '12,5m - 16,0m', '7,6m - 12,5m','5,6m - 7,6m', 'Lengdekvalitetsgrad (%)', 'Ikke gyldig lengde',
                       'Antall timer ugyldig', 'Antall timer inkludert', 'Antall timer total'])
 
-# Her er kun data wrangling for plotteformål
-
 # Setter indeksen til å være dato
 df = df.set_index('Dato')
 
@@ -168,12 +169,99 @@ bil_df = bil_df.apply(pd.to_numeric, errors='coerce')
 # Lager ny kolonne 'Total' ved å summere alle numeriske kolonner for hver rad
 bil_df['Total'] = bil_df.iloc[:, 2:].sum(axis=1)
 
+bil_df['Dato'] = pd.to_datetime(bil_df['Dato'])
+
 # For regresjon trenger vi kun Dato og Total kolonnene
 df_summary = bil_df[['Dato', 'Total']].copy()
 
 # Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
 df_summary['Dato'] = pd.to_datetime(df_summary['Dato'])
 
+# Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
+df_summary_2 = df_summary.groupby([df_summary['Dato'].dt.year.rename('year'), df_summary['Dato'].dt.month.rename('month')]).sum(numeric_only=True).reset_index()
+
+# Tar verdiene videre som skal plottes
+df_summary_2 = df_summary_2[['year', 'month', 'Total']].copy()
+
+# pivoterer dataene for å få år som kolonner og måneder som rader
+df_summary_2 = df_summary_2.pivot_table(index='month', columns='year', values='Total', aggfunc='sum')
+
+# Resetter indeks for å få år som kolonner
+df_summary_2.reset_index(inplace=True)
+
+# Summerer alle verdiene for hver kolonne
+bil_df = bil_df.sum(numeric_only=True)
+
+# Resetter indeks
+bil_df = bil_df.reset_index()
+```
+
+```{python}
+# Definerer api nøkkel
+api_key = "AIzaSyD4ZGMalrVCePcI70Ovjxr5GulqHdGd0Fw"
+
+# Lager en geolocator som finner meg lat og longitude for trafikkregistreringspunktene
+geolocator = GoogleV3(api_key=api_key)
+
+# Lager en funksjon som tar inn en lokasjon og returnerer lat og longitude
+def geocode_location(location):
+    try:
+        # Use the geocoder to get the coordinates
+        location_data = geolocator.geocode(location)
+        latitude = location_data.latitude
+        longitude = location_data.longitude
+        return latitude, longitude
+    except:
+        return None, None
+
+# Henter lokasjonene fra datasettet
+locations = bil_df["Navn"]
+
+# Lager tomme lister for latitudes og longitudes
+latitudes = []
+longitudes = []
+
+# Itererr over alle lokasjonene og legger til latitudes og longitudes til listene
+for location in locations:
+    latitude, longitude = geocode_location(location)
+    latitudes.append(latitude)
+    longitudes.append(longitude)
+
+# Legger til latitudes og longitudes til datasettet
+bil_df["Latitude"] = latitudes
+
+bil_df["Longitude"] = longitudes
+
+#Skifter navn på 0 to "Navn"
+bil_df.rename(columns={0: "Total"}, inplace=True)
+
+# Fjerner alle rader med NaN
+bil_df.dropna(inplace=True)
+
+# Bruker folium til å lage kart over tromsø
+m = [69.649205, 18.955324]
+
+# Lager kartet
+tromso_kart = folium.Map(location=m, zoom_start=13)
+
+# Lager et interaktivt kart med lokasjonene til bil_df
+for i in range(0, len(bil_df)):
+    folium.Marker(
+      # Legger til lokasjonene
+        location=[bil_df.iloc[i]['Latitude'], bil_df.iloc[i]['Longitude']],
+        # Legger til navn på lokasjonene
+        popup=bil_df.iloc[i]['Navn'],
+        # Informasjon i ikonene
+        tooltip=f"Passeringer: {bil_df.iloc[i]['Navn']} siden 2020:" + str(bil_df.iloc[i]['Total']),
+        # Fikser ikonene og legger til en bil
+        icon=folium.Icon(color='green', icon='car', prefix='fa')
+    ).add_to(tromso_kart)
+    
+# Lagrer kartet som html, det er dette som er lastet opp på github som er lenket til i analysen
+tromso_kart.save('tromso_kart.html')
+```
+
+```{python}
 # Fikser datetime format
 sykkel_df.index = pd.to_datetime(sykkel_df.index, format='%Y-%m-%d')
 
@@ -217,10 +305,61 @@ df_buss = df_buss[['date', 'Total']].copy()
 # Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
 df_buss['date'] = pd.to_datetime(df_buss['date'])
 ```
-
 ## Bilister
 
-Her kan man se atferden til bilister før innføringen av bompenger og etter, det er innført en dummyvariabel for bompenger med startdato 5. januar 2023. Det er også lagt til en variabel for antall observasjoner for å kunne se på trenden før og etter bompenger. I figuren kan man se at det er en nedgående trend av bilister etter innføringen av bompenger.
+```{python}
+# Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
+df_summary_2 = df_summary.groupby([df_summary['Dato'].dt.year.rename('year'), df_summary['Dato'].dt.month.rename('month')]).sum(numeric_only=True).reset_index()
+
+# Tar verdiene videre som skal plottes
+df_summary_2 = df_summary_2[['year', 'month', 'Total']].copy()
+
+# pivoterer dataene for å få år som kolonner og måneder som rader
+df_summary_2 = df_summary_2.pivot_table(index='month', columns='year', values='Total', aggfunc='sum')
+
+# Resetter indeks for å få år som kolonner
+df_summary_2.reset_index(inplace=True)
+```
+
+Vi starter med å se på antall personbiler totalt registrert hver måned Siden 2020, for å se om det er en nedgang i totaltraffikken i Tromsø.
+
+```{python}
+# Starter plottingen
+fig, ax = plt.subplots(figsize=(10, 5))
+
+# Setter vidde på barene
+width=0.20
+
+# Kode for å få x-akse til å være måneder, inspirert og gjenbrukt fra Mikro mappe 1
+x1 = df_summary_2['month']
+x2 = [x + width for x in x1]
+x3 = [x + width for x in x2]
+x4 = [x + width for x in x3]
+
+# Plotter barene med forskjellige farger for hvert år
+ax.axes.bar(x1, df_summary_2[2020]/1000, width, color='cornflowerblue', label='2020')
+ax.axes.bar(x2, df_summary_2[2021]/1000, width, color='darkslategrey', label='2021')
+ax.axes.bar(x3, df_summary_2[2022]/1000, width, color='#2ca02c', label='2022')
+ax.axes.bar(x4, df_summary_2[2023]/1000, width, color='palevioletred', label='2023')
+
+# Setter x-akse ticks til å være x2
+ax.set_xticks(x2)
+
+# Setter tittel
+ax.set_title('Antall personbiler registrert i Tromsø og utenfor siden 2020-2023')
+
+# Setter y-akse navn
+ax.set_ylabel('Antall kjøretøy(1000)')
+
+# Setter x-akse ticks
+ax.axes.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'])
+
+# Skifter retning på x-akse ticks
+ax.tick_params(axis='x', rotation=0)
+
+# Setter legende utenfor plottet
+ax.legend(bbox_to_anchor=(1.12, 1), loc='upper right', borderaxespad=0.);
+```
 
 ```{python}
 # Lager en dummyvariabel for bompenger med startdato 5. januar 2023
@@ -232,6 +371,8 @@ df_summary['Observasjoner'] = np.arange(1, len(df_summary) + 1)
 # Gjør regresjon for hele datasettet for biler
 model = ols('Total ~ Observasjoner + Bompenger', data=df_summary).fit()
 ```
+
+Her kan man se atferden til bilister før innføringen av bompenger i lyseblått og atferden i grønt etter, det er innført en dummyvariabel for bompenger med startdato 5. januar 2023, som viser gjennomsnittsforskjellen i biler registrert etter denne datoen, at regresjonslinjen går nedover betyr at det er en nedgang i gjennomsnittlig biler registrert etter innføringen av bompenger.
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -258,7 +399,60 @@ ax.plot(df_summary['Dato'], model.params[0] + model.params[1] * df_summary['Obse
 ax.legend();
 ```
 
+[Her kan man også se et kart over noen trafikktellestasjoner og totalt antall passeringer siden 2020](https://danielfabiog.github.io/SOK-1004/)
+
 ## Syklister
+
+```{python}
+# Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
+sykkel_df_2 = sykkel_df.groupby([sykkel_df['Dato'].dt.year.rename('year'), sykkel_df['Dato'].dt.month.rename('month')]).sum(numeric_only=True).reset_index()
+
+# Tar verdiene videre som skal plottes
+sykkel_df_2 = sykkel_df_2[['year', 'month', 'Total']].copy()
+
+# pivoterer dataene for å få år som kolonner og måneder som rader
+sykkel_df_2 = sykkel_df_2.pivot_table(index='month', columns='year', values='Total', aggfunc='sum')
+
+# Resetter indeks for å få år som kolonner
+sykkel_df_2.reset_index(inplace=True)
+```
+
+Her kan man se antall syklister totalt i hele Tromsø for 2021-2023, og man kan spesielt se at det var en stor økning i måneden bompenger ble innført, det ser ut som det er nedgang i Mai måned, men det er fordi det mangler tallgrunnlag for hele måneden.
+
+```{python}
+# Starter plottingen
+fig, ax = plt.subplots(figsize=(10, 5))
+
+# Fixing the width of the bars
+width=0.25
+
+# shift the bars to the left by the width of the bar to separate them
+x1 = sykkel_df_2['month']
+x2 = [x + width for x in x1]
+x3 = [x + width for x in x2]
+
+ax.axes.bar(x1, sykkel_df_2[2021], width, color='darkslategrey', label='2021')
+ax.axes.bar(x2, sykkel_df_2[2022], width, color='#2ca02c', label='2022')
+ax.axes.bar(x3, sykkel_df_2[2023], width, color='palevioletred', label='2023')
+
+# Setter x-akse ticks til å være x2
+ax.set_xticks(x2)
+
+# Setter tittel
+ax.set_title('Antall syklister i Tromsø sentrum 2021-2023')
+
+# Setter y-akse navn
+ax.set_ylabel('Antall syklister')
+
+# Setter x-akse ticks
+ax.axes.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'])
+
+# Skifter retning på x-akse ticks
+ax.tick_params(axis='x', rotation=0)
+
+# Setter legende utenfor plottet
+ax.legend(bbox_to_anchor=(1.12, 1), loc='upper right', borderaxespad=0.);
+```
 
 ```{python}
 # Lager en dummyvariabel for bompenger med startdato 5. januar 2023
@@ -312,6 +506,53 @@ ax.legend();
 ## Kollektivreisende
 
 ```{python}
+# Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
+df_buss_2 = df_buss.groupby([df_buss['date'].dt.year.rename('year'), df_buss['date'].dt.month.rename('month')]).sum(numeric_only=True).reset_index()
+
+# Tar verdiene videre som skal plottes
+df_buss_2 = df_buss_2[['year', 'month', 'Total']].copy()
+
+# pivoterer dataene for å få år som kolonner og måneder som rader
+df_buss_2 = df_buss_2.pivot_table(index='month', columns='year', values='Total', aggfunc='sum')
+
+# Resetter indeks for å få år som kolonner
+df_buss_2.reset_index(inplace=True)
+```
+
+```{python}
+# Starter plottingen
+fig, ax = plt.subplots(figsize=(10, 5))
+
+# Fixing the width of the bars
+width=0.30
+
+# shift the bars to the left by the width of the bar to separate them
+x1 = df_buss_2['month']
+x2 = [x + width for x in x1]
+
+ax.axes.bar(x1, df_buss_2[2022]/1000, width, color='darkslategrey', label='2022')
+ax.axes.bar(x2, df_buss_2[2023]/1000, width, color='#2ca02c', label='2023')
+
+# Setter x-akse ticks til å være x2
+ax.set_xticks(x2)
+
+# Setter tittel
+ax.set_title('Antall kollektivreisende i Tromsø sentrum 2022-2023')
+
+# Setter y-akse navn
+ax.set_ylabel('Antall kollektivreisende (1000)')
+
+# Setter x-akse ticks
+ax.axes.set_xticklabels(['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'])
+
+# Skifter retning på x-akse ticks
+ax.tick_params(axis='x', rotation=0)
+
+# Setter legende utenfor plottet
+ax.legend(bbox_to_anchor=(1.12, 1), loc='upper right', borderaxespad=0.);
+```
+
+```{python}
 # Lager en dummyvariabel for bompenger med startdato 5. januar 2023
 df_buss['Bompenger'] = np.where(df_buss['date'] > '2023-01-05', 1, 0)
 
@@ -322,7 +563,7 @@ df_buss['Observasjoner'] = np.arange(1, len(df_buss) + 1)
 model3 = ols('Total ~ Observasjoner + Bompenger', data=df_buss).fit()
 ```
 
-Vi ser i figuren at det er en økende trend i antall passasjerer sm tar kollektivtransport.
+Vi ser i figuren for kollektivreisende at etter bompenger ble innført så er det en oppgang i gjennomsnittlig registrerte antall busspassasjerer.
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -684,4 +925,48 @@ Alle bomstasjoner (15)	12,00	9,60	12,00	4,80
 
 make this a latex table for me
 
-- 
+- How can I get the   \textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00} \\ to be just one big row
+
+- (latex tabell, kan ikke legge med denne da blir det error som jeg spør om til chatgpt)
+
+why is this giving me error
+
+- (latex tabell, kan ikke legge den inn her da blir den ikke å kompilere i latex...)
+
+whats wrong here
+
+- Navn	Dato	BREIVIKTUNNELEN	Breivika	Dramsvegen	Fartstavle Tverrforbindelsen	Giæverbukta nord	HANSJORDNESTUNNELEN	Hansine Hansens veg	Hungeren	Kraftforsyningen	...	Prestvannet	Ringvegen	Sandnessundbrua	Sentrumstangenten	Stakkevollvegen	Strandvegen	TROMSØBRUA	Tromsøbrua avkjøring	Tromsøysundtunnelen T1	Tromsøysundtunnelen T2
+0	2020-01-01	3059	8994	NaN	5033	4913	4239	NaN
+
+this is how the dataframe looks like, I want every column summarized to just form a new column called total for every date
+
+- I have this dataframe in pandas:
+
+
+Navn	0
+0	BREIVIKTUNNELEN	776004.0
+1	Breivika	2365496.0
+2	Dramsvegen	193606.0
+3	Fartstavle Tverrforbindelsen	1539626.0
+4	Giæverbukta nord	2200892.0
+5	HANSJORDNESTUNNELEN	1231460.0
+6	Hansine Hansens veg	286818.0
+7	Hungeren	1367510.0
+8	Kraftforsyningen	1306417.0
+9	Kvaløysletta nord	669889.0
+10	Kvaløysletta sør	1572060.0
+11	Kvaløyvegen	651427.0
+12	Langnestunnelen	1725599.0
+13	Postterminalen	1480449.0
+14	Prestvannet	570758.0
+15	Ringvegen	0.0
+16	Sandnessundbrua	1487178.0
+17	Sentrumstangenten	1008265.0
+18	Stakkevollvegen	560257.0
+19	Strandvegen	580096.0
+20	TROMSØBRUA	2024122.0
+21	Tromsøbrua avkjøring	1129561.0
+22	Tromsøysundtunnelen T1	581562.0
+23	Tromsøysundtunnelen T2	563815.0
+
+this is locations in Tromsø. Could you make a new column and put in the coordinates for me for the places so I can plot it in an interactive chart
