@@ -31,7 +31,7 @@ header-includes:
 ---
 
 ```{python}
-# Importing all packages needed for the project
+# Importerer pakker
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
@@ -47,13 +47,11 @@ from geopy.geocoders import GoogleV3
 
 ## Bakgrunn
 
-En bompengeavgift ble innført på Tromsøya 5. januar 2023 som en del av byutviklingsprosjektet [Tenk Tromsø](https://tenktromso.no/). Formålet med bompengeavgiften er å redusere biltrafikken i sentrum av Tromsø, og dermed redusere utslipp av klimagasser og lokal luftforurensning. I tillegg skal inntektene fra bompengeavgiften brukes til å finansiere kollektivtilbudet i Tromsø.
-
-Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal de nå gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
+En bompengeavgift ble innført på Tromsøya 5. januar 2023 som en del av byutviklingsprosjektet [Tenk Tromsø](https://tenktromso.no/). En bompengeavgift er en engangsavgift for å passere en bompengesone med et kjøretøy som blir automatisk registrert gjennom registreringsnummeret på kjøretøyet eller med bompengeavtalen som heter AutoPASS. Formålet med bompengeavgiften er å redusere biltrafikken i sentrum av Tromsø, og dermed redusere utslipp av klimagasser og lokal luftforurensning. I tillegg skal inntektene fra bompengeavgiften brukes til å finansiere kollektivtilbudet i Tromsø.
 
 ## Begrunnelse
 
-Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige bussterminaler, bedre holdeplasser og knutepunkt for bussen, og gjøre tiltak som sørger for bedre traffikflyt. I tillegg skal de bedre fremkommeligheten for næringstransporten i Tromsø.
+Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige bussterminaler, bedre holdeplasser og knutepunkt for bussen, og gjøre tiltak som sørger for bedre traffikflyt. I tillegg skal det bedre fremkommeligheten for næringstransporten i Tromsø.
 
 ## Utbredelse
 
@@ -64,6 +62,10 @@ Bompenger er en avgift som har vært i Norge allerede flere plasser, og i Nord-N
 2.  I Harstad er det innført bompenger i sentrum der det koster 16 kr for liten bil og 40 kr for stor bil.
 
 3.  I Tromsø fra før har det vært innført bompenger ved Ryaforbindelsen der det koster 85 kr for liten bil og 75 kr for stor bil.
+
+## Erfaringer
+
+Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal nås gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
 
 ## Prosjekter som skal finansieres
 
@@ -107,25 +109,11 @@ Etablering av bomstasjoner & 35 \\
 \end{tabular}
 \end{table}
 
-## Erfaringer
+## Struktur av redgjørelsen
 
-Konkluder her med hva du finner ut av i mappeoppgaven.
+I kapittel 2 skal vi se på endringen i biltrafikken i Tromsø etter innføringen av bompenger. Vi skal også se på hvordan dette har påvirket sykkelpasseringer og bruk av kollektivtransport. I kapittel 3 skal vi se på hvordan bilistene tilpasser seg bompenger. Vi skal se på hvordan bilistene endrer reisevaner, og hvordan dette påvirker bilistenes velferd. Vi skal se på en bilist som en konsument som har to valg: antall kilometer kjørt i bil eller konsumere andre goder. Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen.
 
-# 2. Struktur av redgjørelsen
-
-## Kapittel 2 - Trafikkbildet i Tromsø før og etter innføringen av bompenger
-
-I kapitell 2 skal vi se på endringen i biltrafikken i Tromsø etter innføringen av bompenger. Vi skal også se på hvordan dette har påvirket sykkelpasseringer og bruk av kollektivtransport.
-
-## Kapittel 3 - Bilisters tilpasning til bompenger
-
-I dette kapitlet skal vi se på hvordan bilistene tilpasser seg bompenger. Vi skal se på hvordan bilistene endrer reisevaner, og hvordan dette påvirker bilistenes velferd. Vi skal se på en bilist som en konsument som har to valg: antall kilometer kjørt i bil eller konsumere andre goder. 
-
-## Kapittel 4 - Konklusjon
-
-Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen.
-
-# 3. Trafikkbildet i Tromsø før og etter innføringen av bompenger
+# 2. Trafikkbildet i Tromsø før og etter innføringen av bompenger
 
 ```{python}
 # Importerer data fra google drive
@@ -305,6 +293,7 @@ df_buss = df_buss[['date', 'Total']].copy()
 # Konverterer Dato til datetime format siden det ble konvertert til string i forrige steg
 df_buss['date'] = pd.to_datetime(df_buss['date'])
 ```
+
 ## Bilister
 
 ```{python}
@@ -321,7 +310,11 @@ df_summary_2 = df_summary_2.pivot_table(index='month', columns='year', values='T
 df_summary_2.reset_index(inplace=True)
 ```
 
-Vi starter med å se på antall personbiler totalt registrert hver måned Siden 2020, for å se om det er en nedgang i totaltraffikken i Tromsø.
+Tromsø er en by som har hatt en økning av personbiler i trafikken de siste årene. Med innføringen av bompenger fra 2023 er det ønskelig med nullvekst av personbiler i Tromsø sentrum. I figur 1 kan vi se totaloverblikket i trafikken rundt Tromsø. 
+
+Det første man kan observere er en økende trend med registrerte biler fra 2020-2022. Og etter innføringen av bompenger i 2023 så sees det en nedgang i antall registrerte biler målt mot samme måneder fra 2022.
+
+Figur 1 er basert på tall fra Statens Vegvesen, her er det satt sammen alle trafikkregistreringspunkt fra bruene, rett utenfor og på selve øya. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport). 
 
 ```{python}
 # Starter plottingen
@@ -346,7 +339,7 @@ ax.axes.bar(x4, df_summary_2[2023]/1000, width, color='palevioletred', label='20
 ax.set_xticks(x2)
 
 # Setter tittel
-ax.set_title('Antall personbiler registrert i Tromsø og utenfor siden 2020-2023')
+ax.set_title('Figur 1. Antall personbiler registrert rundt Tromsø 2020-2023')
 
 # Setter y-akse navn
 ax.set_ylabel('Antall kjøretøy(1000)')
@@ -372,7 +365,9 @@ df_summary['Observasjoner'] = np.arange(1, len(df_summary) + 1)
 model = ols('Total ~ Observasjoner + Bompenger', data=df_summary).fit()
 ```
 
-Her kan man se atferden til bilister før innføringen av bompenger i lyseblått og atferden i grønt etter, det er innført en dummyvariabel for bompenger med startdato 5. januar 2023, som viser gjennomsnittsforskjellen i biler registrert etter denne datoen, at regresjonslinjen går nedover betyr at det er en nedgang i gjennomsnittlig biler registrert etter innføringen av bompenger.
+Videre skal vi se på en regresjonsanalyse av atferden til bilistene i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte biler mot den uavhengige variablen antall observasjoner hvor det er innført en dummyvariabel kalt bompenger.
+
+I figur 2 ser man atferdstrenden til bilister før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en nedgang i antall registrerte biler. 
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -386,7 +381,7 @@ data_after_threshold = df_summary[df_summary['Dato'] >= date_threshold]
 fig, ax = plt.subplots(figsize=(10, 5))
 
 # Setter tittel på figuren
-ax.set_title('Antall små biler registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
+ax.set_title('Figur 2. Antall små biler registrert rundt Tromsø daglig siden 1. Januar 2020')
 
 # Plott dataen før bompenger med en farge
 ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
@@ -399,7 +394,9 @@ ax.plot(df_summary['Dato'], model.params[0] + model.params[1] * df_summary['Obse
 ax.legend();
 ```
 
-[Her kan man også se et kart over noen trafikktellestasjoner og totalt antall passeringer siden 2020](https://danielfabiog.github.io/SOK-1004/)
+Avslutningsvis legges det ved et kart for å få en liten oversikt over trafikkregistreringspunkter og antall passeringer for hvert punkt siden 2020. NB: Dette kartet har ikke inkludert alle registreringspunkter, og inkluderer heller ikke sykkelregistreringer.
+
+[Liten oversikt over trafikktellestasjoner og totalt antall passeringer siden 2020](https://danielfabiog.github.io/SOK-1004/)
 
 ## Syklister
 
@@ -417,7 +414,13 @@ sykkel_df_2 = sykkel_df_2.pivot_table(index='month', columns='year', values='Tot
 sykkel_df_2.reset_index(inplace=True)
 ```
 
-Her kan man se antall syklister totalt i hele Tromsø for 2021-2023, og man kan spesielt se at det var en stor økning i måneden bompenger ble innført, det ser ut som det er nedgang i Mai måned, men det er fordi det mangler tallgrunnlag for hele måneden.
+Vi går videre for å se på hvordan sykkeltrafikken har utviklet seg i Tromsø siden 2020.
+
+I figur 3 ser vi antall syklister totalt i hele Tromsø for 2021-2023, og det som stikker mest ut er at det var en stor økning i sykkelregistreringer måneden bompenger ble innført, men at trenden har gått nedover siden.
+
+Det er verdt å merke at denne figuren ikke klarer å vise ordentlig effekten av bompenger enda siden vi ikke har kommet ordentlig inn i sykkelsesongen for 2023. I tillegg så har Mai måned kun sykkelregistreringer frem til omtrent midten av måneden. 
+
+Figur 3 er basert på tall fra Statens Vegvesen, her er det satt sammen alle sykkelregistreringspunkt på Tromsøya og utenfor. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport). 
 
 ```{python}
 # Starter plottingen
@@ -439,7 +442,7 @@ ax.axes.bar(x3, sykkel_df_2[2023], width, color='palevioletred', label='2023')
 ax.set_xticks(x2)
 
 # Setter tittel
-ax.set_title('Antall syklister i Tromsø sentrum 2021-2023')
+ax.set_title('Figur 3. Antall syklister i Tromsø sentrum 2021-2023')
 
 # Setter y-akse navn
 ax.set_ylabel('Antall syklister')
@@ -477,14 +480,19 @@ model1 = ols('Total ~ Observasjoner + Bompenger', data=data_before_threshold).fi
 model2 = ols('Total ~ Observasjoner + Bompenger', data=data_after_threshold).fit()
 
 ```
-Her kan man se at antall syklister har en større stigende helning etter innføringen av bompenger, dette selv om Tromsø ikke har kommet ordentlig i gang med sykkelsesongen.
+
+Vi ser på en regresjonsanalyse her også for å se om det er en forskjell i trenden for sykkelregistreringer før og etter bompenger.
+
+Denne analysen er gjort omtrent på samme måte som beskrevet ovenfor, det som er gjort annereledes her er at datagrunnlaget er delt i før bompenger og etter bompenger, deretter så er det gjort en regresjonsanalyse for hver av disse dataene uten dummyvariabel.
+
+Det vi klarer å se av resultatene er at helningen på regresjonslinjen er økende etter innføringen av bompengene.
 
 ```{python}
 # Starter plottingen og setter figuren til å være 10x5
 fig, ax = plt.subplots(figsize=(10, 5))
 
 # Setter tittel på figuren
-ax.set_title('Antall syklister registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
+ax.set_title('Figur 4. Antall syklister registrert i og utenfor Tromsø daglig siden 1. Januar 2020')
 
 # Plotter dataen før bompenger med en farge
 ax.scatter(data_before_threshold['Dato'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
@@ -503,7 +511,9 @@ ax.plot(data_after_threshold['Dato'], model2.params[0] + model2.params[1] * data
 ax.legend();
 ```
 
-## Kollektivreisende
+## Kollektivreisende  
+
+For å avslutte overblikket i markedet skal vi se på kollektivreisende. Her skal vi se på totalt antall kollektivreisende i Tromsø hver måned siden 2022. Det vi kan se i figur 5 er at det i Januar 2023 var en økning på omtrent 64% reisende med kollektivtransport i Tromsø sammenlignet med Januar 2022. Og at alle måneder etter også har hatt en økning sammenlignet med året før. 
 
 ```{python}
 # Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
@@ -537,7 +547,7 @@ ax.axes.bar(x2, df_buss_2[2023]/1000, width, color='#2ca02c', label='2023')
 ax.set_xticks(x2)
 
 # Setter tittel
-ax.set_title('Antall kollektivreisende i Tromsø sentrum 2022-2023')
+ax.set_title('Figur 5. Antall kollektivreisende i Tromsø sentrum 2022-2023')
 
 # Setter y-akse navn
 ax.set_ylabel('Antall kollektivreisende (1000)')
@@ -563,7 +573,9 @@ df_buss['Observasjoner'] = np.arange(1, len(df_buss) + 1)
 model3 = ols('Total ~ Observasjoner + Bompenger', data=df_buss).fit()
 ```
 
-Vi ser i figuren for kollektivreisende at etter bompenger ble innført så er det en oppgang i gjennomsnittlig registrerte antall busspassasjerer.
+Til slutt skal vi se på en regresjonsanalyse av kollektivreisende i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte reisende mot den uavhengige variablen antall observasjoner(dager) hvor det er innført en dummyvariabel kalt bompenger.
+
+I figur 6 ser man atferdstrenden til kollektivreisende før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en oppgang i antall registrerte kollektivreisende. 
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -575,7 +587,7 @@ data_after_threshold = df_buss[df_buss['date'] >= date_threshold]
 
 # Starter plottingen og setter figuren til å være 10x5
 fig, ax = plt.subplots(figsize=(10, 5))
-ax.set_title('Antall busspassasjerer registrert i og utenfor Tromsø daglig siden 1. Januar 2022')
+ax.set_title('Figur 6. Antall busspassasjerer registrert i og utenfor Tromsø daglig siden 1. Januar 2022')
 
 # Plotter dataen før threshold med en farge
 ax.scatter(data_before_threshold['date'], data_before_threshold['Total'], s=10, color='cornflowerblue', label='Før bompenger')
@@ -588,11 +600,13 @@ ax.plot(df_buss['date'], model3.params[0] + model3.params[1] * df_buss['Observas
 ax.legend();
 ```
 
-## Hvorfor dette er viktig
+# 3. Bilisters tilpasning til bompenger
 
-Disse dataene er viktig fordi det fra før ikke finnes mye forskning eller utredninger for å se hvilke sammfunnsøkonomiske effekter bompenger vil innebære for Tromsø. For å forstå hvordan markedet vil reagere på bompenger i fremtiden, så trenger vi også å se på hvordan markedet har oppførst seg før innføringen.
+## Tallgrunnlag
 
-# 4. Bilisters tilpasning til bompenger
+I denne analysen vil det ikke bli analysert biler uten gyldig AutoPASS brikke. Det vil bli sett på gjennomsnittlige små personbiler sin etterspørsel etter antall kilometer kjørt.
+
+Vi starter med å se på noen tabeller som inneholder tallgrunnlag for å gjennomføre denne analysen. I tabell 2 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer inkl. alle avgifter, og i tabell 3 ser vi at forbrenningsmotoren har en kostnad på 3,03 kroner per kilometer.
 
 Tabell 2: Distanseavhengige kostnader per kilometer for elbiler (2022-kr).
 
@@ -638,7 +652,7 @@ Totalt & 1,76 & 2,53 & 3,03 \\
 \end{tabular}
 \end{table}
 
-I denne analysen vil jeg ikke gå inn på biler uten AUTOpass brikke da Tromsø er en av byene med høyest antall registrerte biler som har AUTOpass, jeg vil heller ikke fokusere på tyngre kjøretøy.
+I tabell 4 og 5 finner vi taksten og tallgrunnlaget for bilister under 3,5 tonn. Og i [denne](https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123) artikkelen fra Nordlys får vi videre vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.
 
 Tabell 4: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
 
@@ -671,20 +685,25 @@ Tabell 5: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
   \hline
 \end{tabular}
 
+Median årlig inntekt i Tromsø finner man på SSB [her.](https://www.ssb.no/97014/median-inntekt-etter-skatt-etter-fylke-og-husholdningstype.kroner) Denne sier at medianinntekten er på 422 000 kroner for Tromsø i 2022.
+
+Og her finner man [gjennomsnittlig kjørelengde](https://www.ssb.no/statbank/table/12577/tableViewLayout1/) for personbiler som er omtrent 12841 km i året i 2022.
 
 ## Noen sentrale forutsetninger
 
-Vi forutsetter at konsumenten (bilistens) inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
+Vi forutsetter at konsumentens inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
+
+I denne analysen blir det kun sett på en konsument som kjører elbil. Tallgrunnlaget er for mesteparten veldig likt for elbil og forbrenningsmotor så det vil ikke være alt for store forskjeller i resultatet annet enn at det blir å være noe dyrere for en bilist med forbrenningsmotor.
 
 ## Konsumentens budsjettbetingelse
 
-Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller $p_1$ og $p_2$ er gitt sammen med konsumentens egen inntekt $m$. Videre vil jeg referere til konsumenten som bilisten.
+Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller $p_1$ og $p_2$ er gitt sammen med konsumentens egen inntekt $m$. Videre vil det refereres til konsumenten som bilisten.
 
 $$m = p_1x_1 + p_2x_2 \tag{1}$$
 
 Hvor $x_1$ er antall enheter av gode 1 og $x_2$ er antall enheter av gode 2.
 
-Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på pr kilometer kjørt som vi kaller for $p_1$ = 1,98 og $m$ = 1156. [Inntekt regnes ut ved å ta gjennomsnittlig årlig inntekt fra SSB i Tromsø og dele på 365](https://www.ssb.no/97014/median-inntekt-etter-skatt-etter-fylke-og-husholdningstype.kroner) Da blir budsjettbetingelsen 1156 = 1 $x_1$ + 1,98 $x_2$.
+Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for $p_1$ = 1,98 og $m$ = 422000. Da blir budsjettbetingelsen med tallgrunnlaget: $$422000 = 1 x_1 + 1,98 x_2$$
 
 Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis $x_2$ og da kan vi omformulere ligningen slik:
 
@@ -692,160 +711,267 @@ $$x_2 = \frac{m}{p_2} - \frac{p_1}{p_2}x_1 \tag{7}$$
 
 Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{m}{p_2}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{p_1}{p_2}$ enheter av gode 2. Da er $\frac{p_1}{p_2}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{p_1}{p_2}$.        
 
-Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for El-bilisten og for bensin/diesel bilisten.
+Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for elbilisten:
 
 ```{python}
-# Definerer hvor lang x-aksen skal være
-x=np.linspace(0.001,585, 100)
+# Definerer funksjonen som skal brukes til å lage figurer
+def create_ax():
+                fig, ax = plt.subplots(figsize=(10, 5))
+                ax.set_ylabel('Penger, $x_2$', loc='top')
+                ax.set_xlabel('Antall kilometer kjørt, $x_1$', loc='right')
+                ax.spines['top'].set_color('none')
+                ax.spines['right'].set_color('none')
+                return fig, ax
 
-# Definerer budsjettfunksjonen som beskrevet tidligere
+# Definerer budsjettfunksjonen
 def budsjett(M, p1, p2, x1):
-    return M/p2 - p1*x1/p2
+    return (M - p1 * x1) / p2
+
+# Definerer tallgrunnlaget som skal brukes i budsjettfunksjonen
+M = 422000
+p1 = 1.98
+p2 = 1
+x1_range = np.linspace(0, 442000, 100)
+x2_range = budsjett(M, p1, p2, x1_range)
 
 # Starter på første figur for kapittel 3
-fig, ax = plt.subplots(1,2, sharey=True, figsize=(20,7))
+fig, ax = create_ax()
 
 # Setter inn verdier for M, p1 og p2 for elbilisten
-ax[0].plot(x, budsjett(1156, 1.98, 1, x), color="cornflowerblue", label = 'Elbilistens budsjett')
-
-# Setter x-aksen til å gå fra 0 til 585
-ax[0].set(xlim=(0,585))
+ax.plot(x1_range, x2_range, color="cornflowerblue", label = 'Konsumentens budsjettlinje')
 
 # Fyller inn mulighetsområdet
-ax[0].fill_between(x, 0, budsjett(1156, 1.98, 1, x), color = "palevioletred",alpha = 0.3,label='Mulighetsområdet')
+ax.fill_between(x1_range, 0, x2_range, color = "green",alpha = 0.3,label='Mulighetsområdet')
 
-# Setter inn verdier for M, p1 og p2 for forbrenningsmotoren
-ax[1].plot(x, budsjett(1156, 3.03, 1, x), color="cornflowerblue", label = 'Forbrenningsmotorens budsjett')
+# Setter x-lim og y-limit
+ax.set_xlim(0, 442000)
+ax.set_ylim(0, 422000)
 
-# Fyller inn mulighetsområdet
-ax[1].fill_between(x, 0, budsjett(1156, 3.03, 1, x), color = "palevioletred",alpha = 0.3,label='Mulighetsområdet')
+# fixing x and y limits
+ax.set_title('Elbilistens budsjettlinje og mulighetsområde', size=18)
 
-# Setter x-aksen til å gå fra 0 til 385
-ax[1].set(xlim=(0,385))
-
-# Løkke for å definere akser, y-limit og at det ikke skal være ramme, samt at det skal være ticks på høyre figur også
-for j in range(2):
-    ax[j].set_ylabel('$x_2$', loc='top', rotation=0, size=15)
-    ax[j].set_xlabel('$x_1$', loc='right', size=15)
-    ax[j].spines['top'].set_color('none')
-    ax[j].spines['right'].set_color('none')
-    ax[j].set_ylim(0, 1156)
-    # change size of x and y ticks
-    ax[j].tick_params(axis='both', which='major', labelsize=15,labelleft=True)
-    
-# Titler
-fig.suptitle('Bilistens budsjettlinje og mulighetsområde', size=20)
-ax[0].set_title('Elbil', size=18)
-ax[1].set_title('Forbrenningsmotor', size=18)
-
-# Legender
-ax[0].legend(loc='best', fontsize=15)
-ax[1].legend(loc='best', fontsize=15);
+# Legende
+ax.legend(loc='best', fontsize=15);
 ```
 
 ## Endringer i budsjettbetingelsen etter innføring av bompenger
 
-Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner og for en forbrenningsmotorbilist 3,03 kroner. Men vi skal også se på hva som skjer etter innføringen av bompenger. 
+Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner. Videre trenger vi å finne en pris per kilometer for elbilen med bompenger inkludert. 
 
+Fra tallgrunnlaget tidligere vet vi at årlig betaler en gjenomsnittlig tromsøværing bompenger for 4200 kroner per år. Dette er inkludert både forbrenningsmotor og elbil, men lar det stå siden det ikke finnes direkte tall på kun elbil.
 
-La oss se på noen forskjellige bompengescenarioer:
+Vi vet fra tallgrunnlaget tidligere at gjennomsnittlig årlig kjørelengde for elbilister er på omtrent 12841 km i året.
 
-Bilist type 1: Kjører 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke og utenom rushtid betaler bilisten 9,6 kr per passering.
+Da blir prisen per kilometer kjørt for elbilister med bompenger:
 
-5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 9,6 kroner i bompenger * 2 antall bompasseringer = 4608 kr ekstra i året til bompenger utenom rushtid.
+$$\frac{4200}{12841} = 0,328 kr/km$$
 
-Bilist type 2: Kjører 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke i rushtid betaler bilisten 28,80 kr per passering.
+Med prisen per kilometer kjørt fra tidligere og påslaget får vi da totalprisen per kilometer kjørt for elbilister med bompenger inkludert:
 
-5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 28,80 kroner i bompenger * 2 antall bompasseringer = 13824 kr ekstra i året til bompenger i rushtid.
+$$1,98 + 0,328 = 2,308 kr/km$$
 
-Bilist type 3: Kjører Elbil 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke og utenom rushtid betaler bilisten 4,80 kr per passering.
-
-5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 4,80 kroner i bompenger * 2 antall bompasseringer = 2304 kr ekstra i året til bompenger utenom rushtid.
-
-Bilist type 4: Kjører Elbil 2 ganger daglig til jobb på tromsøya, 5 dager i uken, 48 uker i året. Med gyldig Autopassbrikke i rushtid betaler bilisten 28,80 kr per passering.
-
-5 * 48 = 240 som blir antall kjøredager i året. 240 kjøredager * 14,40 kroner i bompenger * 2 antall bompasseringer = 6912 kr ekstra i året til bompenger i rushtid.
-
-
-Videre ser vi på hvordan dette vil påvirke påslaget i pris per kilometer for to scenario, et for scenario 1 og et for scenario 3 med forbrenningsmotor og elbil.
-
-La oss anta at både elbil og personbil kjører gjenomsnittlig 11 097 km i året i følge tall fra [SSB](https://www.ssb.no/statbank/table/12575/tableViewLayout1/).
-
-Vi deler årlig pris på årlig antall gjennomsnittlig kjørelengde og får $4608/ 11097 = 0,415$ kr per km i påslag for scenario 1.
-
-Vi deler årlig pris på årlig antall gjennomsnittlig kjørelengde og får $2304/ 11097 = 0,207$ kr per km i påslag for scenario 3.
-
-Ifølge tall fra tabell 3 og 4 hentet fra [TØI](https://www.toi.no/getfile.php?mmfileid=74283) blir den totale ekstra prisen per kilometer kjørt for forbrenningsmotor $3,03 + 0,415 = 3,445$ kr per km kjørt og for elbil $1,98 + 0,207 = 2,187$ kr per km kjørt.
-
-I figuren under kan man se hvordan budsjettlinjen til en elbilist og en forbrenningsmotorbilist reduseres etter innføringen av bompenger.
+I figuren under kan man se hvordan budsjettlinjen til elbilisten reduseres med økt pris per kilometers kjørt.
 
 ```{python}
-fig, axs = plt.subplots(1,2, sharey=True, figsize=(20,7))
+# Definerer den nye kr/km
+p1_2 = p1 + 0.328
+x2_range_2 = budsjett(M, p1_2, p2, x1_range)
 
-# plott av oppr. linje
+# Starter på andre figur for kapittel 3
+fig, ax = create_ax()
 
-axs[0].plot(x, budsjett(1156, 1.98, 1, x), label = 'Opprinnelig budsjett', color="cornflowerblue")
-axs[1].plot(x, budsjett(1156, 3.03, 1, x), label = 'Opprinnelig budsjett', color="cornflowerblue")
+# Plotter opprinnelig budsjettlinje
+ax.plot(x1_range, x2_range, color="cornflowerblue", label = 'Opprinnelig budsjettlinje')
 
-# linje med økt inntekt
+# Plotter nye budsjettlinje
+ax.plot(x1_range, x2_range_2, color="palevioletred", label = 'Budsjett med økt kr/km')
 
-axs[0].plot(x, budsjett(1156, 2.187, 1, x), label = 'Budsjett med økt $p_1$', color="green")
+# Setter limit for x og y
+ax.set_xlim(0, 442000/2)
+ax.set_ylim(0, 422000)
 
-# økt pris
+# Fyller inn mulighetsområdet med fillbetween
+ax.fill_between(x1_range, x2_range_2, x2_range, color = "red",alpha = 0.3,label='Redusert mulighetsområde')
 
-axs[1].plot(x, budsjett(1156, 3.445, 1, x), label = 'Budsjett med økt $p_1$', color="green")
-
-# fyll mellom ny og gammel linje
-
-axs[0].fill_between(x, budsjett(1156, 1.98, 1, x), budsjett(1156, 2.187, 1, x), color = "palevioletred",alpha = 0.3,label='Redusert mulighetsområde')
-axs[1].fill_between(x, budsjett(1156, 3.03, 1, x), budsjett(1156, 3.445, 1, x), color = "palevioletred",alpha = 0.3,label='Redusert mulighetsområde')
-
-# bruk løkke for å tegne aksene
-
-for j in range(2):
-    axs[j].set_ylabel('$x_2$', loc='top', rotation=0, size=15)
-    axs[j].set_xlabel('$x_1$', loc='right', size=15)
-    axs[j].set(xlim=(0,600))
-    axs[j].set(ylim=(0,1200))
-    axs[j].spines['top'].set_color('none')
-    axs[j].spines['right'].set_color('none')
-    axs[j].tick_params(axis='both', which='major', labelsize=15,labelleft=True)
-    
-
-
-
-# gi en passende tittel
-
-fig.suptitle('Endring etter innføring av bompenger', size=20)
-axs[0].set_title('Økning i $p_1$ for elbilisten', size=18)
-axs[1].set_title('Økning i $p_1$ for forbrenningsmotoren', size=18)
-
-# Legender
-ax[0].legend(loc='best', fontsize=15)
-ax[1].legend(loc='best', fontsize=15);
+ax.set_title('Økning i kroner per kilometer', size=18)
+# Legende
+ax.legend();
 ```
 
+## Fra konsumentens tilpasning til etterspørsel
 
+Vi skal nå bruke en nyttefunksjon for å kunne modellere elbilistens valg av konsum av andre goder og antall kilometer kjørt. Vi antar at nytten til elbilisten er gitt ved en Stone-Geary nyttefunksjon som er tatt med utgangspunkt i LES-modellen:
+
+$$max: U = \Sigma_i \beta_i \log(x_i - \gamma_i) \quad s.t. \quad \Sigma_ip_ix_i=y \tag{3}$$
+
+Her er $x_i$ mengden konsum av gode $i$, $p_i$ er prisen på gode $i$, $y$ er inntekten til konsumenten, $\beta_i$ er en positiv parameter som måler den marginale budsjettandelen av gode $i$ og $\gamma_i$ er en positiv parameter som måler minimumskonsumet av det samme.
+
+Med hjelp av Lagrange-multiplikatoren kan vi utlede husstandenes Marshalliske etterspørselsfunksjoner for produkt i:
+
+$$x_i = \gamma_i + (\frac{\beta_i}{p_i})(y-\Sigma_jp_j\gamma_j). \tag{4}$$
+
+Når utgiftene er en lineær funksjon av inntekt og priser, er det nyttig å multiplisere ligning (2.3) med prisene $p_i$ Dette gir oss en lineær funksjon:
+
+$$p_i x_i = p_i\gamma_i + \beta_i(y - \Sigma_jp_j\gamma_j) \tag{5}$$
+
+Som er kjent som det lineære utgiftssystemet. Her er $\Sigma_jp_j\gamma_j$ et nødvendig nivå av konsum, og $\gamma - \Sigma_jp_j\gamma_j$ er den delen av inntekten som ikke blir brukt på konsum.
+
+Videre i ligning 6, 7 og 8 regner vi på uttrykk for egenpris-, krysspris og inntektselastisitetene til gode 1 og 2:
+
+Egenpriselastisitet:
+
+$$e_{ii} = \frac{\gamma_i(1-\beta_i)}{x_i}-1 < 0 \tag{6}$$
+
+Fordi $\beta_i$ er positiv og $\gamma_i$ er positiv, er $e_{ii}$ negativ. Dette betyr at egenpriselasiteten normalt er negativ. En økning i prisen på gode $i$ vil føre til en reduksjon i mengden av gode $i$ som etterspøres.
+
+Krysspriselastisitet:
+
+$$e_{ij} = - \frac{\beta_i\gamma_jp_j}{p_ix_i} \tag{7}$$
+
+Hvis elastisiteten er positiv, er gode $i$ og $j$ substitutter. Hvis elastisiteten er negativ, er gode $i$ og $j$ komplementær.
+
+La oss se på økningen i prisen på gode 1, $p_1$.
+
+Vi tar utgangspunkt i 50/30/20 regelen. Denne sier at 50% av inntekten skal gå til faste utgifter, 30% til forbruk og 20% til sparing.
+
+Hvis vi antar at elbilisten har en inntekt på 422000 kroner i året, vil det si at 211000 kroner går til faste utgifter, 126600 kroner går til forbruk og 84400 kroner går til sparing. Av disse 126600 kronene som går til forbruk inngår omtrent $$1,98  * 12841 = 25400$$ kroner i konsum av bilkjøring. Dette blir $$\frac{25400}{442000} =  5.75\%$$ av forbruket.
+
+Det vil si at $\beta_1$ som er andelen av inntekten som går til kroner per kilometer blir satt til 0.0575, mens $\beta_2$ som er andelen av andre goder blir satt til 0.9425.
+
+$$\beta_1 = 0.0575 \quad og \quad \beta_2 = 1-\beta1 = 0.9425$$
+
+Gamma er minimumskonsumet av gode 1 og 2. Her Vi setter $\gamma_1$ til 1 og $\gamma_2$ til 0.5 siden blabla.
+
+Budsjettet har vi definert tidligere, det er $m = 422000$.
 
 ```{python}
+# Definerer symboler
+bta_1, bta_2, gma_1, gma_2, U_0 = sp.symbols('\u03B2_1 \u03B2_2 \gamma_1 \gamma_2 U_0', real=True, positive=True)
+x_1, x_2, p_1, p_2, m=sp.symbols("x_1 x_2 p_1 p_2 m", real=True, positive=True)
+```
 
+```{python}
+# Setter opp nyttefunksjonen (3)
+nytte_sg = bta_1*sp.log(x_1-gma_1) + (1-bta_1)*sp.log(x_2-gma_2)
+
+# Setter opp etterspørsel etter gode 1 (4)
+x_1_eq = gma_1 + (bta_1/p_1)*(m-p_1*gma_1-p_2*gma_2)
+
+# Etterspørsel etter gode 2 (4)
+x_2_eq = gma_2 + (bta_2/p_2)*(m-p_1*gma_1-p_2*gma_2)
+
+# Budsjett, samme som før
+def budsjett(M, x_1, p_1, p_2):
+    return M/p_2 - (p_1*x_1/p_2)
+
+# Finner oppnådd nytte i likevekten
+like_v = nytte_sg.subs([(x_1, x_1_eq), (x_2, x_2_eq)])
+
+# Lager funksjonen for indifferenskurven
+ind_k = sp.solve(nytte_sg-U_0, x_2)[0]
+
+# Forts
+def ind_k_fn(bta_1,gma_1,gma_2,x_1,U_0):
+    return gma_2 + np.exp((bta_1*np.log(x_1-gma_1)-U_0)/(bta_1-1))
+```
+
+```{python}
+# Setter tallverdier til beta 1 og 2 som begrunnet tidligere
+beta_1 = 0.0575
+beta_2 = 0.9425
+
+# Setter inn verdier, se tallgrunnlaget
+x_1_eq_num = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
+x_2_eq_num = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
+nytte_sg_num = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
+```
+
+```{python}
+# Lager ny x verdi som gjør at vi kan plotte indifferenskurven uten negativ verdi
+X = np.linspace (1.01,442000,1000)
+
+fig, ax = create_ax()
+
+ax.plot(x1_range, budsjett(M, x1_range, p1, p2), color='cornflowerblue', label='Opprinnelig budsjett')
+ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_num), color='cornflowerblue',label='Indifferenskurve')
+
+ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='cornflowerblue', label='Elbilistens tilpasning')
+
+ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='cornflowerblue', fontsize=15)
+
+ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='cornflowerblue')
+ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='cornflowerblue')
+
+ax.set_xlim(0, 20000)
+ax.set_ylim(350000, 452000)
+
+ax.set_title('Inntekts- og substitusjonseffekt', size=18)
+
+ax.legend(loc='best', fontsize=12);
+```
+
+```{python}
+# Setter inn verdien for gode_1 med økning i kr/km
+x_1_eq_ny = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
+x_2_eq_ny = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
+nytte_sg_ny = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
+```
+
+```{python}
+fig, ax = create_ax()
+
+ax.plot(X, budsjett(M, X, p1, p2), color='cornflowerblue', label='Opprinnelig budsjett')
+ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_num), color='cornflowerblue',label='Indifferenskurve')
+
+ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='cornflowerblue')
+
+ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='cornflowerblue', fontsize=15)
+
+ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='cornflowerblue')
+ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='cornflowerblue')
+
+ax.plot(X, budsjett(M, X, p1_2, p2), color='palevioletred', label='Nytt budsjett')
+ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_ny), color='red', label='Indifferenskurve med nytt budsjett')
+
+ax.annotate('B', (x_1_eq_ny,x_2_eq_ny-6000), color='palevioletred', fontsize=15)
+ax.plot(x_1_eq_ny, x_2_eq_ny , marker='o', color='palevioletred', label='Elbilistens nye tilpasning')
+
+ax.vlines(x_1_eq_ny, 0, x_2_eq_ny, ls='dashed', color='palevioletred')
+ax.hlines(x_2_eq_ny, 0, x_1_eq_ny, ls='dashed', color='palevioletred')
+
+ax.set_xlim(0, 20000)
+ax.set_ylim(350000, 452000)
+
+ax.set_title('Inntekts- og substitusjonseffekt', size=18)
+
+ax.legend(fontsize=12);
 ```
 
 ## Samfunnsøkonomiske effekter
-
-```{python}
-
-```
 
 ## Estimat av sentrale parameter
 
 ## Vurdering
 
-# 5. Konklusjon
+# 4. Konklusjon
 
-# 6. Referanser
+# 5. Referanser
 
-# 7. Appendiks for CHATGPT
+Les Finland 2012. (n.d.). Uit-SOK-1006-V23.github.io/forelesningsplan.md at main · uit-SOK-1006-V23/UIT-SOK-1006-V23.Github.io. GitHub. https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/forelesningsplan.md 
+
+## Tabeller
+
+[Tabell 1: Dette er bypakke Tenk Tromsø.](https://tenktromso.no/dette-er-bypakke-tenk-tromso)
+
+[Tabell 2: Konseptvalgutredning veibruksavgift og bompenger, vedlegg 6-3 Transportmodell beregninger.](https://www.toi.no/getfile.php?mmfileid=74283)
+
+[Tabell 3: Konseptvalgutredning veibruksavgift og bompenger, vedlegg 6-3 Transportmodell beregninger.](https://www.toi.no/getfile.php?mmfileid=74283)
+
+[Tabell 4: Bypakke Tenk Tromsø. BPS Nord.](https://bpsnord.no/bypakke-tenk-tromso/)
+
+[Tabell 5: Bypakke Tenk Tromsø. BPS Nord.](https://bpsnord.no/bypakke-tenk-tromso/)
+
+# 7. Appendiks for ChatGPT
 
 -   Can you make this a latex table for me:
 
