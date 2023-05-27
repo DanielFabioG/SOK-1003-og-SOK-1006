@@ -11,16 +11,12 @@ format:
       - left=20mm
       - right=20mm
       - heightrounded
-    lof: true
     fontsize: 12pt
     documentclass: scrartcl
     papersize: a4
 echo: false
 toc: true
 toc-title: "Innholdsliste"
-crossref: 
-  lof-title: "Figurliste"
-  fig-title: "Figur"
 header-includes:
   - \usepackage{wrapfig}
   - \usepackage{colortbl}
@@ -53,21 +49,9 @@ En bompengeavgift ble innført på Tromsøya 5. januar 2023 som en del av byutvi
 
 Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige bussterminaler, bedre holdeplasser og knutepunkt for bussen, og gjøre tiltak som sørger for bedre traffikflyt. I tillegg skal det bedre fremkommeligheten for næringstransporten i Tromsø.
 
-## Utbredelse
-
-Bompenger er en avgift som har vært i Norge allerede flere plasser, og i Nord-Norge.
-
-1.  I Narvik er det innført bompenger over Haalogalandsbrua der det koster 90 kr for liten bil og 225 kr for stol bil.
-
-2.  I Harstad er det innført bompenger i sentrum der det koster 16 kr for liten bil og 40 kr for stor bil.
-
-3.  I Tromsø fra før har det vært innført bompenger ved Ryaforbindelsen der det koster 85 kr for liten bil og 75 kr for stor bil.
-
 ## Erfaringer
 
 Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal nås gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
-
-## Prosjekter som skal finansieres
 
 Tabell 1: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).
 
@@ -108,6 +92,41 @@ Etablering av bomstasjoner & 35 \\
 \hline
 \end{tabular}
 \end{table}
+
+## Bompengekostnader i Tromsø og kostnad per prosjekt
+
+Tabell 1: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
+
+\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
+  \hline
+  \rowcolor{cyan}
+  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
+  \cline{2-5}
+  \rowcolor{cyan}
+  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
+  \hline
+  Alle bomstasjoner (15) & 12,00 & 9,60 & 9,60 & 4,80 \\
+  \hline
+\end{tabular}
+
+Tabell 2: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
+
+\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
+  \hline
+  \rowcolor{yellow}
+  \multicolumn{5}{|c|}{\textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00}} \\
+  \hline
+  \rowcolor{cyan}
+  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
+  \cline{2-5}
+  \rowcolor{cyan}
+  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
+  \hline
+  Alle bomstasjoner (15) & 36,00 & 28,80 & 36,00 & 14,40 \\
+  \hline
+\end{tabular}
+
+Tabell 3: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).
 
 ## Struktur av redgjørelsen
 
@@ -606,9 +625,15 @@ ax.legend();
 
 I denne analysen vil det ikke bli analysert biler uten gyldig AutoPASS brikke. Det vil bli sett på gjennomsnittlige små personbiler sin etterspørsel etter antall kilometer kjørt.
 
-Vi starter med å se på noen tabeller som inneholder tallgrunnlag for å gjennomføre denne analysen. I tabell 2 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer inkl. alle avgifter, og i tabell 3 ser vi at forbrenningsmotoren har en kostnad på 3,03 kroner per kilometer.
+ I [denne](https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123) artikkelen fra Nordlys får vi videre vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.
 
-Tabell 2: Distanseavhengige kostnader per kilometer for elbiler (2022-kr).
+Median årlig inntekt i Tromsø finner man på SSB [her.](https://www.ssb.no/statbank/table/12852/) Denne sier at medianinntekten er på 48120 kr i måned, vi skal se på årlig gjennomsnitt så da blir det 577 440 kroner for Tromsø i 2022.
+
+Og her finner man [gjennomsnittlig kjørelengde](https://www.ssb.no/statbank/table/12577/tableViewLayout1/) for personbiler som er omtrent 12841 km i året i 2022.
+
+I tabell 4 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer inkl. alle avgifter, og i tabell 5 ser vi at forbrenningsmotoren har en kostnad på 3,03 kroner per kilometer.
+
+Tabell 4: Distanseavhengige kostnader per kilometer for elbiler (2022-kr).
 
 \begin{table}[ht]
 \centering
@@ -630,7 +655,7 @@ Totalt & 1,80 & 1,84 & 1,98 \\
 \end{tabular}
 \end{table}
 
-Tabell 3: Distanseavhengige kostnader for biler med forbrenningsmotor.
+Tabell 5: Distanseavhengige kostnader for biler med forbrenningsmotor.
 
 \begin{table}[ht]
 \centering
@@ -652,43 +677,6 @@ Totalt & 1,76 & 2,53 & 3,03 \\
 \end{tabular}
 \end{table}
 
-I tabell 4 og 5 finner vi taksten og tallgrunnlaget for bilister under 3,5 tonn. Og i [denne](https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123) artikkelen fra Nordlys får vi videre vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.
-
-Tabell 4: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
-
-\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
-  \hline
-  \rowcolor{cyan}
-  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
-  \cline{2-5}
-  \rowcolor{cyan}
-  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
-  \hline
-  Alle bomstasjoner (15) & 12,00 & 9,60 & 9,60 & 4,80 \\
-  \hline
-\end{tabular}
-
-Tabell 5: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
-
-\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
-  \hline
-  \rowcolor{yellow}
-  \multicolumn{5}{|c|}{\textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00}} \\
-  \hline
-  \rowcolor{cyan}
-  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
-  \cline{2-5}
-  \rowcolor{cyan}
-  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
-  \hline
-  Alle bomstasjoner (15) & 36,00 & 28,80 & 36,00 & 14,40 \\
-  \hline
-\end{tabular}
-
-Median årlig inntekt i Tromsø finner man på SSB [her.](https://www.ssb.no/97014/median-inntekt-etter-skatt-etter-fylke-og-husholdningstype.kroner) Denne sier at medianinntekten er på 422 000 kroner for Tromsø i 2022.
-
-Og her finner man [gjennomsnittlig kjørelengde](https://www.ssb.no/statbank/table/12577/tableViewLayout1/) for personbiler som er omtrent 12841 km i året i 2022.
-
 ## Noen sentrale forutsetninger
 
 Vi forutsetter at konsumentens inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
@@ -697,13 +685,13 @@ I denne analysen blir det kun sett på en konsument som kjører elbil. Tallgrunn
 
 ## Konsumentens budsjettbetingelse
 
-Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller $p_1$ og $p_2$ er gitt sammen med konsumentens egen inntekt $m$. Videre vil det refereres til konsumenten som bilisten.
+Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller $p_1$ og $p_2$ er gitt sammen med konsumentens egen inntekt $m$.
 
 $$m = p_1x_1 + p_2x_2 \tag{1}$$
 
 Hvor $x_1$ er antall enheter av gode 1 og $x_2$ er antall enheter av gode 2.
 
-Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for $p_1$ = 1,98 og $m$ = 422000. Da blir budsjettbetingelsen med tallgrunnlaget: $$422000 = 1 x_1 + 1,98 x_2$$
+Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for $p_1$ = 1,98 og $m$ = 577 440. Da blir budsjettbetingelsen med tallgrunnlaget: $$577 440 = 1 x_1 + 1,98 x_2$$
 
 Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis $x_2$ og da kan vi omformulere ligningen slik:
 
@@ -711,14 +699,14 @@ $$x_2 = \frac{m}{p_2} - \frac{p_1}{p_2}x_1 \tag{7}$$
 
 Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{m}{p_2}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{p_1}{p_2}$ enheter av gode 2. Da er $\frac{p_1}{p_2}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{p_1}{p_2}$.        
 
-Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for elbilisten:
+Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for konsumenten:
 
 ```{python}
 # Definerer funksjonen som skal brukes til å lage figurer
 def create_ax():
                 fig, ax = plt.subplots(figsize=(10, 5))
-                ax.set_ylabel('Penger, $x_2$', loc='top')
-                ax.set_xlabel('Antall kilometer kjørt, $x_1$', loc='right')
+                ax.set_ylabel('Kroner, $x_2$', loc='top')
+                ax.set_xlabel('Kroner i kilometer kjørt, $x_1$', loc='right')
                 ax.spines['top'].set_color('none')
                 ax.spines['right'].set_color('none')
                 return fig, ax
@@ -728,10 +716,10 @@ def budsjett(M, p1, p2, x1):
     return (M - p1 * x1) / p2
 
 # Definerer tallgrunnlaget som skal brukes i budsjettfunksjonen
-M = 422000
+M = 577440
 p1 = 1.98
 p2 = 1
-x1_range = np.linspace(0, 442000, 100)
+x1_range = np.linspace(0, M, 1000)
 x2_range = budsjett(M, p1, p2, x1_range)
 
 # Starter på første figur for kapittel 3
@@ -743,12 +731,11 @@ ax.plot(x1_range, x2_range, color="cornflowerblue", label = 'Konsumentens budsje
 # Fyller inn mulighetsområdet
 ax.fill_between(x1_range, 0, x2_range, color = "green",alpha = 0.3,label='Mulighetsområdet')
 
-# Setter x-lim og y-limit
-ax.set_xlim(0, 442000)
-ax.set_ylim(0, 422000)
-
 # fixing x and y limits
 ax.set_title('Elbilistens budsjettlinje og mulighetsområde', size=18)
+
+ax.set_xlim(0, M/2)
+ax.set_ylim(0, M)
 
 # Legende
 ax.legend(loc='best', fontsize=15);
@@ -787,8 +774,8 @@ ax.plot(x1_range, x2_range, color="cornflowerblue", label = 'Opprinnelig budsjet
 ax.plot(x1_range, x2_range_2, color="palevioletred", label = 'Budsjett med økt kr/km')
 
 # Setter limit for x og y
-ax.set_xlim(0, 442000/2)
-ax.set_ylim(0, 422000)
+ax.set_xlim(0, M/2)
+ax.set_ylim(0, M)
 
 # Fyller inn mulighetsområdet med fillbetween
 ax.fill_between(x1_range, x2_range_2, x2_range, color = "red",alpha = 0.3,label='Redusert mulighetsområde')
@@ -834,15 +821,15 @@ La oss se på økningen i prisen på gode 1, $p_1$.
 
 Vi tar utgangspunkt i 50/30/20 regelen. Denne sier at 50% av inntekten skal gå til faste utgifter, 30% til forbruk og 20% til sparing.
 
-Hvis vi antar at elbilisten har en inntekt på 422000 kroner i året, vil det si at 211000 kroner går til faste utgifter, 126600 kroner går til forbruk og 84400 kroner går til sparing. Av disse 126600 kronene som går til forbruk inngår omtrent $$1,98  * 12841 = 25400$$ kroner i konsum av bilkjøring. Dette blir $$\frac{25400}{442000} =  5.75\%$$ av forbruket.
+Hvis vi antar at elbilisten har en inntekt på 577 440 kroner i året, vil det si at 211000 kroner går til faste utgifter, 126600 kroner går til forbruk og 84400 kroner går til sparing. Av disse 126600 kronene som går til forbruk inngår omtrent $$1,98  * 12841 = 25400$$ kroner i konsum av bilkjøring. 1,98 er kr per km Dette blir $$\frac{25400}{577440} =  4.44\%$$ av forbruket.
 
-Det vil si at $\beta_1$ som er andelen av inntekten som går til kroner per kilometer blir satt til 0.0575, mens $\beta_2$ som er andelen av andre goder blir satt til 0.9425.
+Det vil si at $\beta_1$ som er andelen av inntekten som går til kroner per kilometer blir satt til 0.044, mens $\beta_2$ som er andelen av andre goder blir satt til 0.956.
 
-$$\beta_1 = 0.0575 \quad og \quad \beta_2 = 1-\beta1 = 0.9425$$
+$$\beta_1 = 0.044 \quad og \quad \beta_2 = 1-\beta1 = 0.956$$
 
-Gamma er minimumskonsumet av gode 1 og 2. Her Vi setter $\gamma_1$ til 1 og $\gamma_2$ til 0.5 siden blabla.
+Med å fortsette på utgangspunktet i 50/30/20 regelen kan vi si at 50% av budsjettet blir brukt på Gamma 1 som er minimum nødvendig konsum for å oppnå maksimal nytte av gode 1. Her settes $\gamma_1$ til 288720 og $\gamma_2$ til det samme av kr per km som delt på to blir 6420 kilometer kjørt.
 
-Budsjettet har vi definert tidligere, det er $m = 422000$.
+Budsjettet har vi definert tidligere, det er $m = 577440$.
 
 ```{python}
 # Definerer symboler
@@ -877,87 +864,136 @@ def ind_k_fn(bta_1,gma_1,gma_2,x_1,U_0):
 
 ```{python}
 # Setter tallverdier til beta 1 og 2 som begrunnet tidligere
-beta_1 = 0.0575
-beta_2 = 0.9425
+beta_1 = 0.044
+beta_2 = 0.956
+
+# Setter tallverdier til gamma 1 og 2 som begrunnet tidligere
+gamma_1 = 12700
+gamma_2 = 288720
 
 # Setter inn verdier, se tallgrunnlaget
-x_1_eq_num = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
-x_2_eq_num = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
-nytte_sg_num = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1), (p_2, p2)]))
+x_1_eq_num = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1), (p_2, p2)]))
+x_2_eq_num = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1), (p_2, p2)]))
+nytte_sg_num = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1), (p_2, p2)]))
 ```
+
+Det vi kan se i figuren under er at før bompenger blir introdusert vil konsumenten tilpasse seg på indifferenskurven med å konsumere 18557 kroner i kilometer kjørt den resterende inntekten på 540 697 kroner blir brukt til konsum av andre goder.
 
 ```{python}
 # Lager ny x verdi som gjør at vi kan plotte indifferenskurven uten negativ verdi
-X = np.linspace (1.01,442000,1000)
+X = np.linspace (gamma_1+1,M,10000)
 
+# Starter figuren
 fig, ax = create_ax()
 
-ax.plot(x1_range, budsjett(M, x1_range, p1, p2), color='cornflowerblue', label='Opprinnelig budsjett')
-ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_num), color='cornflowerblue',label='Indifferenskurve')
+# Plotter budsjettlinjen
+ax.plot(x1_range, budsjett(M, x1_range, p1, p2), color='black', label='Opprinnelig budsjett')
 
-ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='cornflowerblue', label='Elbilistens tilpasning')
+# Plotter indifferenskurven
+ax.plot(X, ind_k_fn(beta_1,gamma_1,gamma_2,X,nytte_sg_num), color='black',label='Indifferenskurve')
 
-ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='cornflowerblue', fontsize=15)
+# Plotter likevekten
+ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='black', label='Elbilistens tilpasning')
 
-ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='cornflowerblue')
-ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='cornflowerblue')
+# Plotter punkt A
+ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='black', fontsize=15)
 
-ax.set_xlim(0, 20000)
-ax.set_ylim(350000, 452000)
+# Setter linjer til likevekten
+ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='black')
+ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='black')
 
+# Setter lim på aksene og tittel
+ax.set_xlim(12000, 25000)
+ax.set_ylim(510244, M)
 ax.set_title('Inntekts- og substitusjonseffekt', size=18)
-
-ax.legend(loc='best', fontsize=12);
+# Legende
+ax.legend(loc='best', fontsize=15);
 ```
 
 ```{python}
 # Setter inn verdien for gode_1 med økning i kr/km
-x_1_eq_ny = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
-x_2_eq_ny = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
-nytte_sg_ny = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, 1), (gma_2, 1), (m, M), (p_1, p1_2), (p_2, p2)]))
+x_1_eq_ny = float(x_1_eq.subs([(bta_1, beta_1), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1_2), (p_2, p2)]))
+x_2_eq_ny = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1_2), (p_2, p2)]))
+nytte_sg_ny = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1_2), (p_2, p2)]))
 ```
 
+Etter innføring av bompenger blir konsumentens budsjettlinje forskjøvet nedover og mulighetsområdet blir mindre for å konsumere begge goder, med påslaget i bompenger vil konsumenten tilpasse seg på en ny indifferenskurve med et konsum på 17645 kroner i kilometer kjørt og 536 714 kroner til konsum av andre goder. Det vi kan se her er at bilistens konsum av gode 1 har sunket med 912 kroner i kilometer kjørt, dette er substitusjonseffekten.
+
 ```{python}
+
+# Siste figur
 fig, ax = create_ax()
 
-ax.plot(X, budsjett(M, X, p1, p2), color='cornflowerblue', label='Opprinnelig budsjett')
-ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_num), color='cornflowerblue',label='Indifferenskurve')
+# Plotter budsjettlinjen
+ax.plot(x1_range, budsjett(M, x1_range, p1, p2), color='black', label='Opprinnelig budsjett')
+# Plotter indifferenskurven
+ax.plot(X, ind_k_fn(beta_1,gamma_1,gamma_2,X,nytte_sg_num), color='black',label='Indifferenskurve')
+# Plotter likevekten
+ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='black')
+# Plotter punkt A
+ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='black', fontsize=15)
 
-ax.plot(x_1_eq_num, x_2_eq_num , marker='o', color='cornflowerblue')
+# Setter linjer til likevekten
+ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='black')
+ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='black')
 
-ax.annotate('A', (x_1_eq_num+.5,x_2_eq_num), color='cornflowerblue', fontsize=15)
+# Plotter budsjettlinjen med ny pris i gode 1
+ax.plot(x1_range, budsjett(M, x1_range, p1_2, p2), color='palevioletred', label='Nytt budsjett')
+# Plotter indifferenskurven med ny pris i gode 1
+ax.plot(X, ind_k_fn(beta_1,gamma_1,gamma_2,X,nytte_sg_ny), color='red', label='Indifferenskurve med nytt budsjett')
 
-ax.vlines(x_1_eq_num, 0, x_2_eq_num, ls='dashed', color='cornflowerblue')
-ax.hlines(x_2_eq_num, 0, x_1_eq_num, ls='dashed', color='cornflowerblue')
-
-ax.plot(X, budsjett(M, X, p1_2, p2), color='palevioletred', label='Nytt budsjett')
-ax.plot(X, ind_k_fn(beta_1,1,1,X,nytte_sg_ny), color='red', label='Indifferenskurve med nytt budsjett')
-
-ax.annotate('B', (x_1_eq_ny,x_2_eq_ny-6000), color='palevioletred', fontsize=15)
+# Plotter likevekten med ny pris i gode 1
+ax.annotate('B', (x_1_eq_ny,x_2_eq_ny-3500), color='palevioletred', fontsize=15)
 ax.plot(x_1_eq_ny, x_2_eq_ny , marker='o', color='palevioletred', label='Elbilistens nye tilpasning')
 
+# Setter linjer til likevekten med ny pris i gode 1
 ax.vlines(x_1_eq_ny, 0, x_2_eq_ny, ls='dashed', color='palevioletred')
 ax.hlines(x_2_eq_ny, 0, x_1_eq_ny, ls='dashed', color='palevioletred')
 
-ax.set_xlim(0, 20000)
-ax.set_ylim(350000, 452000)
-
+# Setter lim på aksene og tittel
+ax.set_xlim(12000, 25000)
+ax.set_ylim(510244, M)
 ax.set_title('Inntekts- og substitusjonseffekt', size=18)
-
+# Legende
 ax.legend(fontsize=12);
 ```
 
-## Samfunnsøkonomiske effekter
+Videre kan vi se i figuren at bilisten ikke er prissensitiv i etterspørsel etter kroner per kilometer kjørt, bompengeinnføringen får ikke relativt stor effekt på bilistens konsum av kroner per kilometer kjørt.
 
 ## Estimat av sentrale parameter
 
-## Vurdering
+```{python}
+# Regne ut egenpriselastisiteten
+egenpriselastisitet = float(gamma_1*(1 - beta_1) / (x_1_eq_num - 1) -1)
+
+# f string for å si noe om egenpriselasisiteten
+f'Elbilistens egenpriselastisitet vi får her er  {egenpriselastisitet:.2f}.'
+```
+
+Det vi finner ut av på både kort sikt og lang sikt er at elastisiteten på kroner per kilometer kjørt ikke er særlig stor, dette kan være fordi bilisten ikke har så mange alternativer til å kjøre bil i Tromsø. I følge egenpriselastisiteten som er regnet ut her vil etterspørselen gå ned 0.35% for hver en prosents økning på kroner per kilometer kjørt. På medium sikt ifølge SSB i dette [dokumentet på side 16](https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/artikler/konsum%20modag%202013%20merket.pdf) ligger priselastisiteten på bilkjøring på - 0.14, som er noe lavere enn det som er regnet ut her, den er også -0.14 på lang sikt.
 
 # 4. Konklusjon
 
+
 # 5. Referanser
 
-Les Finland 2012. (n.d.). Uit-SOK-1006-V23.github.io/forelesningsplan.md at main · uit-SOK-1006-V23/UIT-SOK-1006-V23.Github.io. GitHub. https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/forelesningsplan.md 
+Les Finland 2012. (n.d.). Uit-SOK-1006-V23.github.io/forelesningsplan.md at main · uit-SOK-1006-V23/UIT-SOK-1006-V23.Github.io. GitHub. https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/forelesningsplan.md
+
+Andreassen, V., Bredesen, I., &amp; Thøgersen, J. (2016). Innføring I mikroøkonomi: For økonomisk-administrative studier. Cappelen Damm.
+
+Konsumfordelingssystemet I Kvarts og Modag - Statistisk Sentralbyrå. (n.d.). https://www.ssb.no/nasjonalregnskap-og-konjunkturer/artikler-og-publikasjoner/_attachment/101943
+
+Kjørelengder. SSB. (2023, March 22). https://www.ssb.no/statbank/table/12577/tableViewLayout1/ 
+
+Lønn. SSB. (2023b, February 2). https://www.ssb.no/statbank/table/12852/ 
+
+Johansen, T. D. (2023, April 26). (+) bompenge-snittet økte I Mars: – De Viktigste Tallene går Ned. Nordlys. https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123 
+
+Trafikkdata. (n.d.). https://www.vegvesen.no/trafikkdata/start/eksport 
+
+Tenk Tromsø. (n.d.). https://tenktromso.no/ 
+
+Og takk til Derek for kunngjøring om tall på busspassasjerer i Tromsø.
 
 ## Tabeller
 
