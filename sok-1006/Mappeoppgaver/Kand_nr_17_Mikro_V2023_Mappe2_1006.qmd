@@ -688,11 +688,11 @@ $$m = p_1x_1 + p_2x_2 \tag{1}$$
 
 Hvor $x_1$ er antall enheter av gode 1 og $x_2$ er antall enheter av gode 2.
 
-Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for $p_1$ = 1,98 og $m$ = 577 440. Da blir budsjettbetingelsen med tallgrunnlaget: $$577 440 = 1 x_1 + 1,98 x_2$$
+Hvor prisen på andre goder som vi kaller for $p_2$ = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for $p_1$ = 1,98 og $m$ = 577 440. Da blir budsjettbetingelsen med tallgrunnlaget: $$577 440 = 1 x_1 + 1,98 x_2 \tag{2}$$
 
 Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis $x_2$ og da kan vi omformulere ligningen slik:
 
-$$x_2 = \frac{577 440}{1} - \frac{1,98}{1}x_1 \tag{7}$$
+$$x_2 = \frac{577 440}{1} - \frac{1,98}{1}x_1 \tag{3}$$
 
 Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{577 440}{1}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{1,98}{1}$ enheter av gode 2. Da er $\frac{1,98}{1}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{1,98}{1}$.        
 
@@ -786,17 +786,17 @@ ax.legend();
 
 Vi skal nå bruke en nyttefunksjon for å kunne modellere elbilistens valg av konsum av andre goder og antall kilometer kjørt. Vi antar at nytten til elbilisten er gitt ved en Stone-Geary nyttefunksjon som er tatt med utgangspunkt i LES-modellen:
 
-$$max: U = \Sigma_i \beta_i \log(x_i - \gamma_i) \quad s.t. \quad \Sigma_ip_ix_i=y \tag{3}$$
+$$max: U = \Sigma_i \beta_i \log(x_i - \gamma_i) \quad s.t. \quad \Sigma_ip_ix_i=y \tag{4}$$
 
 Her er $x_i$ mengden konsum av gode $i$, $p_i$ er prisen på gode $i$, $y$ er inntekten til konsumenten, $\beta_i$ er en positiv parameter som måler den marginale budsjettandelen av gode $i$ og $\gamma_i$ er en positiv parameter som måler minimumskonsumet av det samme.
 
 Med hjelp av Lagrange-multiplikatoren kan vi utlede husstandenes Marshalliske etterspørselsfunksjoner for produkt i:
 
-$$x_i = \gamma_i + (\frac{\beta_i}{p_i})(y-\Sigma_jp_j\gamma_j). \tag{4}$$
+$$x_i = \gamma_i + (\frac{\beta_i}{p_i})(y-\Sigma_jp_j\gamma_j). \tag{5}$$
 
 Når utgiftene er en lineær funksjon av inntekt og priser, er det nyttig å multiplisere ligning (2.3) med prisene $p_i$ Dette gir oss en lineær funksjon:
 
-$$p_i x_i = p_i\gamma_i + \beta_i(y - \Sigma_jp_j\gamma_j) \tag{5}$$
+$$p_i x_i = p_i\gamma_i + \beta_i(y - \Sigma_jp_j\gamma_j) \tag{6}$$
 
 Som er kjent som det lineære utgiftssystemet. Her er $\Sigma_jp_j\gamma_j$ et nødvendig nivå av konsum, og $\gamma - \Sigma_jp_j\gamma_j$ er den delen av inntekten som ikke blir brukt på konsum.
 
@@ -804,13 +804,13 @@ Videre i ligning 6 og 7 regner vi på uttrykk for egenpris- og krysspriselastisi
 
 Egenpriselastisitet:
 
-$$e_{ii} = \frac{\gamma_i(1-\beta_i)}{x_i}-1 < 0 \tag{6}$$
+$$e_{ii} = \frac{\gamma_i(1-\beta_i)}{x_i}-1 < 0 \tag{7}$$
 
 Fordi $\beta_i$ er positiv og $\gamma_i$ er positiv, er $e_{ii}$ negativ. Dette betyr at egenpriselasiteten normalt er negativ. En økning i prisen på gode $i$ vil føre til en reduksjon i mengden av gode $i$ som etterspøres.
 
 Krysspriselastisitet:
 
-$$e_{ij} = - \frac{\beta_i\gamma_jp_j}{p_ix_i} \tag{7}$$
+$$e_{ij} = - \frac{\beta_i\gamma_jp_j}{p_ix_i} \tag{8}$$
 
 Hvis elastisiteten er positiv, er gode $i$ og $j$ substitutter. Hvis elastisiteten er negativ, er gode $i$ og $j$ komplementær.
 
@@ -1047,6 +1047,8 @@ Det vi finner ut av på både kort sikt og lang sikt er at elastisiteten på kro
 # 4. Konklusjon
 
 Det vi kan se med innføringen av bompenger er at det ikke tilsynelatende på kort sikt har hatt en stor effekt på bilisters atferd og velferd i Tromsø. Som observert i kapittel 2 kunne man se en sterk reaksjon på bompengene den første måneden ved innføringen, men i månedene etter dabber effekten litt av.
+
+Det virker som at introduksjonen av bompenger har hatt en positiv effekt på bruken av kollektivtransport og det kan virke som at sykkelbruken har gått opp, uten at man kan si noe alt for sikkert siden sykkelsesongen enda ikke har startet ordentlig i Tromsø.
 
 I nyttefunksjonen ser vi at konsumenten blir å tilpasse seg å konsumere litt mer av andre goder enn elbilkjøring, men at relativt sett er effekten kun 912 kroner mindre konsum av elbilkjøring, og at den totale effekten blir at begge goder blir konsumert mindre. På lengre sikt sier elastisiteten at bilistene blir å være like lite prissensitiv, så man forventer at det blir å holde seg slik i fremtiden også, med mindre Tenk Tromsø innfører et høyere gebyr for elbilistene.
 
