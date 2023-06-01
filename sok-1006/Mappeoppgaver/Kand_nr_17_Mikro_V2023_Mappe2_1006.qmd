@@ -52,6 +52,7 @@ Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige b
 
 Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal nås gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
 
+```{=tex}
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|r|}
@@ -89,11 +90,12 @@ Etablering av bomstasjoner & 35 \\
 \hline
 \end{tabular}
 \end{table}
-
+```
 ## Bompengekostnader i Tromsø og kostnad per prosjekt
 
 Tabell 1: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
 
+```{=tex}
 \begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
   \hline
   \rowcolor{cyan}
@@ -105,9 +107,10 @@ Tabell 1: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
   Alle bomstasjoner (15) & 12,00 & 9,60 & 9,60 & 4,80 \\
   \hline
 \end{tabular}
-
+```
 Tabell 2: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
 
+```{=tex}
 \begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
   \hline
   \rowcolor{yellow}
@@ -122,7 +125,7 @@ Tabell 2: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
   Alle bomstasjoner (15) & 36,00 & 28,80 & 36,00 & 14,40 \\
   \hline
 \end{tabular}
-
+```
 Tabell 3: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).
 
 ## Struktur av redgjørelsen
@@ -326,11 +329,11 @@ df_summary_2 = df_summary_2.pivot_table(index='month', columns='year', values='T
 df_summary_2.reset_index(inplace=True)
 ```
 
-Tromsø er en by som har hatt en økning av personbiler i trafikken de siste årene. Med innføringen av bompenger fra 2023 er det ønskelig med nullvekst av personbiler i Tromsø sentrum. I figur 1 kan vi se totaloverblikket i trafikken rundt Tromsø. 
+Tromsø er en by som har hatt en økning av personbiler i trafikken de siste årene. Med innføringen av bompenger fra 2023 er det ønskelig med nullvekst av personbiler i Tromsø sentrum. I figur 1 kan vi se totaloverblikket i trafikken rundt Tromsø.
 
 Det første man kan observere er en økende trend med registrerte biler fra 2020-2022. Og etter innføringen av bompenger i 2023 så sees det en nedgang i antall registrerte biler målt mot samme måneder fra 2022.
 
-Figur 1 er basert på tall fra Statens Vegvesen, her er det satt sammen alle trafikkregistreringspunkt fra bruene, rett utenfor og på selve øya. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport). 
+Figur 1 er basert på tall fra Statens Vegvesen, her er det satt sammen alle trafikkregistreringspunkt fra bruene, rett utenfor og på selve øya. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport).
 
 ```{python}
 # Starter plottingen
@@ -383,7 +386,7 @@ model = ols('Total ~ Observasjoner + Bompenger', data=df_summary).fit()
 
 Videre skal vi se på en regresjonsanalyse av atferden til bilistene i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte biler mot den uavhengige variablen antall observasjoner hvor det er innført en dummyvariabel kalt bompenger.
 
-I figur 2 ser man atferdstrenden til bilister før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en nedgang i antall registrerte biler. 
+I figur 2 ser man atferdstrenden til bilister før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en nedgang i antall registrerte biler.
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -434,9 +437,9 @@ Vi går videre for å se på hvordan sykkeltrafikken har utviklet seg i Tromsø 
 
 I figur 3 ser vi antall syklister totalt i hele Tromsø for 2021-2023, og det som stikker mest ut er at det var en stor økning i sykkelregistreringer måneden bompenger ble innført, men at trenden har gått nedover siden.
 
-Det er verdt å merke at denne figuren ikke klarer å vise ordentlig effekten av bompenger enda siden vi ikke har kommet ordentlig inn i sykkelsesongen for 2023. I tillegg så har mai måned kun sykkelregistreringer frem til omtrent midten av måneden. 
+Det er verdt å merke at denne figuren ikke klarer å vise ordentlig effekten av bompenger enda siden vi ikke har kommet ordentlig inn i sykkelsesongen for 2023. I tillegg så har mai måned kun sykkelregistreringer frem til omtrent midten av måneden.
 
-Figur 3 er basert på tall fra Statens Vegvesen, her er det satt sammen alle sykkelregistreringspunkt på Tromsøya og utenfor. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport). 
+Figur 3 er basert på tall fra Statens Vegvesen, her er det satt sammen alle sykkelregistreringspunkt på Tromsøya og utenfor. Tallene er hentet fra Statens Vegvesen sin [trafikkdata](https://www.vegvesen.no/trafikkdata/start/eksport).
 
 ```{python}
 # Starter plottingen
@@ -527,9 +530,9 @@ ax.plot(data_after_threshold['Dato'], model2.params[0] + model2.params[1] * data
 ax.legend();
 ```
 
-## Kollektivreisende  
+## Kollektivreisende
 
-For å avslutte overblikket i markedet skal vi se på kollektivreisende. Her skal vi se på totalt antall kollektivreisende i Tromsø hver måned siden 2022. Det vi kan se i figur 5 er at det i Januar 2023 var en økning på omtrent 64% reisende med kollektivtransport i Tromsø sammenlignet med Januar 2022. Og at alle måneder etter også har hatt en økning sammenlignet med året før. 
+For å avslutte overblikket i markedet skal vi se på kollektivreisende. Her skal vi se på totalt antall kollektivreisende i Tromsø hver måned siden 2022. Det vi kan se i figur 5 er at det i Januar 2023 var en økning på omtrent 64% reisende med kollektivtransport i Tromsø sammenlignet med Januar 2022. Og at alle måneder etter også har hatt en økning sammenlignet med året før.
 
 ```{python}
 # Bruker groupby for å gruppere dataene etter år og måned, og summerer alle verdiene for hver måned
@@ -591,7 +594,7 @@ model3 = ols('Total ~ Observasjoner + Bompenger', data=df_buss).fit()
 
 Til sist ser vi på en regresjonsanalysen av kollektivreisende i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte reisende mot den uavhengige variablen antall observasjoner(dager) hvor det er innført en dummyvariabel kalt bompenger.
 
-I figur 6 ser man atferdstrenden til kollektivreisende før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en oppgang i antall registrerte kollektivreisende. 
+I figur 6 ser man atferdstrenden til kollektivreisende før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en oppgang i antall registrerte kollektivreisende.
 
 ```{python}
 # Setter threshold for å dele datasettet til før og etter bompenger
@@ -622,7 +625,7 @@ ax.legend();
 
 I denne analysen vil det ikke bli analysert biler uten gyldig AutoPASS brikke. Det vil bli sett på gjennomsnittlige små personbiler sin etterspørsel etter antall kilometer kjørt.
 
- I [denne](https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123) artikkelen fra Nordlys får vi vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.
+I [denne](https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123) artikkelen fra Nordlys får vi vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.
 
 Median årlig inntekt i Tromsø finner man på SSB [her.](https://www.ssb.no/statbank/table/12852/) Ifølge tabellen sier den at medianinntekten er på 48120 kr i måneden. Vi skal se på årlig median så da blir det 577 440 kroner for Tromsø i 2022. Grunnen til å bruke median er at det blir en bedre representasjon av inntekten til en person i Tromsø, da det ikke inkluderer den øvre lønnen og den nedre som gjennomsnittet gjør hvor henholdsvis det er noen få personer som tjener ekstremt mye og andre som kan ha en inntekt på 0.
 
@@ -630,8 +633,9 @@ Her finner man [gjennomsnittlig kjørelengde](https://www.ssb.no/statbank/table/
 
 I tabell 4 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer inkl. alle avgifter, og i tabell 5 ser vi at forbrenningsmotoren har en kostnad på 3,03 kroner per kilometer.
 
-Tabell 4: Distanseavhengige kostnader per kilometer for elbiler (2022-kr).
+Tabell 4 og 5: Distanseavhengige kostnader per kilometer for elbiler og forbrenningsmotor (2022-kr).
 
+```{=tex}
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|c|c|c|}
@@ -651,9 +655,8 @@ Totalt & 1,80 & 1,84 & 1,98 \\
 \hline
 \end{tabular}
 \end{table}
-
-Tabell 5: Distanseavhengige kostnader for biler med forbrenningsmotor.
-
+```
+```{=tex}
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|c|c|c|}
@@ -673,7 +676,7 @@ Totalt & 1,76 & 2,53 & 3,03 \\
 \hline
 \end{tabular}
 \end{table}
-
+```
 ## Noen sentrale forutsetninger
 
 Vi forutsetter at konsumentens inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
@@ -694,7 +697,7 @@ Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis $x_2$ 
 
 $$x_2 = \frac{577 440}{1} - \frac{1,98}{1}x_1 \tag{3}$$
 
-Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{577 440}{1}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{1,98}{1}$ enheter av gode 2. Da er $\frac{1,98}{1}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{1,98}{1}$.        
+Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt $\frac{577 440}{1}$ enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp $\frac{1,98}{1}$ enheter av gode 2. Da er $\frac{1,98}{1}$ den relative prisen på gode 1, og helningen til budsjettlinjen er $-\frac{1,98}{1}$.
 
 Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for konsumenten:
 
@@ -740,7 +743,7 @@ ax.legend(loc='best', fontsize=15);
 
 ## Endringer i budsjettbetingelsen etter innføring av bompenger
 
-Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner. Videre trenger vi å finne en pris per kilometer for elbilen med bompenger inkludert. 
+Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner. Videre trenger vi å finne en pris per kilometer for elbilen med bompenger inkludert.
 
 Fra tallgrunnlaget tidligere vet vi at årlig betaler en gjenomsnittlig tromsøværing bompenger for 4200 kroner per år. Dette er inkludert både forbrenningsmotor og elbil, men siden det ikke finnes noen direkte tall på kun elbil blir dette tallet brukt.
 
@@ -818,7 +821,7 @@ La oss se på økningen i prisen på gode 1, $p_1$ som er prisen på per kilomet
 
 Vi tar utgangspunkt i 50/30/20 regelen. Denne sier at 50% av inntekten skal gå til faste utgifter, 30% til forbruk og 20% til sparing.
 
-Hvis vi antar at elbilisten har en inntekt på 577 440 kroner i året, vil det si at 288 720 kroner går til faste utgifter, 173 232 kroner går til forbruk og 115488 kroner går til sparing. 
+Hvis vi antar at elbilisten har en inntekt på 577 440 kroner i året, vil det si at 288 720 kroner går til faste utgifter, 173 232 kroner går til forbruk og 115488 kroner går til sparing.
 
 Av disse 577 440 kronene i budsjettet inngår omtrent $$1,98  * 12841 = 25400$$ kroner til konsum av bilkjøring. Dette blir $$\frac{25400}{577440} =  4.44\%$$ av forbruket.
 
@@ -826,7 +829,7 @@ Det vil si at $\beta_1$ som er andelen av inntekten som går til kroner per kilo
 
 $$\beta_1 = 0.044 \quad og \quad \beta_2 = 1-\beta1 = 0.956$$
 
-Med å fortsette på utgangspunktet i 50/30/20 regelen kan vi si at 50% av budsjettet blir brukt på gamma 1 som er minimumkonsumet for nytte av gode 1. Her settes $\gamma_1$ da til 288720. $\gamma_2$ blir satt til det samme av kr per km/1,98 som blir omtrent 6420 kilometer kjørt.
+Med å fortsette på utgangspunktet i 50/30/20 regelen kan vi si at 50% av budsjettet blir brukt på gamma 1 som er minimumkonsumet for nytte av gode 1. Her settes $\gamma_1$ da til 288720. $\gamma_2$ blir satt til det samme av 25400/1,98 som blir 12841 kroner i kilometer kjørt.
 
 Budsjettet har vi definert tidligere, det er $m = 577440$.
 
@@ -867,7 +870,7 @@ beta_1 = 0.044
 beta_2 = 0.956
 
 # Setter tallverdier til gamma 1 og 2 som begrunnet tidligere
-gamma_1 = 12700
+gamma_1 = 12841
 gamma_2 = 288720
 
 # Setter inn verdier, se tallgrunnlaget
@@ -876,7 +879,7 @@ x_2_eq_num = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma
 nytte_sg_num = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1), (p_2, p2)]))
 ```
 
-Det vi kan se i figuren under er at før bompenger blir introdusert vil konsumenten tilpasse seg på indifferenskurven med å konsumere 18557 kroner i kilometer kjørt, den resterende inntekten på 540 697 kroner blir brukt til konsum av andre goder. En indifferenskurve er en kurve som viser alle kombinasjoner av to goder som gir samme nytte. I punkt A vises den optimale tilpasningen.
+Det vi kan se i figuren under er at før bompenger blir introdusert vil konsumenten tilpasse seg på indifferenskurven med å konsumere 18700 kroner i kilometer kjørt, den resterende inntekten på 540 000 kroner blir brukt til konsum av andre goder. En indifferenskurve er en kurve som viser alle kombinasjoner av to goder som gir samme nytte. I punkt A vises den optimale tilpasningen.
 
 ```{python}
 # Lager ny x verdi som gjør at vi kan plotte indifferenskurven uten negativ verdi
@@ -916,7 +919,7 @@ x_2_eq_ny = float(x_2_eq.subs([(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_
 nytte_sg_ny = float(like_v.subs([(bta_1, beta_1),(bta_2, beta_2), (gma_1, gamma_1), (gma_2, gamma_2), (m, M), (p_1, p1_2), (p_2, p2)]))
 ```
 
-Etter innføring av bompenger blir konsumentens budsjettlinje forskjøvet nedover og mulighetsområdet blir mindre for å konsumere begge goder, med påslaget i bompenger vil konsumenten tilpasse seg på en ny indifferenskurve med et konsum på 17645 kroner i kilometer kjørt og 536 714 kroner til konsum av andre goder. Det vi kan se her er at bilistens konsum av gode 1 har sunket med 912 kroner i kilometer kjørt, og den nye tilpasningen blir i punkt B.
+Etter innføring av bompenger blir konsumentens budsjettlinje forskjøvet nedover og mulighetsområdet blir mindre for å konsumere begge goder, med påslaget i bompenger vil konsumenten tilpasse seg på en ny indifferenskurve med et konsum på 17780 kroner i kilometer kjørt og 536 403 kroner til konsum av andre goder. Det vi kan se her er at bilistens konsum av gode 1 har sunket med 912 kroner i kilometer kjørt, og den nye tilpasningen blir i punkt B.
 
 ```{python}
 # Nest siste figur
@@ -956,7 +959,7 @@ ax.set_title('Inntekts- og substitusjonseffekt', size=18)
 ax.legend(fontsize=12);
 ```
 
-Det vi kan oppsummere med er at etterspørrselen på kilometer kjørt og andre goder reduseres. Vi får en substitusjonseffekt som er på -798.37 kr for antall kilometer kjørt og på 1705.89 kroner for andre goder. Totalt sett så reduseres den totale effekten siden den positive substitusjonseffekten for andre goder er mindre enn den negative inntektseffekten slik at det totalt sett blir negativt.
+Det vi kan oppsummere med er at etterspørrselen på kilometer kjørt og andre goder reduseres. Vi får en substitusjonseffekt som er på -797 kr for antall kilometer kjørt og på 1709 kroner for andre goder. Totalt sett så reduseres den totale effekten siden den positive substitusjonseffekten for andre goder er mindre enn den negative inntektseffekten slik at det totalt sett blir negativt.
 
 ```{python}
 # Finner hvordan oppnådd nytte er avhengig av inntekt gitt nye priser
@@ -1058,19 +1061,19 @@ I nyttefunksjonen ser vi at konsumenten blir å tilpasse seg å konsumere litt m
 
 Les Finland 2012. (n.d.). Uit-SOK-1006-V23.github.io/forelesningsplan.md at main · uit-SOK-1006-V23/UIT-SOK-1006-V23.Github.io. GitHub. https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/forelesningsplan.md
 
-Andreassen, V., Bredesen, I., &amp; Thøgersen, J. (2016). Innføring I mikroøkonomi: For økonomisk-administrative studier. Cappelen Damm.
+Andreassen, V., Bredesen, I., & Thøgersen, J. (2016). Innføring I mikroøkonomi: For økonomisk-administrative studier. Cappelen Damm.
 
-Konsumfordelingssystemet I Kvarts og Modag - Statistisk Sentralbyrå. (n.d.). https://www.ssb.no/nasjonalregnskap-og-konjunkturer/artikler-og-publikasjoner/_attachment/101943
+Konsumfordelingssystemet I Kvarts og Modag - Statistisk Sentralbyrå. (n.d.). https://www.ssb.no/nasjonalregnskap-og-konjunkturer/artikler-og-publikasjoner/\_attachment/101943
 
-Kjørelengder. SSB. (2023, March 22). https://www.ssb.no/statbank/table/12577/tableViewLayout1/ 
+Kjørelengder. SSB. (2023, March 22). https://www.ssb.no/statbank/table/12577/tableViewLayout1/
 
-Lønn. SSB. (2023b, February 2). https://www.ssb.no/statbank/table/12852/ 
+Lønn. SSB. (2023b, February 2). https://www.ssb.no/statbank/table/12852/
 
-Johansen, T. D. (2023, April 26). (+) bompenge-snittet økte I Mars: – De Viktigste Tallene går Ned. Nordlys. https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123 
+Johansen, T. D. (2023, April 26). (+) bompenge-snittet økte I Mars: -- De Viktigste Tallene går Ned. Nordlys. https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123
 
-Trafikkdata. (n.d.). https://www.vegvesen.no/trafikkdata/start/eksport 
+Trafikkdata. (n.d.). https://www.vegvesen.no/trafikkdata/start/eksport
 
-Tenk Tromsø. (n.d.). https://tenktromso.no/ 
+Tenk Tromsø. (n.d.). https://tenktromso.no/
 
 Og takk til Derek for kunngjøring om tall på busspassasjerer i Tromsø og for kode som er brukt fra forelesning 13 og forelesning 14.
 
@@ -1090,124 +1093,56 @@ Og takk til Derek for kunngjøring om tall på busspassasjerer i Tromsø og for 
 
 -   Can you make this a latex table for me:
 
-Prosjektnavn	Kostnad
-Reduserte billettpriser	185
-Tryggere skoleveg	315
-Økt driftstilskudd kollektiv	340
-Dramsvegen	40
-Stakkevollvegen - Skattørvegen	200
-Ny sentrumsterminal	315
-Nytt bussknutepunkt i Kroken	35
-Redusere flaskehalser for bussen	70
-Strandvegen	120
-Strandvegen	115
-Ladeinfrastruktur elbuss	35
-Bedre holdeplasser	135
-Tilgjengelighet for gående - holdeplasser, snarveier	45
-Utvidelse bybussområdet	20
-Fortau	50
-Bussløsning Kvaløya	135
-Innfartsparkering Skjelnan	10
-Klokkargårdsbakken	15
-Sykehusvegen	45
-Ny bussterminal i Giæverbukta	140
-E8 Flyplasstunnelen i Tromsø	1800
-Tiltakspakke Langnes	525
-Utbedring gang og sykkelvei Kvaløyvegen	15
-Ny bru til Kvaløya	1800
-Etablering av bomstasjoner	35
-Sum	6 540
+Prosjektnavn Kostnad Reduserte billettpriser 185 Tryggere skoleveg 315 Økt driftstilskudd kollektiv 340 Dramsvegen 40 Stakkevollvegen - Skattørvegen 200 Ny sentrumsterminal 315 Nytt bussknutepunkt i Kroken 35 Redusere flaskehalser for bussen 70 Strandvegen 120 Strandvegen 115 Ladeinfrastruktur elbuss 35 Bedre holdeplasser 135 Tilgjengelighet for gående - holdeplasser, snarveier 45 Utvidelse bybussområdet 20 Fortau 50 Bussløsning Kvaløya 135 Innfartsparkering Skjelnan 10 Klokkargårdsbakken 15 Sykehusvegen 45 Ny bussterminal i Giæverbukta 140 E8 Flyplasstunnelen i Tromsø 1800 Tiltakspakke Langnes 525 Utbedring gang og sykkelvei Kvaløyvegen 15 Ny bru til Kvaløya 1800 Etablering av bomstasjoner 35 Sum 6 540
 
--   Navn	Felt	Trafikkmengde	Dekningsgrad (%)	< 5,6m
-Dato					
-2021-08-26	UIT/Planetariet Sykkel	1	55	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	2	110	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	Totalt i retning Planetariet/UIT	110	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	Totalt i retning UNN	55	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	Totalt	165	50,0	-
+-   Navn Felt Trafikkmengde Dekningsgrad (%) \< 5,6m Dato\
+    2021-08-26 UIT/Planetariet Sykkel 1 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel 2 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning Planetariet/UIT 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning UNN 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt 165 50,0 -
 
 I want to separate "sykkel and Sykkel" observations and only take them out from the df into a new one
 
 -   I then want to instead of keep them make a bil_df that removes the sykkel and Sykkel observations
 
--   bil_df = df[df['Felt'].str.contains('Totalt')] this code returns:
+-   bil_df = df\[df\['Felt'\].str.contains('Totalt')\] this code returns:
 
-Navn	Felt	Trafikkmengde	Dekningsgrad (%)	< 5,6m
-Dato					
-2021-08-26	UIT/Planetariet Sykkel	Totalt i retning Planetariet/UIT	110	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	Totalt i retning UNN	55	50,0	-
-2021-08-26	UIT/Planetariet Sykkel	Totalt	165	50,0	-
+Navn Felt Trafikkmengde Dekningsgrad (%) \< 5,6m Dato\
+2021-08-26 UIT/Planetariet Sykkel Totalt i retning Planetariet/UIT 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning UNN 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt 165 50,0 -
 
 I want it to only have the 'Totalt' not the other ones only 'Totalt'
 
-- ax.scatter(df_summary['Dato'], df_summary['Total'], s=10, label='Biler')
+-   ax.scatter(df_summary\['Dato'\], df_summary\['Total'\], s=10, label='Biler')
 
 How can I plot this to the date 05.01.2023 with one color and then go with another color after that date
 
-- is it possible to have color in my latex table
+-   is it possible to have color in my latex table
 
-- can you make this in latex table:
+-   can you make this in latex table:
 
-Kostnader
-Elbiler
-Ekskl. avgifter Inkl. avgifter ekskl. mva Inkl. alle avgifter
-Drivstoff 0,19 0,23 0,27
-Dekk og Olje 0,21 0,21 0,25
-Reparasjoner 0,30 0,30 0,37
-Kapital 1,10 1,10 1,10
-Totalt 1,80 1,84 1,98
+Kostnader Elbiler Ekskl. avgifter Inkl. avgifter ekskl. mva Inkl. alle avgifter Drivstoff 0,19 0,23 0,27 Dekk og Olje 0,21 0,21 0,25 Reparasjoner 0,30 0,30 0,37 Kapital 1,10 1,10 1,10 Totalt 1,80 1,84 1,98
 
-- Bensin, diesel, ladbar hybrid
+-   Bensin, diesel, ladbar hybrid
 
 Nullutslippskjøretøy
 
-Fullpris	Gyldig avtale og brikke 	Fullpris 	Gyldig avtale og brikke 
-Alle bomstasjoner (15)	12,00	9,60	12,00	4,80
+Fullpris Gyldig avtale og brikke Fullpris Gyldig avtale og brikke Alle bomstasjoner (15) 12,00 9,60 12,00 4,80
 
 make this a latex table for me
 
-- How can I get the   \textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00} \\ to be just one big row
+-   How can I get the \textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00} \\ to be just one big row
 
-- (latex tabell, kan ikke legge med denne da blir det error som jeg spør om til chatgpt)
+-   (latex tabell, kan ikke legge med denne da blir det error som jeg spør om til chatgpt)
 
 why is this giving me error
 
-- (latex tabell, kan ikke legge den inn her da blir den ikke å kompilere i latex...)
+-   (latex tabell, kan ikke legge den inn her da blir den ikke å kompilere i latex...)
 
 whats wrong here
 
-- Navn	Dato	BREIVIKTUNNELEN	Breivika	Dramsvegen	Fartstavle Tverrforbindelsen	Giæverbukta nord	HANSJORDNESTUNNELEN	Hansine Hansens veg	Hungeren	Kraftforsyningen	...	Prestvannet	Ringvegen	Sandnessundbrua	Sentrumstangenten	Stakkevollvegen	Strandvegen	TROMSØBRUA	Tromsøbrua avkjøring	Tromsøysundtunnelen T1	Tromsøysundtunnelen T2
-0	2020-01-01	3059	8994	NaN	5033	4913	4239	NaN
+-   Navn Dato BREIVIKTUNNELEN Breivika Dramsvegen Fartstavle Tverrforbindelsen Giæverbukta nord HANSJORDNESTUNNELEN Hansine Hansens veg Hungeren Kraftforsyningen ... Prestvannet Ringvegen Sandnessundbrua Sentrumstangenten Stakkevollvegen Strandvegen TROMSØBRUA Tromsøbrua avkjøring Tromsøysundtunnelen T1 Tromsøysundtunnelen T2 0 2020-01-01 3059 8994 NaN 5033 4913 4239 NaN
 
 this is how the dataframe looks like, I want every column summarized to just form a new column called total for every date
 
-- I have this dataframe in pandas:
+-   I have this dataframe in pandas:
 
-
-Navn	0
-0	BREIVIKTUNNELEN	776004.0
-1	Breivika	2365496.0
-2	Dramsvegen	193606.0
-3	Fartstavle Tverrforbindelsen	1539626.0
-4	Giæverbukta nord	2200892.0
-5	HANSJORDNESTUNNELEN	1231460.0
-6	Hansine Hansens veg	286818.0
-7	Hungeren	1367510.0
-8	Kraftforsyningen	1306417.0
-9	Kvaløysletta nord	669889.0
-10	Kvaløysletta sør	1572060.0
-11	Kvaløyvegen	651427.0
-12	Langnestunnelen	1725599.0
-13	Postterminalen	1480449.0
-14	Prestvannet	570758.0
-15	Ringvegen	0.0
-16	Sandnessundbrua	1487178.0
-17	Sentrumstangenten	1008265.0
-18	Stakkevollvegen	560257.0
-19	Strandvegen	580096.0
-20	TROMSØBRUA	2024122.0
-21	Tromsøbrua avkjøring	1129561.0
-22	Tromsøysundtunnelen T1	581562.0
-23	Tromsøysundtunnelen T2	563815.0
+Navn 0 0 BREIVIKTUNNELEN 776004.0 1 Breivika 2365496.0 2 Dramsvegen 193606.0 3 Fartstavle Tverrforbindelsen 1539626.0 4 Giæverbukta nord 2200892.0 5 HANSJORDNESTUNNELEN 1231460.0 6 Hansine Hansens veg 286818.0 7 Hungeren 1367510.0 8 Kraftforsyningen 1306417.0 9 Kvaløysletta nord 669889.0 10 Kvaløysletta sør 1572060.0 11 Kvaløyvegen 651427.0 12 Langnestunnelen 1725599.0 13 Postterminalen 1480449.0 14 Prestvannet 570758.0 15 Ringvegen 0.0 16 Sandnessundbrua 1487178.0 17 Sentrumstangenten 1008265.0 18 Stakkevollvegen 560257.0 19 Strandvegen 580096.0 20 TROMSØBRUA 2024122.0 21 Tromsøbrua avkjøring 1129561.0 22 Tromsøysundtunnelen T1 581562.0 23 Tromsøysundtunnelen T2 563815.0
 
 this is locations in Tromsø. Could you make a new column and put in the coordinates for me for the places so I can plot it in an interactive chart
