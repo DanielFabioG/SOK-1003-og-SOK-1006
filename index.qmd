@@ -1,7 +1,7 @@
 ---
-title: "SOK-1006"
+title: "SOK-1006 og SOK-1003"
 description: |
-      Arbeidskrav og mappeoppgaver i SOK-1006.  
+      Arbeidskrav og mappeoppgaver i SOK-1006 og SOK-1003.  
 date: last-modified
 author:
   - name: Daniel Fabio Groth
@@ -46,6 +46,22 @@ Alle oppgaver gitt gjennom dette kurset finnes i "Arbeidskrav" seksjonen, mens a
             <a href="/SOK-1003-og-SOK-1006/sok-1006/Mappeoppgaver/Mappeoppgave_1_reworked.html" class="larger">Første mappeoppgave</a>
             <br>
             <a href="/SOK-1003-og-SOK-1006/sok-1006/Mappeoppgaver/Mappeoppgave_2_reworked.html" class="larger">Andre mappeoppgave</a>
+        </div>
+    </div>
+</div>
+```
+
+
+SOK-1003 Innføringskurs i python
+
+```{=html}
+<div class="center" style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <div style="width: 45%; position: relative;">
+        <div class="content-overlay">
+          <div class="text-overlay">Mappeoppgaver</div>
+            <a href="/SOK-1003-og-SOK-1006/SOK-1003/Mappeoppgaver/SOK-1003-eksamen-2022-mappe1.html" class="larger">Første mappeoppgave</a>
+            <br>
+            <a href="/SOK-1003-og-SOK-1006/SOK-1003/Mappeoppgaver/SOK-1003-eksamen-2022-mappe2.html" class="larger">Andre mappeoppgave</a>
         </div>
     </div>
 </div>
