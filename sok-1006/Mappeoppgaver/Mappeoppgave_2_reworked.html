@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kandidatnummer 17, SOK-1006, Vår 2023">
+
+<title>Mappeoppgave 2 - Innføring av bompenger i Tromsø: Effekt på bilisters atferd og velferd</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Mappeoppgave_2_reworked_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Mappeoppgave_2_reworked_files/libs/quarto-html/quarto.js"></script>
+<script src="Mappeoppgave_2_reworked_files/libs/quarto-html/popper.min.js"></script>
+<script src="Mappeoppgave_2_reworked_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Mappeoppgave_2_reworked_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Mappeoppgave_2_reworked_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Mappeoppgave_2_reworked_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Mappeoppgave_2_reworked_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Mappeoppgave_2_reworked_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Mappeoppgave_2_reworked_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innholdsliste</h2>
+   
+  <ul>
+  <li><a href="#sammendrag" id="toc-sammendrag" class="nav-link active" data-scroll-target="#sammendrag">1. Sammendrag</a>
+  <ul class="collapse">
+  <li><a href="#bakgrunn" id="toc-bakgrunn" class="nav-link" data-scroll-target="#bakgrunn">Bakgrunn</a></li>
+  <li><a href="#begrunnelse" id="toc-begrunnelse" class="nav-link" data-scroll-target="#begrunnelse">Begrunnelse</a></li>
+  <li><a href="#erfaringer" id="toc-erfaringer" class="nav-link" data-scroll-target="#erfaringer">Erfaringer</a></li>
+  <li><a href="#bompengekostnader-i-tromsø-og-kostnad-per-prosjekt" id="toc-bompengekostnader-i-tromsø-og-kostnad-per-prosjekt" class="nav-link" data-scroll-target="#bompengekostnader-i-tromsø-og-kostnad-per-prosjekt">Bompengekostnader i Tromsø og kostnad per prosjekt</a></li>
+  <li><a href="#struktur-av-redgjørelsen" id="toc-struktur-av-redgjørelsen" class="nav-link" data-scroll-target="#struktur-av-redgjørelsen">Struktur av redgjørelsen</a></li>
+  </ul></li>
+  <li><a href="#trafikkbildet-i-tromsø-før-og-etter-innføringen-av-bompenger" id="toc-trafikkbildet-i-tromsø-før-og-etter-innføringen-av-bompenger" class="nav-link" data-scroll-target="#trafikkbildet-i-tromsø-før-og-etter-innføringen-av-bompenger">2. Trafikkbildet i Tromsø før og etter innføringen av bompenger</a>
+  <ul class="collapse">
+  <li><a href="#bilister" id="toc-bilister" class="nav-link" data-scroll-target="#bilister">Bilister</a></li>
+  <li><a href="#syklister" id="toc-syklister" class="nav-link" data-scroll-target="#syklister">Syklister</a></li>
+  <li><a href="#kollektivreisende" id="toc-kollektivreisende" class="nav-link" data-scroll-target="#kollektivreisende">Kollektivreisende</a></li>
+  </ul></li>
+  <li><a href="#bilisters-tilpasning-til-bompenger" id="toc-bilisters-tilpasning-til-bompenger" class="nav-link" data-scroll-target="#bilisters-tilpasning-til-bompenger">3. Bilisters tilpasning til bompenger</a>
+  <ul class="collapse">
+  <li><a href="#tallgrunnlag" id="toc-tallgrunnlag" class="nav-link" data-scroll-target="#tallgrunnlag">Tallgrunnlag</a></li>
+  <li><a href="#noen-sentrale-forutsetninger" id="toc-noen-sentrale-forutsetninger" class="nav-link" data-scroll-target="#noen-sentrale-forutsetninger">Noen sentrale forutsetninger</a></li>
+  <li><a href="#konsumentens-budsjettbetingelse" id="toc-konsumentens-budsjettbetingelse" class="nav-link" data-scroll-target="#konsumentens-budsjettbetingelse">Konsumentens budsjettbetingelse</a></li>
+  <li><a href="#endringer-i-budsjettbetingelsen-etter-innføring-av-bompenger" id="toc-endringer-i-budsjettbetingelsen-etter-innføring-av-bompenger" class="nav-link" data-scroll-target="#endringer-i-budsjettbetingelsen-etter-innføring-av-bompenger">Endringer i budsjettbetingelsen etter innføring av bompenger</a></li>
+  <li><a href="#fra-konsumentens-tilpasning-til-etterspørsel" id="toc-fra-konsumentens-tilpasning-til-etterspørsel" class="nav-link" data-scroll-target="#fra-konsumentens-tilpasning-til-etterspørsel">Fra konsumentens tilpasning til etterspørsel</a></li>
+  <li><a href="#estimat-av-sentrale-parameter" id="toc-estimat-av-sentrale-parameter" class="nav-link" data-scroll-target="#estimat-av-sentrale-parameter">Estimat av sentrale parameter</a></li>
+  </ul></li>
+  <li><a href="#konklusjon" id="toc-konklusjon" class="nav-link" data-scroll-target="#konklusjon">4. Konklusjon</a></li>
+  <li><a href="#referanser" id="toc-referanser" class="nav-link" data-scroll-target="#referanser">5. Referanser</a>
+  <ul class="collapse">
+  <li><a href="#kilder" id="toc-kilder" class="nav-link" data-scroll-target="#kilder">Kilder</a></li>
+  <li><a href="#tabeller" id="toc-tabeller" class="nav-link" data-scroll-target="#tabeller">Tabeller</a></li>
+  </ul></li>
+  <li><a href="#appendiks-for-chatgpt" id="toc-appendiks-for-chatgpt" class="nav-link" data-scroll-target="#appendiks-for-chatgpt">7. Appendiks for ChatGPT</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mappeoppgave 2 - Innføring av bompenger i Tromsø: Effekt på bilisters atferd og velferd</h1>
+<p class="subtitle lead">Fakultet for biovitenskap, fiskeri og økonomi.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kandidatnummer 17, SOK-1006, Vår 2023 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">30-07-2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="sammendrag" class="level1">
+<h1>1. Sammendrag</h1>
+<section id="bakgrunn" class="level2">
+<h2 class="anchored" data-anchor-id="bakgrunn">Bakgrunn</h2>
+<p>En bompengeavgift ble innført på Tromsøya 5. januar 2023 som en del av byutviklingsprosjektet <a href="https://tenktromso.no/">Tenk Tromsø</a>. En bompengeavgift er en engangsavgift for å passere en bompengesone med et kjøretøy som blir automatisk registrert gjennom registreringsnummeret på kjøretøyet eller med bompengeavtalen som heter AutoPASS. Formålet med bompengeavgiften er å redusere biltrafikken i sentrum av Tromsø, og dermed redusere utslipp av klimagasser og lokal luftforurensning. I tillegg skal inntektene fra bompengeavgiften brukes til å finansiere kollektivtilbudet i Tromsø.</p>
+</section>
+<section id="begrunnelse" class="level2">
+<h2 class="anchored" data-anchor-id="begrunnelse">Begrunnelse</h2>
+<p>Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige bussterminaler, bedre holdeplasser og knutepunkt for bussen, og gjøre tiltak som sørger for bedre traffikflyt. I tillegg skal det bedre fremkommeligheten for næringstransporten i Tromsø.</p>
+</section>
+<section id="erfaringer" class="level2">
+<h2 class="anchored" data-anchor-id="erfaringer">Erfaringer</h2>
+<p>Målet for <a href="https://tenktromso.no/faq#faq--ord-og-begreper">Bypakke Tenk Tromsø</a> er nullvekst i persontransport med bil. Dette målet skal nås gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.</p>
+</section>
+<section id="bompengekostnader-i-tromsø-og-kostnad-per-prosjekt" class="level2">
+<h2 class="anchored" data-anchor-id="bompengekostnader-i-tromsø-og-kostnad-per-prosjekt">Bompengekostnader i Tromsø og kostnad per prosjekt</h2>
+<p>Tabell 1: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Prosjektnavn</th>
+<th style="text-align: right;">Kostnad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reduserte billettpriser</td>
+<td style="text-align: right;">185</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tryggere skoleveg</td>
+<td style="text-align: right;">315</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Økt driftstilskudd kollektiv</td>
+<td style="text-align: right;">340</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dramsvegen</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Stakkevollvegen - Skattørvegen</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ny sentrumsterminal</td>
+<td style="text-align: right;">315</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nytt bussknutepunkt i Kroken</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Redusere flaskehalser for bussen</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Strandvegen</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Strandvegen</td>
+<td style="text-align: right;">115</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ladeinfrastruktur elbuss</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bedre holdeplasser</td>
+<td style="text-align: right;">135</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tilgjengelighet for gående - holdeplasser, snarveier</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Utvidelse bybussområdet</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fortau</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bussløsning Kvaløya</td>
+<td style="text-align: right;">135</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Innfartsparkering Skjelnan</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Klokkargårdsbakken</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sykehusvegen</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ny bussterminal i Giæverbukta</td>
+<td style="text-align: right;">140</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E8 Flyplasstunnelen i Tromsø</td>
+<td style="text-align: right;">1800</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tiltakspakke Langnes</td>
+<td style="text-align: right;">525</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Utbedring gang og sykkelvei Kvaløyvegen</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ny bru til Kvaløya</td>
+<td style="text-align: right;">1800</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Etablering av bomstasjoner</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sum</td>
+<td style="text-align: right;">6540</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Tabell 2: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 27%">
+<col style="width: 16%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Bensin, diesel, ladbar hybrid (Full pris)</th>
+<th style="text-align: right;">Bensin, diesel, ladbar hybrid (Gyldig avtale og brikke)</th>
+<th style="text-align: right;">Nullustslippkjøretøy (Full pris)</th>
+<th style="text-align: right;">Nullutslippkjøretøy (Gyldig avtale og brikke)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alle bomstasjoner (15)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: right;">9.6</td>
+<td style="text-align: right;">4.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Tabell 3: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 27%">
+<col style="width: 16%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Bensin, diesel, ladbar hybrid (Full pris)</th>
+<th style="text-align: right;">Bensin, diesel, ladbar hybrid (Gyldig avtale og brikke)</th>
+<th style="text-align: right;">Nullustslippkjøretøy (Full pris)</th>
+<th style="text-align: right;">Nullutslippkjøretøy (Gyldig avtale og brikke)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alle bomstasjoner (15)</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">28.8</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">14.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="struktur-av-redgjørelsen" class="level2">
+<h2 class="anchored" data-anchor-id="struktur-av-redgjørelsen">Struktur av redgjørelsen</h2>
+<p>I kapittel 2 skal vi se på endringen i biltrafikken i Tromsø etter innføringen av bompenger. Vi skal også se på hvordan dette har påvirket sykkelpasseringer og bruk av kollektivtransport. I kapittel 3 skal vi se på hvordan bilistene tilpasser seg bompenger. Vi skal se på hvordan bilistene endrer reisevaner, og hvordan dette påvirker bilistenes velferd. Vi skal se på en bilist som en konsument som har to valg: antall kilometer kjørt i bil eller konsumere andre goder. Kapittel 4 blir en sammenfatning av det vi har sett på. Her oppsummeres funnene fra utredningen.</p>
+</section>
+</section>
+<section id="trafikkbildet-i-tromsø-før-og-etter-innføringen-av-bompenger" class="level1">
+<h1>2. Trafikkbildet i Tromsø før og etter innføringen av bompenger</h1>
+<section id="bilister" class="level2">
+<h2 class="anchored" data-anchor-id="bilister">Bilister</h2>
+<p>Tromsø er en by som har hatt en økning av personbiler i trafikken de siste årene. Med innføringen av bompenger fra 2023 er det ønskelig med nullvekst av personbiler i Tromsø sentrum. I figur 1 kan vi se totaloverblikket i trafikken rundt Tromsø.</p>
+<p>Det første man kan observere er en økende trend med registrerte biler fra 2020-2022. Og etter innføringen av bompenger i 2023 så sees det en nedgang i antall registrerte biler målt mot samme måneder fra 2022.</p>
+<p>Figur 1 er basert på tall fra Statens Vegvesen, her er det satt sammen alle trafikkregistreringspunkt fra bruene, rett utenfor og på selve øya. Tallene er hentet fra Statens Vegvesen sin <a href="https://www.vegvesen.no/trafikkdata/start/eksport">trafikkdata</a>.</p>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-10-output-1.png" width="914" height="431"></p>
+</div>
+</div>
+<p>Videre skal vi se på en regresjonsanalyse av atferden til bilistene i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte biler mot den uavhengige variablen antall observasjoner hvor det er innført en dummyvariabel kalt bompenger.</p>
+<p>I figur 2 ser man atferdstrenden til bilister før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en nedgang i antall registrerte biler.</p>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-12-output-1.png" width="823" height="434"></p>
+</div>
+</div>
+<p>Avslutningsvis legges det ved et kart for å få en liten oversikt over trafikkregistreringspunkter og antall passeringer for hvert punkt siden 2020. NB: Dette kartet har ikke inkludert alle registreringspunkter, og inkluderer heller ikke sykkelregistreringer.</p>
+<p><a href="https://danielfabiog.github.io/SOK-1004/">Liten oversikt over trafikktellestasjoner og totalt antall passeringer siden 2020</a></p>
+</section>
+<section id="syklister" class="level2">
+<h2 class="anchored" data-anchor-id="syklister">Syklister</h2>
+<p>Vi går videre for å se på hvordan sykkeltrafikken har utviklet seg i Tromsø siden 2020.</p>
+<p>I figur 3 ser vi antall syklister totalt i hele Tromsø for 2021-2023, og det som stikker mest ut er at det var en stor økning i sykkelregistreringer måneden bompenger ble innført, men at trenden har gått nedover siden.</p>
+<p>Det er verdt å merke at denne figuren ikke klarer å vise ordentlig effekten av bompenger enda siden vi ikke har kommet ordentlig inn i sykkelsesongen for 2023. I tillegg så har mai måned kun sykkelregistreringer frem til omtrent midten av måneden.</p>
+<p>Figur 3 er basert på tall fra Statens Vegvesen, her er det satt sammen alle sykkelregistreringspunkt på Tromsøya og utenfor. Tallene er hentet fra Statens Vegvesen sin <a href="https://www.vegvesen.no/trafikkdata/start/eksport">trafikkdata</a>.</p>
+<div class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-14-output-1.png" width="922" height="431"></p>
+</div>
+</div>
+<p>Vi ser på en regresjonsanalyse her også for å se om det er en forskjell i trenden for sykkelregistreringer før og etter bompenger.</p>
+<p>Denne analysen er gjort omtrent på samme måte som beskrevet ovenfor, det som er gjort annereledes her er at datagrunnlaget er delt i før bompenger og etter bompenger, deretter så er det gjort en regresjonsanalyse for hver av disse dataene uten dummyvariabel.</p>
+<p>Det vi kan se av resultatene er at helningen på regresjonslinjen er økende etter innføringen av bompengene.</p>
+<div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-17-output-1.png" width="806" height="431"></p>
+</div>
+</div>
+</section>
+<section id="kollektivreisende" class="level2">
+<h2 class="anchored" data-anchor-id="kollektivreisende">Kollektivreisende</h2>
+<p>For å avslutte overblikket i markedet skal vi se på kollektivreisende. Her skal vi se på totalt antall kollektivreisende i Tromsø hver måned siden 2022. Det vi kan se i figur 5 er at det i Januar 2023 var en økning på omtrent 64% reisende med kollektivtransport i Tromsø sammenlignet med Januar 2022. Og at alle måneder etter også har hatt en økning sammenlignet med året før.</p>
+<div class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-19-output-1.png" width="914" height="431"></p>
+</div>
+</div>
+<p>Til sist ser vi på en regresjonsanalysen av kollektivreisende i Tromsø med daglige observasjoner. Den avhengige variabelen her er totalt antall registrerte reisende mot den uavhengige variablen antall observasjoner(dager) hvor det er innført en dummyvariabel kalt bompenger.</p>
+<p>I figur 6 ser man atferdstrenden til kollektivreisende før innføringen av bompenger i lyseblått og trenden etter i grønn. Når dummyvariablen bompenger treffer inn så ser man at trenden viser en oppgang i antall registrerte kollektivreisende.</p>
+<div class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-21-output-1.png" width="815" height="431"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="bilisters-tilpasning-til-bompenger" class="level1">
+<h1>3. Bilisters tilpasning til bompenger</h1>
+<section id="tallgrunnlag" class="level2">
+<h2 class="anchored" data-anchor-id="tallgrunnlag">Tallgrunnlag</h2>
+<p>I denne analysen vil det ikke bli analysert biler uten gyldig AutoPASS brikke. Det vil bli sett på gjennomsnittlige små personbiler sin etterspørsel etter antall kilometer kjørt.</p>
+<p>I <a href="https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123">denne</a> artikkelen fra Nordlys får vi vite at gjennomsnittlig bompengeregning er på rundt 350 kroner hver måned i Tromsø som omgjort til årlig blir 4200 kroner.</p>
+<p>Median årlig inntekt i Tromsø finner man på SSB <a href="https://www.ssb.no/statbank/table/12852/">her.</a> Ifølge tabellen sier den at medianinntekten er på 48120 kr i måneden. Vi skal se på årlig median så da blir det 577 440 kroner for Tromsø i 2022. Grunnen til å bruke median er at det blir en bedre representasjon av inntekten til en person i Tromsø, da det ikke inkluderer den øvre lønnen og den nedre som gjennomsnittet gjør hvor henholdsvis det er noen få personer som tjener ekstremt mye og andre som kan ha en inntekt på 0.</p>
+<p>Her finner man <a href="https://www.ssb.no/statbank/table/12577/tableViewLayout1/">gjennomsnittlig kjørelengde</a> for personbiler som er omtrent 12841 km i året i 2022.</p>
+<p>I tabell 4 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer inkl. alle avgifter, og i tabell 5 ser vi at forbrenningsmotoren har en kostnad på 3,03 kroner per kilometer.</p>
+<p>Tabell 4 og 5: Distanseavhengige kostnader per kilometer for elbiler og forbrenningsmotor (2022-kr).</p>
+<div class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 31%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Elbil kostnader</th>
+<th style="text-align: right;">Ekskl. avgifter</th>
+<th style="text-align: right;">Inkl. avgifter excl. MVA</th>
+<th style="text-align: right;">Inkl alle avgifter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Drivstoff</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dekk og Olje</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reparasjoner</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kapital</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">1.8</td>
+<td style="text-align: right;">1.84</td>
+<td style="text-align: right;">1.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 31%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Forbr. kostnader</th>
+<th style="text-align: right;">Ekskl. avgifter</th>
+<th style="text-align: right;">Inkl. avgifter ekskl. MVA</th>
+<th style="text-align: right;">Inkl. alle avgifter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Drivstoff</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">1.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dekk og Olje</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reparasjoner</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kapital</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">0.96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">1.76</td>
+<td style="text-align: right;">2.53</td>
+<td style="text-align: right;">3.03</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="noen-sentrale-forutsetninger" class="level2">
+<h2 class="anchored" data-anchor-id="noen-sentrale-forutsetninger">Noen sentrale forutsetninger</h2>
+<p>Vi forutsetter at konsumentens inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.</p>
+<p>I denne analysen blir det kun sett på en konsument som kjører elbil. Tallgrunnlaget er for mesteparten veldig likt for elbil og forbrenningsmotor så det vil ikke være alt for store forskjeller i resultatet annet enn at det blir å være noe dyrere for en bilist med forbrenningsmotor.</p>
+</section>
+<section id="konsumentens-budsjettbetingelse" class="level2">
+<h2 class="anchored" data-anchor-id="konsumentens-budsjettbetingelse">Konsumentens budsjettbetingelse</h2>
+<p>Konsumentens budsjettbetingelse er da gitt ved egen inntekt, videre antas det at prisen per enhet av gode 1 og 2 som vi kaller <span class="math inline">\(p_1\)</span> og <span class="math inline">\(p_2\)</span> er gitt sammen med konsumentens egen inntekt <span class="math inline">\(m\)</span>.</p>
+<p><span class="math display">\[m = p_1x_1 + p_2x_2 \tag{1}\]</span></p>
+<p>Hvor <span class="math inline">\(x_1\)</span> er antall enheter av gode 1 og <span class="math inline">\(x_2\)</span> er antall enheter av gode 2.</p>
+<p>Hvor prisen på andre goder som vi kaller for <span class="math inline">\(p_2\)</span> = 1 (dette er et direkte mål på penger) og prisen på per kilometer kjørt for elbil som vi kaller for <span class="math inline">\(p_1\)</span> = 1,98 og <span class="math inline">\(m\)</span> = 577 440. Da blir budsjettbetingelsen med tallgrunnlaget: <span class="math display">\[577 440 = 1 x_1 + 1,98 x_2 \tag{2}\]</span></p>
+<p>Vi kan løse denne ligningen med hensyn på en av variablene, eksempelvis <span class="math inline">\(x_2\)</span> og da kan vi omformulere ligningen slik:</p>
+<p><span class="math display">\[x_2 = \frac{577 440}{1} - \frac{1,98}{1}x_1 \tag{3}\]</span></p>
+<p>Dette er en rett linje som forteller at konsumenten kan kjøpe maksimalt <span class="math inline">\(\frac{577 440}{1}\)</span> enheter av gode 2, og for hver enhet av gode 1 som kjøpes må konsumenten gi opp <span class="math inline">\(\frac{1,98}{1}\)</span> enheter av gode 2. Da er <span class="math inline">\(\frac{1,98}{1}\)</span> den relative prisen på gode 1, og helningen til budsjettlinjen er <span class="math inline">\(-\frac{1,98}{1}\)</span>.</p>
+<p>Følgende figur viser mulighetsområdet for konsum av andre goder og antall kilometer å kjøre for konsumenten:</p>
+<div class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-24-output-1.png" width="843" height="461"></p>
+</div>
+</div>
+</section>
+<section id="endringer-i-budsjettbetingelsen-etter-innføring-av-bompenger" class="level2">
+<h2 class="anchored" data-anchor-id="endringer-i-budsjettbetingelsen-etter-innføring-av-bompenger">Endringer i budsjettbetingelsen etter innføring av bompenger</h2>
+<p>Før innføringen av bompenger var prisen per kilometer for en elbilist 1,98 kroner. Videre trenger vi å finne en pris per kilometer for elbilen med bompenger inkludert.</p>
+<p>Fra tallgrunnlaget tidligere vet vi at årlig betaler en gjenomsnittlig tromsøværing bompenger for 4200 kroner per år. Dette er inkludert både forbrenningsmotor og elbil, men siden det ikke finnes noen direkte tall på kun elbil blir dette tallet brukt.</p>
+<p>Vi vet fra tallgrunnlaget tidligere at gjennomsnittlig årlig kjørelengde for elbilister er på omtrent 12841 km i året.</p>
+<p>Da blir prisen per kilometer kjørt for elbilister med bompenger:</p>
+<p><span class="math display">\[\frac{4200}{12841} = 0,328 kr/km\]</span></p>
+<p>Med prisen per kilometer kjørt fra tidligere og påslaget får vi da totalprisen per kilometer kjørt for elbilister med bompenger inkludert:</p>
+<p><span class="math display">\[1,98 + 0,328 = 2,308 kr/km\]</span></p>
+<p>I figuren under kan man se hvordan budsjettlinjen til elbilisten reduseres med økt pris per kilometer kjørt:</p>
+<div class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-25-output-1.png" width="843" height="458"></p>
+</div>
+</div>
+</section>
+<section id="fra-konsumentens-tilpasning-til-etterspørsel" class="level2">
+<h2 class="anchored" data-anchor-id="fra-konsumentens-tilpasning-til-etterspørsel">Fra konsumentens tilpasning til etterspørsel</h2>
+<p>Vi skal nå bruke en nyttefunksjon for å kunne modellere elbilistens valg av konsum av andre goder og antall kilometer kjørt. Vi antar at nytten til elbilisten er gitt ved en Stone-Geary nyttefunksjon som er tatt med utgangspunkt i LES-modellen:</p>
+<p><span class="math display">\[max: U = \Sigma_i \beta_i \log(x_i - \gamma_i) \quad s.t. \quad \Sigma_ip_ix_i=y \tag{4}\]</span></p>
+<p>Her er <span class="math inline">\(x_i\)</span> mengden konsum av gode <span class="math inline">\(i\)</span>, <span class="math inline">\(p_i\)</span> er prisen på gode <span class="math inline">\(i\)</span>, <span class="math inline">\(y\)</span> er inntekten til konsumenten, <span class="math inline">\(\beta_i\)</span> er en positiv parameter som måler den marginale budsjettandelen av gode <span class="math inline">\(i\)</span> og <span class="math inline">\(\gamma_i\)</span> er en positiv parameter som måler minimumskonsumet av det samme.</p>
+<p>Med hjelp av Lagrange-multiplikatoren kan vi utlede husstandenes Marshalliske etterspørselsfunksjoner for produkt i:</p>
+<p><span class="math display">\[x_i = \gamma_i + (\frac{\beta_i}{p_i})(y-\Sigma_jp_j\gamma_j). \tag{5}\]</span></p>
+<p>Når utgiftene er en lineær funksjon av inntekt og priser, er det nyttig å multiplisere ligning (2.3) med prisene <span class="math inline">\(p_i\)</span> Dette gir oss en lineær funksjon:</p>
+<p><span class="math display">\[p_i x_i = p_i\gamma_i + \beta_i(y - \Sigma_jp_j\gamma_j) \tag{6}\]</span></p>
+<p>Som er kjent som det lineære utgiftssystemet. Her er <span class="math inline">\(\Sigma_jp_j\gamma_j\)</span> et nødvendig nivå av konsum, og <span class="math inline">\(\gamma - \Sigma_jp_j\gamma_j\)</span> er den delen av inntekten som ikke blir brukt på konsum.</p>
+<p>Videre i ligning 6 og 7 regner vi på uttrykk for egenpris- og krysspriselastisitet til gode 1 og gode 2:</p>
+<p>Egenpriselastisitet:</p>
+<p><span class="math display">\[e_{ii} = \frac{\gamma_i(1-\beta_i)}{x_i}-1 &lt; 0 \tag{7}\]</span></p>
+<p>Fordi <span class="math inline">\(\beta_i\)</span> er positiv og <span class="math inline">\(\gamma_i\)</span> er positiv, er <span class="math inline">\(e_{ii}\)</span> negativ. Dette betyr at egenpriselasiteten normalt er negativ. En økning i prisen på gode <span class="math inline">\(i\)</span> vil føre til en reduksjon i mengden av gode <span class="math inline">\(i\)</span> som etterspøres.</p>
+<p>Krysspriselastisitet:</p>
+<p><span class="math display">\[e_{ij} = - \frac{\beta_i\gamma_jp_j}{p_ix_i} \tag{8}\]</span></p>
+<p>Hvis elastisiteten er positiv, er gode <span class="math inline">\(i\)</span> og <span class="math inline">\(j\)</span> substitutter. Hvis elastisiteten er negativ, er gode <span class="math inline">\(i\)</span> og <span class="math inline">\(j\)</span> komplementær.</p>
+<p>La oss se på økningen i prisen på gode 1, <span class="math inline">\(p_1\)</span> som er prisen på per kilometer kjørt.</p>
+<p>Vi tar utgangspunkt i 50/30/20 regelen. Denne sier at 50% av inntekten skal gå til faste utgifter, 30% til forbruk og 20% til sparing.</p>
+<p>Hvis vi antar at elbilisten har en inntekt på 577 440 kroner i året, vil det si at 288 720 kroner går til faste utgifter, 173 232 kroner går til forbruk og 115488 kroner går til sparing.</p>
+<p>Av disse 577 440 kronene i budsjettet inngår omtrent <span class="math display">\[1,98  * 12841 = 25400\]</span> kroner til konsum av bilkjøring. Dette blir <span class="math display">\[\frac{25400}{577440} =  4.44\%\]</span> av forbruket.</p>
+<p>Det vil si at <span class="math inline">\(\beta_1\)</span> som er andelen av inntekten som går til kroner per kilometer blir satt til 0.044, mens <span class="math inline">\(\beta_2\)</span> som er andelen av andre goder blir satt til 0.956.</p>
+<p><span class="math display">\[\beta_1 = 0.044 \quad og \quad \beta_2 = 1-\beta1 = 0.956\]</span></p>
+<p>Med å fortsette på utgangspunktet i 50/30/20 regelen kan vi si at 50% av budsjettet blir brukt på gamma 1 som er minimumkonsumet for nytte av gode 1. Her settes <span class="math inline">\(\gamma_1\)</span> da til 288720. <span class="math inline">\(\gamma_2\)</span> blir satt til det samme av 25400/1,98 som blir 12841 kroner i kilometer kjørt.</p>
+<p>Budsjettet har vi definert tidligere, det er <span class="math inline">\(m = 577440\)</span>.</p>
+<p>Det vi kan se i figuren under er at før bompenger blir introdusert vil konsumenten tilpasse seg på indifferenskurven med å konsumere 18700 kroner i kilometer kjørt, den resterende inntekten på 540 000 kroner blir brukt til konsum av andre goder. En indifferenskurve er en kurve som viser alle kombinasjoner av to goder som gir samme nytte. I punkt A vises den optimale tilpasningen.</p>
+<div class="cell" data-execution_count="28">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-29-output-1.png" width="843" height="458"></p>
+</div>
+</div>
+<p>Etter innføring av bompenger blir konsumentens budsjettlinje forskjøvet nedover og mulighetsområdet blir mindre for å konsumere begge goder, med påslaget i bompenger vil konsumenten tilpasse seg på en ny indifferenskurve med et konsum på 17780 kroner i kilometer kjørt og 536 403 kroner til konsum av andre goder. Det vi kan se her er at bilistens konsum av gode 1 har sunket med 912 kroner i kilometer kjørt, og den nye tilpasningen blir i punkt B.</p>
+<div class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-31-output-1.png" width="843" height="458"></p>
+</div>
+</div>
+<p>Det vi kan oppsummere med er at etterspørrselen på kilometer kjørt og andre goder reduseres. Vi får en substitusjonseffekt som er på -797 kr for antall kilometer kjørt og på 1709 kroner for andre goder. Totalt sett så reduseres den totale effekten siden den positive substitusjonseffekten for andre goder er mindre enn den negative inntektseffekten slik at det totalt sett blir negativt.</p>
+<div class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<p><img src="Mappeoppgave_2_reworked_files/figure-html/cell-33-output-1.png" width="843" height="458"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="33">
+<div class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gode</th>
+<th style="text-align: left;">Substitusjonseffekt</th>
+<th style="text-align: left;">Inntektseffekt</th>
+<th style="text-align: left;">Total effekt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Årlige kjørte kilometer</td>
+<td style="text-align: left;"><span class="math inline">\(-797.42\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-114.38\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-911.81\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kroner på andre goder</td>
+<td style="text-align: left;"><span class="math inline">\(1709.47\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-5736.0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(-4026.53\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="estimat-av-sentrale-parameter" class="level2">
+<h2 class="anchored" data-anchor-id="estimat-av-sentrale-parameter">Estimat av sentrale parameter</h2>
+<div class="cell" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>'Elbilistens egenpriselastisitet vi får her er  -0.34.'</code></pre>
+</div>
+</div>
+<p>Det vi finner ut av på både kort sikt og lang sikt er at elastisiteten på kroner per kilometer kjørt ikke er særlig stor, dette kan være fordi bilisten ikke har så mange alternativer til å kjøre bil i Tromsø. Med egenpriselastisiteten til gode 1 (pris per kilometer) vil etterspørselen gå ned 0.35% for hver en prosents økning på kroner per kilometer kjørt. På medium sikt ifølge SSB i dette <a href="https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/artikler/konsum%20modag%202013%20merket.pdf">dokumentet på side 16</a> ligger priselastisiteten på bilkjøring på - 0.14, som er noe høyere enn det som er regnet ut her, den er også -0.14 på lang sikt.</p>
+</section>
+</section>
+<section id="konklusjon" class="level1">
+<h1>4. Konklusjon</h1>
+<p>Det vi kan se med innføringen av bompenger er at det ikke tilsynelatende på kort sikt har hatt en stor effekt på bilisters atferd og velferd i Tromsø. Som observert i kapittel 2 kunne man se en sterk reaksjon på bompengene den første måneden ved innføringen, men i månedene etter dabber effekten litt av.</p>
+<p>Det virker som at introduksjonen av bompenger har hatt en positiv effekt på bruken av kollektivtransport og det kan virke som at sykkelbruken har gått opp, uten at man kan si noe alt for sikkert siden sykkelsesongen enda ikke har startet ordentlig i Tromsø.</p>
+<p>I nyttefunksjonen ser vi at konsumenten blir å tilpasse seg å konsumere litt mer av andre goder enn elbilkjøring, men at relativt sett er effekten kun 912 kroner mindre konsum av elbilkjøring, og at den totale effekten blir at begge goder blir konsumert mindre. På lengre sikt sier elastisiteten at bilistene blir å være like lite prissensitiv, så man forventer at det blir å holde seg slik i fremtiden også, med mindre Tenk Tromsø innfører et høyere gebyr for elbilistene.</p>
+</section>
+<section id="referanser" class="level1">
+<h1>5. Referanser</h1>
+<section id="kilder" class="level2">
+<h2 class="anchored" data-anchor-id="kilder">Kilder</h2>
+<p>Les Finland 2012. (n.d.). Uit-SOK-1006-V23.github.io/forelesningsplan.md at main · uit-SOK-1006-V23/UIT-SOK-1006-V23.Github.io. GitHub. https://github.com/uit-sok-1006-v23/uit-sok-1006-v23.github.io/blob/main/forelesningsplan.md</p>
+<p>Andreassen, V., Bredesen, I., &amp; Thøgersen, J. (2016). Innføring I mikroøkonomi: For økonomisk-administrative studier. Cappelen Damm.</p>
+<p>Konsumfordelingssystemet I Kvarts og Modag - Statistisk Sentralbyrå. (n.d.). https://www.ssb.no/nasjonalregnskap-og-konjunkturer/artikler-og-publikasjoner/_attachment/101943</p>
+<p>Kjørelengder. SSB. (2023, March 22). https://www.ssb.no/statbank/table/12577/tableViewLayout1/</p>
+<p>Lønn. SSB. (2023b, February 2). https://www.ssb.no/statbank/table/12852/</p>
+<p>Johansen, T. D. (2023, April 26). (+) bompenge-snittet økte I Mars: – De Viktigste Tallene går Ned. Nordlys. https://www.nordlys.no/bompenge-snittet-okte-i-mars-de-viktigste-tallene-gar-ned/s/5-34-1776123</p>
+<p>Trafikkdata. (n.d.). https://www.vegvesen.no/trafikkdata/start/eksport</p>
+<p>Tenk Tromsø. (n.d.). https://tenktromso.no/</p>
+<p>Og takk til Derek for kunngjøring om tall på busspassasjerer i Tromsø og for kode som er brukt fra forelesning 13 og forelesning 14.</p>
+</section>
+<section id="tabeller" class="level2">
+<h2 class="anchored" data-anchor-id="tabeller">Tabeller</h2>
+<p><a href="https://tenktromso.no/dette-er-bypakke-tenk-tromso">Tabell 1: Dette er bypakke Tenk Tromsø.</a></p>
+<p><a href="https://www.toi.no/getfile.php?mmfileid=74283">Tabell 2: Konseptvalgutredning veibruksavgift og bompenger, vedlegg 6-3 Transportmodell beregninger.</a></p>
+<p><a href="https://www.toi.no/getfile.php?mmfileid=74283">Tabell 3: Konseptvalgutredning veibruksavgift og bompenger, vedlegg 6-3 Transportmodell beregninger.</a></p>
+<p><a href="https://bpsnord.no/bypakke-tenk-tromso/">Tabell 4: Bypakke Tenk Tromsø. BPS Nord.</a></p>
+<p><a href="https://bpsnord.no/bypakke-tenk-tromso/">Tabell 5: Bypakke Tenk Tromsø. BPS Nord.</a></p>
+</section>
+</section>
+<section id="appendiks-for-chatgpt" class="level1">
+<h1>7. Appendiks for ChatGPT</h1>
+<ul>
+<li>Can you make this a latex table for me:</li>
+</ul>
+<p>Prosjektnavn Kostnad Reduserte billettpriser 185 Tryggere skoleveg 315 Økt driftstilskudd kollektiv 340 Dramsvegen 40 Stakkevollvegen - Skattørvegen 200 Ny sentrumsterminal 315 Nytt bussknutepunkt i Kroken 35 Redusere flaskehalser for bussen 70 Strandvegen 120 Strandvegen 115 Ladeinfrastruktur elbuss 35 Bedre holdeplasser 135 Tilgjengelighet for gående - holdeplasser, snarveier 45 Utvidelse bybussområdet 20 Fortau 50 Bussløsning Kvaløya 135 Innfartsparkering Skjelnan 10 Klokkargårdsbakken 15 Sykehusvegen 45 Ny bussterminal i Giæverbukta 140 E8 Flyplasstunnelen i Tromsø 1800 Tiltakspakke Langnes 525 Utbedring gang og sykkelvei Kvaløyvegen 15 Ny bru til Kvaløya 1800 Etablering av bomstasjoner 35 Sum 6 540</p>
+<ul>
+<li>Navn Felt Trafikkmengde Dekningsgrad (%) &lt; 5,6m Dato<br>
+2021-08-26 UIT/Planetariet Sykkel 1 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel 2 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning Planetariet/UIT 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning UNN 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt 165 50,0 -</li>
+</ul>
+<p>I want to separate “sykkel and Sykkel” observations and only take them out from the df into a new one</p>
+<ul>
+<li><p>I then want to instead of keep them make a bil_df that removes the sykkel and Sykkel observations</p></li>
+<li><p>bil_df = df[df[‘Felt’].str.contains(‘Totalt’)] this code returns:</p></li>
+</ul>
+<p>Navn Felt Trafikkmengde Dekningsgrad (%) &lt; 5,6m Dato<br>
+2021-08-26 UIT/Planetariet Sykkel Totalt i retning Planetariet/UIT 110 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt i retning UNN 55 50,0 - 2021-08-26 UIT/Planetariet Sykkel Totalt 165 50,0 -</p>
+<p>I want it to only have the ‘Totalt’ not the other ones only ‘Totalt’</p>
+<ul>
+<li>ax.scatter(df_summary[‘Dato’], df_summary[‘Total’], s=10, label=‘Biler’)</li>
+</ul>
+<p>How can I plot this to the date 05.01.2023 with one color and then go with another color after that date</p>
+<ul>
+<li><p>is it possible to have color in my latex table</p></li>
+<li><p>can you make this in latex table:</p></li>
+</ul>
+<p>Kostnader Elbiler Ekskl. avgifter Inkl. avgifter ekskl. mva Inkl. alle avgifter Drivstoff 0,19 0,23 0,27 Dekk og Olje 0,21 0,21 0,25 Reparasjoner 0,30 0,30 0,37 Kapital 1,10 1,10 1,10 Totalt 1,80 1,84 1,98</p>
+<ul>
+<li>Bensin, diesel, ladbar hybrid</li>
+</ul>
+<p>Nullutslippskjøretøy</p>
+<p>Fullpris Gyldig avtale og brikke Fullpris Gyldig avtale og brikke Alle bomstasjoner (15) 12,00 9,60 12,00 4,80</p>
+<p>make this a latex table for me</p>
+<ul>
+<li><p>How can I get the \ to be just one big row</p></li>
+<li><p>(latex tabell, kan ikke legge med denne da blir det error som jeg spør om til chatgpt)</p></li>
+</ul>
+<p>why is this giving me error</p>
+<ul>
+<li>(latex tabell, kan ikke legge den inn her da blir den ikke å kompilere i latex…)</li>
+</ul>
+<p>whats wrong here</p>
+<ul>
+<li>Navn Dato BREIVIKTUNNELEN Breivika Dramsvegen Fartstavle Tverrforbindelsen Giæverbukta nord HANSJORDNESTUNNELEN Hansine Hansens veg Hungeren Kraftforsyningen … Prestvannet Ringvegen Sandnessundbrua Sentrumstangenten Stakkevollvegen Strandvegen TROMSØBRUA Tromsøbrua avkjøring Tromsøysundtunnelen T1 Tromsøysundtunnelen T2 0 2020-01-01 3059 8994 NaN 5033 4913 4239 NaN</li>
+</ul>
+<p>this is how the dataframe looks like, I want every column summarized to just form a new column called total for every date</p>
+<ul>
+<li>I have this dataframe in pandas:</li>
+</ul>
+<p>Navn 0 0 BREIVIKTUNNELEN 776004.0 1 Breivika 2365496.0 2 Dramsvegen 193606.0 3 Fartstavle Tverrforbindelsen 1539626.0 4 Giæverbukta nord 2200892.0 5 HANSJORDNESTUNNELEN 1231460.0 6 Hansine Hansens veg 286818.0 7 Hungeren 1367510.0 8 Kraftforsyningen 1306417.0 9 Kvaløysletta nord 669889.0 10 Kvaløysletta sør 1572060.0 11 Kvaløyvegen 651427.0 12 Langnestunnelen 1725599.0 13 Postterminalen 1480449.0 14 Prestvannet 570758.0 15 Ringvegen 0.0 16 Sandnessundbrua 1487178.0 17 Sentrumstangenten 1008265.0 18 Stakkevollvegen 560257.0 19 Strandvegen 580096.0 20 TROMSØBRUA 2024122.0 21 Tromsøbrua avkjøring 1129561.0 22 Tromsøysundtunnelen T1 581562.0 23 Tromsøysundtunnelen T2 563815.0</p>
+<p>this is locations in Tromsø. Could you make a new column and put in the coordinates for me for the places so I can plot it in an interactive chart</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

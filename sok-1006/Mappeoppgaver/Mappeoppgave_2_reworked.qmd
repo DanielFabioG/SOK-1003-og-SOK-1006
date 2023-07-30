@@ -17,12 +17,6 @@ format:
 echo: false
 toc: true
 toc-title: "Innholdsliste"
-header-includes:
-  - \usepackage{colortbl}
-  - \usepackage{xcolor}
-  - \usepackage{array}
-  - \definecolor{cyan}{RGB}{100,149,237}
-  - \definecolor{yellow}{RGB}{255,255,0}
 ---
 
 ```{python}
@@ -35,7 +29,7 @@ from statsmodels.formula.api import ols
 import folium
 from folium.plugins import MarkerCluster
 from geopy.geocoders import GoogleV3
-from IPython.display import Markdown
+from IPython.display import Markdown, display
 ```
 
 # 1. Sammendrag
@@ -52,81 +46,80 @@ Tenk Tromsø skal gjøre det tryggere å gå eller sykle, bygge brukervennlige b
 
 Målet for [Bypakke Tenk Tromsø](https://tenktromso.no/faq#faq--ord-og-begreper) er nullvekst i persontransport med bil. Dette målet skal nås gjennom å gjøre det enklere, tryggere og mer attraktivt å velge gange, sykkel og kollektivtransport på hverdagsreisene i Tromsø.
 
-```{=tex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|r|}
-\hline
-\rowcolor{cyan}
-\textbf{Prosjektnavn} & \textbf{Kostnad} \\
-\hline
-Reduserte billettpriser & 185 \\
-Tryggere skoleveg & 315 \\
-Økt driftstilskudd kollektiv & 340 \\
-Dramsvegen & 40 \\
-Stakkevollvegen - Skattørvegen & 200 \\
-Ny sentrumsterminal & 315 \\
-Nytt bussknutepunkt i Kroken & 35 \\
-Redusere flaskehalser for bussen & 70 \\
-Strandvegen & 120 \\
-Strandvegen & 115 \\
-Ladeinfrastruktur elbuss & 35 \\
-Bedre holdeplasser & 135 \\
-Tilgjengelighet for gående - holdeplasser, snarveier & 45 \\
-Utvidelse bybussområdet & 20 \\
-Fortau & 50 \\
-Bussløsning Kvaløya & 135 \\
-Innfartsparkering Skjelnan & 10 \\
-Klokkargårdsbakken & 15 \\
-Sykehusvegen & 45 \\
-Ny bussterminal i Giæverbukta & 140 \\
-E8 Flyplasstunnelen i Tromsø & 1800 \\
-Tiltakspakke Langnes & 525 \\
-Utbedring gang og sykkelvei Kvaløyvegen & 15 \\
-Ny bru til Kvaløya & 1800 \\
-Etablering av bomstasjoner & 35 \\
-\hline
-\textbf{Sum} & 6 540 \\
-\hline
-\end{tabular}
-\end{table}
-```
 ## Bompengekostnader i Tromsø og kostnad per prosjekt
 
 Tabell 1: Takstgruppe 1- Kjøretøy under 3,5 tonn utenom rushtid.
 
-```{=tex}
-\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
-  \hline
-  \rowcolor{cyan}
-  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
-  \cline{2-5}
-  \rowcolor{cyan}
-  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
-  \hline
-  Alle bomstasjoner (15) & 12,00 & 9,60 & 9,60 & 4,80 \\
-  \hline
-\end{tabular}
+```{python}
+data = [
+    ["Reduserte billettpriser", 185],
+    ["Tryggere skoleveg", 315],
+    ["Økt driftstilskudd kollektiv", 340],
+    ["Dramsvegen", 40],
+    ["Stakkevollvegen - Skattørvegen", 200],
+    ["Ny sentrumsterminal", 315],
+    ["Nytt bussknutepunkt i Kroken", 35],
+    ["Redusere flaskehalser for bussen", 70],
+    ["Strandvegen", 120],
+    ["Strandvegen", 115],
+    ["Ladeinfrastruktur elbuss", 35],
+    ["Bedre holdeplasser", 135],
+    ["Tilgjengelighet for gående - holdeplasser, snarveier", 45],
+    ["Utvidelse bybussområdet", 20],
+    ["Fortau", 50],
+    ["Bussløsning Kvaløya", 135],
+    ["Innfartsparkering Skjelnan", 10],
+    ["Klokkargårdsbakken", 15],
+    ["Sykehusvegen", 45],
+    ["Ny bussterminal i Giæverbukta", 140],
+    ["E8 Flyplasstunnelen i Tromsø", 1800],
+    ["Tiltakspakke Langnes", 525],
+    ["Utbedring gang og sykkelvei Kvaløyvegen", 15],
+    ["Ny bru til Kvaløya", 1800],
+    ["Etablering av bomstasjoner", 35],
+    ["Sum", 6540]
+]
+
+df = pd.DataFrame(data, columns=["Prosjektnavn", "Kostnad"])
+display(Markdown(df.to_markdown(index=False)))
 ```
+
 Tabell 2: Takstgruppe 1 - Kjøretøy under 3,5 tonn i rushtid.
 
-```{=tex}
-\begin{tabular}{|l|p{2.5cm}|p{3.3cm}|c|p{3.3cm}|}
-  \hline
-  \rowcolor{yellow}
-  \multicolumn{5}{|c|}{\textbf{Rushtidavgift 06:30-09:00 og 15:00-17:00}} \\
-  \hline
-  \rowcolor{cyan}
-  \textbf{} & \multicolumn{2}{c|}{\textbf{Bensin, diesel, ladbar hybrid}} & \multicolumn{2}{c|}{\textbf{Nullutslippkjøretøy}} \\
-  \cline{2-5}
-  \rowcolor{cyan}
-  & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} & \textbf{Fullpris} & \textbf{Gyldig avtale og brikke} \\
-  \hline
-  Alle bomstasjoner (15) & 36,00 & 28,80 & 36,00 & 14,40 \\
-  \hline
-\end{tabular}
+```{python}
+# Define the table's data
+data = [
+    ["Alle bomstasjoner (15)", 12.00, 9.60, 9.60, 4.80],
+]
+
+# Create a DataFrame
+df = pd.DataFrame(data, columns=["", "Bensin, diesel, ladbar hybrid (Full pris)", 
+                                 "Bensin, diesel, ladbar hybrid (Gyldig avtale og brikke)", 
+                                 "Nullustslippkjøretøy (Full pris)", 
+                                 "Nullutslippkjøretøy (Gyldig avtale og brikke)"])
+
+# Display the DataFrame as a Markdown-formatted table
+display(Markdown(df.to_markdown(index=False)))
+
 ```
+
 Tabell 3: Kostnad per prosjekt oppgitt i millioner 2021-kroner (inkl. mva).
+
+```{python}
+# Define the table's data
+data = [
+    ["Alle bomstasjoner (15)", 36.00, 28.80, 36.00, 14.40],
+]
+
+# Create a DataFrame
+df = pd.DataFrame(data, columns=["", "Bensin, diesel, ladbar hybrid (Full pris)", 
+                                 "Bensin, diesel, ladbar hybrid (Gyldig avtale og brikke)", 
+                                 "Nullustslippkjøretøy (Full pris)", 
+                                 "Nullutslippkjøretøy (Gyldig avtale og brikke)"])
+
+# Display the DataFrame as a Markdown-formatted table
+display(Markdown(df.to_markdown(index=False)))
+```
 
 ## Struktur av redgjørelsen
 
@@ -635,48 +628,48 @@ I tabell 4 ser vi at en elbilist har en kostnad på 1,98 kroner per kilometer in
 
 Tabell 4 og 5: Distanseavhengige kostnader per kilometer for elbiler og forbrenningsmotor (2022-kr).
 
-```{=tex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|c|c|c|}
-\hline
-\rowcolor{cyan}
-\textbf{Elbil kostnader} & \textbf{Ekskl. avgifter} & \textbf{Inkl. avgifter ekskl. mva} & \textbf{Inkl. alle avgifter} \\
-\hline
-Drivstoff & 0,19 & 0,23 & 0,27 \\
-\hline
-Dekk og Olje & 0,21 & 0,21 & 0,25 \\
-\hline
-Reparasjoner & 0,30 & 0,30 & 0,37 \\
-\hline
-Kapital & 1,10 & 1,10 & 1,10 \\
-\hline
-Totalt & 1,80 & 1,84 & 1,98 \\
-\hline
-\end{tabular}
-\end{table}
+```{python}
+# Define the table's data
+data = [
+    ["Drivstoff", 0.19, 0.23, 0.27],
+    ["Dekk og Olje", 0.21, 0.21, 0.25],
+    ["Reparasjoner", 0.30, 0.30, 0.37],
+    ["Kapital", 1.10, 1.10, 1.10],
+    ["Total", 1.80, 1.84, 1.98],
+]
+
+# Create a DataFrame
+df = pd.DataFrame(data, columns=["Elbil kostnader", 
+                                 "Ekskl. avgifter", 
+                                 "Inkl. avgifter excl. MVA", 
+                                 "Inkl alle avgifter"])
+
+# Display the DataFrame as a Markdown-formatted table
+display(Markdown(df.to_markdown(index=False)))
+
 ```
-```{=tex}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|c|c|c|}
-\hline
-\rowcolor{cyan}
-\textbf{Forb. kostnader} & \textbf{Ekskl. avgifter} & \textbf{Inkl. avgifter ekskl. mva} & \textbf{Inkl. alle avgifter} \\
-\hline
-Drivstoff & 0,41 & 0,97 & 1,19 \\
-\hline
-Dekk og Olje & 0,27 & 0,27 & 0,33 \\
-\hline
-Reparasjoner & 0,46 & 0,46 & 0,55 \\
-\hline
-Kapital & 0,62 & 0,83 & 0,96 \\
-\hline
-Totalt & 1,76 & 2,53 & 3,03 \\
-\hline
-\end{tabular}
-\end{table}
+
+```{python}
+# Define the table's data
+data = [
+    ["Drivstoff", 0.41, 0.97, 1.19],
+    ["Dekk og Olje", 0.27, 0.27, 0.33],
+    ["Reparasjoner", 0.46, 0.46, 0.55],
+    ["Kapital", 0.62, 0.83, 0.96],
+    ["Total", 1.76, 2.53, 3.03],
+]
+
+# Create a DataFrame
+df = pd.DataFrame(data, columns=["Forbr. kostnader", 
+                                 "Ekskl. avgifter", 
+                                 "Inkl. avgifter ekskl. MVA", 
+                                 "Inkl. alle avgifter"])
+
+# Display the DataFrame as a Markdown-formatted table
+display(Markdown(df.to_markdown(index=False)))
+
 ```
+
 ## Noen sentrale forutsetninger
 
 Vi forutsetter at konsumentens inntekt i sin helhet går med til konsum, hvor konsumenten har to valg å velge mellom, konsumere andre goder eller å kjøre bil målt ved antall kilometer kjørt. Nytten pårvirkes bare av konsum av gode 1 og gode 2 idag og vi ser bort ifra muligheten for sparing.
