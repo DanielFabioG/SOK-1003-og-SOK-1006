@@ -29,15 +29,15 @@ Alle oppgaver gitt gjennom dette kurset finnes i "Arbeidskrav" seksjonen, mens a
       <div style="width: 45%; position: relative;">
         <div class="content-overlay">
           <div class="text-overlay">Arbeidskrav</div>
-            <a href="/SOK-1003-og-SOK-1006/sok-1006/Cases/Case_1_reworked.html" class="larger">Case 1</a>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_1_reworked.html" class="larger">Arbeidskrav 1</a>
             <br>
-            <a href="/SOK-1003-og-SOK-1006/sok-1006/Cases/Case_2_reworked.html" class="larger">Case 2</a>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_2_reworked" class="larger">Arbeidskrav 2</a>
             <br>
-            <a href="/SOK-1003-og-SOK-1006/sok-1006/Cases/Case_3_reworked.html" class="larger">Case 3</a>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_3_reworked" class="larger">Arbeidskrav 3</a>
             <br>
-            <a href="/SOK-1003-og-SOK-1006/sok-1006/Cases/Case_4_reworked.html" class="larger">Case 4</a>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_4_reworked" class="larger">Arbeidskrav 4</a>
             <br>
-            <a href="/SOK-1003-og-SOK-1006/sok-1006/Cases/Case_5_reworked.html" class="larger">Case 5</a>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_5_reworked" class="larger">Arbeidskrav 5</a>
         </div>
     </div>
     <div style="width: 45%; position: relative;">
