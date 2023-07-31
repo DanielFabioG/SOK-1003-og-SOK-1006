@@ -11,10 +11,11 @@ format:
       - left=20mm
       - right=20mm
       - heightrounded
+    code-fold: true
+    self-contained: true
     fontsize: 12pt
     documentclass: scrartcl
     papersize: a4
-echo: false
 toc: true
 toc-title: "Innholdsliste"
 ---
@@ -31,6 +32,8 @@ from folium.plugins import MarkerCluster
 from geopy.geocoders import GoogleV3
 from IPython.display import Markdown, display
 ```
+
+For å gå tilbake til hovedsiden trykker du [her](https://danielfabiog.github.io/SOK-1003-og-SOK-1006/).
 
 # 1. Sammendrag
 
@@ -407,8 +410,6 @@ ax.legend();
 ```
 
 Avslutningsvis legges det ved et kart for å få en liten oversikt over trafikkregistreringspunkter og antall passeringer for hvert punkt siden 2020. NB: Dette kartet har ikke inkludert alle registreringspunkter, og inkluderer heller ikke sykkelregistreringer.
-
-[Liten oversikt over trafikktellestasjoner og totalt antall passeringer siden 2020](https://danielfabiog.github.io/SOK-1004/)
 
 ## Syklister
 
@@ -1047,6 +1048,8 @@ Det vi kan se med innføringen av bompenger er at det ikke tilsynelatende på ko
 Det virker som at introduksjonen av bompenger har hatt en positiv effekt på bruken av kollektivtransport og det kan virke som at sykkelbruken har gått opp, uten at man kan si noe alt for sikkert siden sykkelsesongen enda ikke har startet ordentlig i Tromsø.
 
 I nyttefunksjonen ser vi at konsumenten blir å tilpasse seg å konsumere litt mer av andre goder enn elbilkjøring, men at relativt sett er effekten kun 912 kroner mindre konsum av elbilkjøring, og at den totale effekten blir at begge goder blir konsumert mindre. På lengre sikt sier elastisiteten at bilistene blir å være like lite prissensitiv, så man forventer at det blir å holde seg slik i fremtiden også, med mindre Tenk Tromsø innfører et høyere gebyr for elbilistene.
+
+For å gå tilbake til hovedsiden trykker du [her](https://danielfabiog.github.io/SOK-1003-og-SOK-1006/).
 
 # 5. Referanser
 
