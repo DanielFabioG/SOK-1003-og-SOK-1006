@@ -1,5 +1,5 @@
 ---
-title: "Mappeoppgave 1 - Samfunnsøkonomisk analyse av en turistskatt"
+title: "Mappeoppgave 1 - Python-lab"
 subtitle: "Fakultet for biovitenskap, fiskeri og økonomi."
 date: last-modified
 date-format: "DD-MM-YYYY"
