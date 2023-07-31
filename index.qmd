@@ -38,6 +38,14 @@ Alle oppgaver gitt gjennom dette kurset finnes i "Arbeidskrav" seksjonen, mens a
             <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_4_reworked" class="larger">Arbeidskrav 4</a>
             <br>
             <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_5_reworked" class="larger">Arbeidskrav 5</a>
+            <br>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_6_reworked" class="larger">Arbeidskrav 6</a>
+            <br>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_7_reworked" class="larger">Arbeidskrav 7</a>
+            <br>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_8_reworked" class="larger">Arbeidskrav 8</a>
+            <br>
+            <a href="/SOK-1003-og-SOK-1006/sok-1006/Arbeidskrav/Arbeidskrav_9_reworked" class="larger">Arbeidskrav 9</a>
         </div>
     </div>
     <div style="width: 45%; position: relative;">
